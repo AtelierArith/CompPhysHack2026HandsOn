@@ -31,12 +31,12 @@ Uses unsafe shift to match Rust performance.
     k = min(zb, za)
 
     while a != zero(U)
-        a = unsafe_lshr(a, za)
-        diff = reinterpret(T, a) - reinterpret(T, b)
-        absd = reinterpret(U, abs(diff))
-        za = trailing_zeros(reinterpret(U, diff)) % U
-        b = min(a, b)
-        a = absd
+        shifted_a = unsafe_lshr(a, za)
+        diff = shifted_a - b
+        za = trailing_zeros(diff) % U
+        cmp = shifted_a >= b
+        a = ifelse(cmp, diff, zero(U) - diff)  # |a - b|
+        b = ifelse(cmp, b, shifted_a)  # min(a, b) - update b last
     end
 
     reinterpret(T, b << k)
@@ -61,14 +61,12 @@ Uses unsafe shift to match Rust performance.
     b = unsafe_lshr(b, zb)
 
     while a != zero(T)
-        # Remove factors of 2 from a
-        a = unsafe_lshr(a, za)
-
-        # Compute absolute difference (a and b are positive, use max-min)
-        diff = max(a, b) - min(a, b)
+        shifted_a = unsafe_lshr(a, za)
+        diff = shifted_a - b
         za = trailing_zeros(diff) % T
-        b = min(a, b)
-        a = diff
+        cmp = shifted_a >= b
+        a = ifelse(cmp, diff, zero(T) - diff)  # |a - b|
+        b = ifelse(cmp, b, shifted_a)  # min(a, b) - update b last
     end
 
     b << k
