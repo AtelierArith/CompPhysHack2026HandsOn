@@ -1,0 +1,26 @@
+---
+title: This is a title
+author: SatoshiTerasaki@AtelierArith
+format:
+  revealjs:
+    theme: "black"
+    css: "../styles/style.css"
+    embed-resources: true
+    slide-number: true
+    show-notes: separate-page
+    mermaid:
+      theme: default
+    gfm:
+    mermaid-format: png
+---
+
+## Overview
+
+- Background and Challenges
+- Introduction to Blah blah blah
+
+---
+
+## Appendix
+
+Goma-chan is cute
