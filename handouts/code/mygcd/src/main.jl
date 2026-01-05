@@ -4,59 +4,74 @@
 using Base: llvmcall
 
 # Unsafe right shift without overflow check (matches Rust behavior)
-@inline function unsafe_lshr(x::UInt64, n::UInt64)::UInt64
-    llvmcall("%res = lshr i64 %0, %1\nret i64 %res", UInt64, Tuple{UInt64, UInt64}, x, n)
+# Uses @generated to create type-specific LLVM IR
+@generated function unsafe_lshr(x::T, n::T) where T<:Unsigned
+    bits = sizeof(T) * 8
+    llvm_type = "i$bits"
+    ir = "%res = lshr $llvm_type %0, %1\nret $llvm_type %res"
+    return :(llvmcall($ir, $T, Tuple{$T, $T}, x, n))
 end
 
 """
-    mygcd(a::Int64, b::Int64) -> Int64
+    mygcd(a::T, b::T) where T<:Signed -> T
 
-Binary GCD algorithm optimized for Int64.
+Binary GCD algorithm for signed integers.
 Uses unsafe shift to match Rust performance.
 """
-@inline function mygcd(ain::Int64, bin::Int64)::Int64
+@inline function mygcd(ain::T, bin::T)::T where T<:Signed
+    U = unsigned(T)  # Get unsigned counterpart type
+
     ain == 0 && return abs(bin)
     bin == 0 && return abs(ain)
 
-    zb = trailing_zeros(bin) % UInt64
-    za = trailing_zeros(ain) % UInt64
-    a::UInt64 = reinterpret(UInt64, abs(ain))
-    b::UInt64 = reinterpret(UInt64, abs(bin >> zb))
+    zb = trailing_zeros(bin) % U
+    za = trailing_zeros(ain) % U
+    a::U = reinterpret(U, abs(ain))
+    b::U = reinterpret(U, abs(bin >> zb))
     k = min(zb, za)
 
-    while a != zero(UInt64)
+    while a != zero(U)
         a = unsafe_lshr(a, za)
-        diff = reinterpret(Int64, a) - reinterpret(Int64, b)
-        absd = reinterpret(UInt64, abs(diff))
-        za = trailing_zeros(reinterpret(UInt64, diff)) % UInt64
+        diff = reinterpret(T, a) - reinterpret(T, b)
+        absd = reinterpret(U, abs(diff))
+        za = trailing_zeros(reinterpret(U, diff)) % U
         b = min(a, b)
         a = absd
     end
 
-    reinterpret(Int64, b << k)
+    reinterpret(T, b << k)
 end
 
 """
     mygcd(a::T, b::T) where T<:Unsigned -> T
 
 Binary GCD algorithm for unsigned integers.
+Uses unsafe shift to match Rust performance.
 """
 @inline function mygcd(a::T, b::T)::T where T<:Unsigned
     a == 0 && return b
     b == 0 && return a
 
-    shift = trailing_zeros(a | b)
-    a >>= trailing_zeros(a)
+    # Factor out common powers of 2
+    za = trailing_zeros(a) % T
+    zb = trailing_zeros(b) % T
+    k = min(za, zb)
 
-    while b != 0
-        b >>= trailing_zeros(b)
-        if a > b
-            a, b = b, a
-        end
-        b -= a
+    # Remove factors of 2 from b
+    b = unsafe_lshr(b, zb)
+
+    while a != zero(T)
+        # Remove factors of 2 from a
+        a = unsafe_lshr(a, za)
+
+        # Compute absolute difference (a and b are positive, use max-min)
+        diff = max(a, b) - min(a, b)
+        za = trailing_zeros(diff) % T
+        b = min(a, b)
+        a = diff
     end
 
-    a << shift
+    b << k
 end
 
 """
@@ -86,6 +101,51 @@ function run_tests()
     @assert mygcd(Int64(-48), Int64(-18)) == 6
     @assert mygcd(Int64(1071), Int64(462)) == 21
 
+    # Test Int32
+    @assert mygcd(Int32(0), Int32(5)) == 5
+    @assert mygcd(Int32(12), Int32(8)) == 4
+    @assert mygcd(Int32(-12), Int32(8)) == 4
+    @assert mygcd(Int32(1071), Int32(462)) == 21
+
+    # Test Int16
+    @assert mygcd(Int16(0), Int16(5)) == 5
+    @assert mygcd(Int16(12), Int16(8)) == 4
+    @assert mygcd(Int16(-12), Int16(-8)) == 4
+
+    # Test Int8
+    @assert mygcd(Int8(0), Int8(5)) == 5
+    @assert mygcd(Int8(12), Int8(8)) == 4
+    @assert mygcd(Int8(-12), Int8(8)) == 4
+
+    # Test Int128
+    @assert mygcd(Int128(0), Int128(5)) == 5
+    @assert mygcd(Int128(12), Int128(8)) == 4
+    @assert mygcd(Int128(-12), Int128(8)) == 4
+    @assert mygcd(Int128(1071), Int128(462)) == 21
+
+    # Test UInt64
+    @assert mygcd(UInt64(0), UInt64(5)) == 5
+    @assert mygcd(UInt64(12), UInt64(8)) == 4
+    @assert mygcd(UInt64(1071), UInt64(462)) == 21
+
+    # Test UInt32
+    @assert mygcd(UInt32(0), UInt32(5)) == 5
+    @assert mygcd(UInt32(12), UInt32(8)) == 4
+    @assert mygcd(UInt32(1071), UInt32(462)) == 21
+
+    # Test UInt16
+    @assert mygcd(UInt16(0), UInt16(5)) == 5
+    @assert mygcd(UInt16(12), UInt16(8)) == 4
+
+    # Test UInt8
+    @assert mygcd(UInt8(0), UInt8(5)) == 5
+    @assert mygcd(UInt8(12), UInt8(8)) == 4
+
+    # Test UInt128
+    @assert mygcd(UInt128(0), UInt128(5)) == 5
+    @assert mygcd(UInt128(12), UInt128(8)) == 4
+    @assert mygcd(UInt128(1071), UInt128(462)) == 21
+
     # Test against Base.gcd
     for a in 1:100, b in 1:100
         @assert mygcd(a, b) == gcd(a, b) "Failed for ($a, $b)"
@@ -100,7 +160,7 @@ end
 Approximate pi using probability that two numbers are coprime.
 The probability that two random integers are coprime is 6/pi^2.
 """
-function calc_pi(n::Int64)::Float64
+function calc_pi(n)::Float64
     cnt::Int64 = 0
     @inbounds for a in 1:n
         for b in 1:n
@@ -113,11 +173,10 @@ end
 # Main function
 function main()
     run_tests()
-
-    n = Int64(10000)
+    n = 10000
 
     # Warmup
-    calc_pi(Int64(100))
+    calc_pi(UInt64(n))
 
     # Benchmark
     println("\nBenchmark:")
