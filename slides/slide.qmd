@@ -194,11 +194,268 @@ main(); // Call the main function
 Result
 
 ```sh
-$ time node approx_pi_gcd.js
+$ node approx_pi_gcd.js
+calcPi: 2.175s
 N: 10000
 pi: 3.141534239016629
-node approx_pi_gcd.js  2.20s user 0.02s system 99% cpu 2.221 total
 ```
+
+---
+
+## Exercise
+
+先ほどの JavaScript のコードを Julia, Rust に移植してください．
+`N=10000` の時の実行時間を計測してください．
+
+Hint:
+
+> Port `approx_pi_gcd.js` to Julia and save the result as approx_pi_gcd.jl
+
+> Port `approx_pi_gcd.rs` to Rust and save the result as approx_pi_gcd.rs
+
+---
+
+## Answer(Julia)
+
+```julia
+# Function to compute the greatest common divisor (GCD) using the Euclidean algorithm
+function mygcd(a, b)
+    # Loop until the remainder is zero
+    while b != 0
+        tmp = b    # Store the value of b temporarily
+        b = a % b  # Update b to the remainder of a divided by b
+        a = tmp    # Set a to the previous value of b
+    end
+    return a       # When b is zero, a is the GCD
+end
+
+# Function to approximate pi using probability that two numbers are coprime
+function calcPi(N)
+    cnt = 0    # Counter for coprime pairs
+    # Loop through all pairs (a, b) where 1 <= a, b <= N
+    for a in 1:N
+        for b in 1:N
+            # Check if a and b are coprime
+            if mygcd(a, b) == 1
+                cnt += 1  # Increment counter if coprime
+            end
+        end
+    end
+    # Probability that two numbers are coprime
+    prob = cnt / (N * N)
+    # Approximate pi using the formula: pi ≈ sqrt(6 / prob)
+    return sqrt(6 / prob)
+end
+
+# Main function to run the pi approximation
+function main()
+    N = 10000            # Number limit for coprimality checking
+    approx_pi = @time calcPi(N) # Approximate pi and time it
+    println("N: $(N)")   # Output N
+    println("pi: $(approx_pi)") # Output approximation of pi
+end
+
+main() # Call the main function
+```
+
+Result
+
+```julia
+$ julia approx_pi_gcd.jl
+  1.865392 seconds
+N: 10000
+pi: 3.141534239016629
+```
+
+---
+
+## Answer (Rust)
+
+```rust
+// Function to compute the greatest common divisor (GCD) using the Euclidean algorithm
+fn mygcd(a: u64, b: u64) -> u64 {
+    let mut a = a;
+    let mut b = b;
+    // Loop until the remainder is zero
+    while b != 0 {
+        let tmp = b;    // Store the value of b temporarily
+        b = a % b;      // Update b to the remainder of a divided by b
+        a = tmp;        // Set a to the previous value of b
+    }
+    a                   // When b is zero, a is the GCD
+}
+
+// Function to approximate pi using probability that two numbers are coprime
+fn calc_pi(n: u64) -> f64 {
+    let mut cnt = 0u64; // Counter for coprime pairs
+    // Loop through all pairs (a, b) where 1 <= a, b <= N
+    for a in 1..=n {
+        for b in 1..=n {
+            // Check if a and b are coprime
+            if mygcd(a, b) == 1 {
+                cnt += 1;  // Increment counter if coprime
+            }
+        }
+    }
+    // Probability that two numbers are coprime
+    let prob = cnt as f64 / (n as f64 * n as f64);
+    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)
+    (6.0 / prob).sqrt()
+}
+
+// Main function to run the pi approximation
+fn main() {
+    let n = 10000u64;   // Number limit for coprimality checking
+    let start = std::time::Instant::now();
+    let pi = calc_pi(n); // Approximate pi
+    let duration = start.elapsed();
+    println!("calcPi: {:?}", duration);
+    println!("N: {}", n);   // Output N
+    println!("pi: {}", pi); // Output approximation of pi
+}
+```
+
+Result
+
+```sh
+$ rustc -C opt-level=3 approx_pi_gcd.rs && ./approx_pi_gcd
+calcPi: 1.754083333s
+N: 10000
+pi: 3.141534239016629
+```
+
+---
+
+## Answer (C)
+
+```c
+#include <stdio.h>
+#include <math.h>
+#include <time.h>
+
+// Function to compute the greatest common divisor (GCD) using the Euclidean algorithm
+int mygcd(int a, int b) {
+    // Loop until the remainder is zero
+    while (b != 0) {
+        int tmp = b;    // Store the value of b temporarily
+        b = a % b;      // Update b to the remainder of a divided by b
+        a = tmp;        // Set a to the previous value of b
+    }
+    return a;           // When b is zero, a is the GCD
+}
+
+// Function to approximate pi using probability that two numbers are coprime
+double calcPi(int N) {
+    int cnt = 0;    // Counter for coprime pairs
+    // Loop through all pairs (a, b) where 1 <= a, b <= N
+    for (int a = 1; a <= N; a++) {
+        for (int b = 1; b <= N; b++) {
+            // Check if a and b are coprime
+            if (mygcd(a, b) == 1) {
+                cnt += 1;  // Increment counter if coprime
+            }
+        }
+    }
+    // Probability that two numbers are coprime
+    double prob = (double)cnt / (N * N);
+    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)
+    return sqrt(6.0 / prob);
+}
+
+// Main function to run the pi approximation
+int main() {
+    int N = 10000;            // Number limit for coprimality checking
+    clock_t start = clock();
+    double pi = calcPi(N);    // Approximate pi
+    clock_t end = clock();
+    double cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+    
+    printf("calcPi: %f seconds\n", cpu_time_used);
+    printf("N: %d\n", N);     // Output N
+    printf("pi: %f\n", pi);   // Output approximation of pi
+    
+    return 0;
+}
+```
+
+Result
+
+```sh
+$ gcc -O3 approx_pi_gcd.c && ./a.out         
+calcPi: 1.753796 seconds
+N: 10000
+pi: 3.141534
+```
+
+---
+
+## Julia はもっと高速に実行することができる．
+
+```julia
+# Function to approximate pi using probability that two numbers are coprime
+function calcPi(N)
+    cnt = 0    # Counter for coprime pairs
+    # Loop through all pairs (a, b) where 1 <= a, b <= N
+    for a in 1:N
+        for b in 1:N
+            # Check if a and b are coprime
+            if gcd(a, b) == 1
+                cnt += 1  # Increment counter if coprime
+            end
+        end
+    end
+    # Probability that two numbers are coprime
+    prob = cnt / (N * N)
+    # Approximate pi using the formula: pi ≈ sqrt(6 / prob)
+    return sqrt(6 / prob)
+end
+
+# Main function to run the pi approximation
+function main()
+    N = 10000            # Number limit for coprimality checking
+    approx_pi = @time calcPi(N) # Approximate pi and time it
+    println("N: $(N)")   # Output N
+    println("pi: $(approx_pi)") # Output approximation of pi
+end
+
+main() # Call the main function
+```
+
+Result
+
+```sh
+julia approx_pi_gcd.jl
+  1.454210 seconds
+N: 10000
+pi: 3.141534239016629
+```
+
+---
+
+## Julia が速くなった?!
+
+`1.865392 seconds -> 1.454210 seconds` となる理由は？
+
+Julia が提供する `gcd` 関数はユークリッド互除法とは異なるアルゴリズムを用いているからである．
+
+## Exercise
+
+- Julia のリポジトリをクローンしてコーディングエージェントに `gcd` 関数がどのようになっているかを答えさせよ．
+
+- 採用しているアルゴリズムは何かを答えさせよ．
+- 先ほど JavaScript から Rust に移植したコードで `mygcd` の代わりに Julia が実装している `gcd` 関数を移植させよ．
+
+Hint:
+
+`git clone --depth 1 <url>` ですばやくクローンができる(shallow clone)．
+
+> `Read the Julia code and answer how the gcd function is defined. Read @julia`
+
+---
+
+## Answer
+
+
 
 ---
 
