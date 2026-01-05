@@ -1,5 +1,5 @@
 ---
-title: This is a title
+title: Introduction to Coding Agents
 author: SatoshiTerasaki@AtelierArith
 format:
   revealjs:
@@ -16,8 +16,189 @@ format:
 
 ## Overview
 
-- Background and Challenges
-- Introduction to Blah blah blah
+- AIエージェントの導入
+- いくつかの題材をもとに使う
+
+---
+
+## 自己紹介
+
+Name: Satoshi Terasaki
+
+- ソフトウェアエンジニア．フリーランス
+- 大学教員と科学計算の共同開発
+  - Hiroshi Shinaoka さんとの共同開発
+    - [libsparseir](https://github.com/SpM-lab/libsparseir) (C++)
+    - [sparse-ir-rs](https://github.com/SpM-lab/sparse-ir-rs) (Rust)
+    - [SparseIR.jl](https://github.com/SpM-lab/SparseIR.jl) v2.0 (Julia)
+    - [sparse-ir](https://github.com/SpM-lab/sparse-ir) v2.0 (Python)
+- ソフトウェア開発のコンサルティングを行なっている
+  - Porting C project to Julia
+- プロダクト開発
+  - SubsetJuliaVM (iOS)
+
+---
+
+## ソフトウェア開発
+
+- アイデアを考える
+- 仕様を考える．
+- コードを書く
+  - アルゴリズムの実装
+  - テストを書く
+  - ドキュメントを書く
+- メンテナンスをする
+- 上記を繰り返す
+
+---
+
+## コーディングエージェントの登場
+
+人工知能・生成 AI の発展により
+コーディングエージェント・AI エージェントは人間が指示を与えたら目標を達成するために下記の行動をすることが可能になった:
+
+- 計画を立てる(具体的にどのような実装をするかを事前に決める)
+- 既存のコードの読解
+- コード生成
+- バグ修正
+- ソフトウェアののビルド・実行をするためにコマンドを実行する
+- 開発ワークフローの実行 (`git commit`, プルリクエストを作成などをができる)
+
+---
+
+## 人間と機械
+
+- 人間は「創造」することができるが「疲れる」,「飽きる」,「固執する」
+  - 研究活動のような新しいアイデアを出す
+  - `git commit -m "update"` `git commit -m "fix"` を使いまくる
+  - メンテナンスを放置する
+  - 特定のプログラミング言語を使い続ける
+
+- 機械は「飽きない」,「疲れない」,「モデルが成長」するが「人間の指示」が必要
+  - コードの差分から適切なコミット・プリクエストの概要を作成
+  - いつでも動作をする
+  - 様々な言語を使える．移植も得意:
+    - `Julia -> C++`, `C++ -> Rust`, `C -> Julia`
+    - 要請に応じて変更が可能．現代的な言語にマイグレーションが可能
+  - 人間からの適切な指示が必要
+
+---
+
+## ハンズオン
+
+Cursor を用いたコーディングの方法を紹介する．
+
+代替として Antigravity, Claude Code, Codex を使うこともできる．
+
+## 必要な CLI ツール
+
+- `git`, `gh`: Git/GitHub を操作する
+- `uv`: Python package manager
+- `npm`, `node`: コーディングエージェントのインストール
+- `juliaup`, `julia`: Julia のコードを実行するために必要
+- `rustup`, `rustc`, `cargo`: Rust のコードをビルド・実行に必要
+
+Optional:
+
+- `tree`
+- `htop`
+- `quarto`
+
+## インストール
+
+下記リンクに移動し
+
+- https://cursor.com/download
+- VS Code ユーザは extension をマイグレートできる．
+
+## Math Quiz
+
+二つのの正の整数 $a$, $b$ が与えられた時，最大公約数 $\gcd(a,b)$ が 1 になる確率はどれくらい？
+
+## Math Quiz
+
+二つのの正の整数 $a$, $b$ が与えられた時，最大公約数 $\gcd(a,b)$ が 1 になる確率はどれくらい？
+
+正解は 
+
+$$
+\frac{1}{\zeta(2)} = \frac{6}{\pi^2} \approx 0.6079271018540267
+$$
+
+ここで，$\zeta$ はリーマン・ゼータ関数である．
+
+## 証明
+
+$$
+\begin{aligned}
+\mathrm{Prob}(\gcd(a, b) = 1) 
+&= \prod_{p: \mathrm{primes} } \left( 1 - \mathrm{Prob}(p | a \textrm{ and } p | b)\right) \\
+&= \prod_{p: \mathrm{primes} } \left( 1 - \mathrm{Prob}(p | a)\mathrm{Prob}(p | b)\right) \\
+&= \prod_{p: \mathrm{primes} } \left( 1 - \frac{1}{p}\cdot\frac{1}{p}\right) \\
+&= \prod_{p: \mathrm{primes} } \left( 1 - p^{-2}\right) \\
+&= \left(\prod_{p: \mathrm{primes} } \left(\frac{1}{1 - p^{-2}}  \right)\right)^{-1} \\
+&=\left(\zeta(2)\right)^{-1} \\
+&= \frac{1}{\zeta(2)} = \frac{6}{\pi^2}
+\end{aligned} 
+$$
+
+---
+
+## Application
+
+Let's calculate the $\pi \approx 3.14...$ from GCD function:
+
+```js
+// approx_pi_gcd.js
+
+// Function to compute the greatest common divisor (GCD) using the Euclidean algorithm
+function mygcd(a, b) {
+    // Loop until the remainder is zero
+    while (b !== 0) {
+        let tmp = b;    // Store the value of b temporarily
+        b = a % b;      // Update b to the remainder of a divided by b
+        a = tmp;        // Set a to the previous value of b
+    }
+    return a;           // When b is zero, a is the GCD
+}
+
+// Function to approximate pi using probability that two numbers are coprime
+function calcPi(N) {
+    let cnt = 0;    // Counter for coprime pairs
+    // Loop through all pairs (a, b) where 1 <= a, b <= N
+    for (let a = 1; a <= N; a++) {
+        for (let b = 1; b <= N; b++) {
+            // Check if a and b are coprime
+            if (mygcd(a, b) === 1) {
+                cnt += 1;  // Increment counter if coprime
+            }
+        }
+    }
+    // Probability that two numbers are coprime
+    let prob = cnt / (N * N);
+    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)
+    return Math.sqrt(6 / prob);
+}
+
+// Main function to run the pi approximation
+function main() {
+    let N = 10000;            // Number limit for coprimality checking
+    let pi = calcPi(N);       // Approximate pi
+    console.log(`N: ${N}`);   // Output N
+    console.log(`pi: ${pi}`); // Output approximation of pi
+}
+
+main(); // Call the main function
+```
+
+Result
+
+```sh
+$ time node approx_pi_gcd.js
+N: 10000
+pi: 3.141534239016629
+node approx_pi_gcd.js  2.20s user 0.02s system 99% cpu 2.221 total
+```
 
 ---
 
