@@ -1,27 +1,34 @@
 # Binary GCD algorithm (Stein's algorithm)
-# Optimized implementation matching Rust performance patterns
+# Optimized implementation matching Rust performance
+
+using Base: llvmcall
+
+# Unsafe right shift without overflow check (matches Rust behavior)
+@inline function unsafe_lshr(x::UInt64, n::UInt64)::UInt64
+    llvmcall("%res = lshr i64 %0, %1\nret i64 %res", UInt64, Tuple{UInt64, UInt64}, x, n)
+end
 
 """
     mygcd(a::Int64, b::Int64) -> Int64
 
 Binary GCD algorithm optimized for Int64.
-Uses the Rust-style pattern with unsigned arithmetic internally.
+Uses unsafe shift to match Rust performance.
 """
 @inline function mygcd(ain::Int64, bin::Int64)::Int64
     ain == 0 && return abs(bin)
     bin == 0 && return abs(ain)
 
-    zb::Int = trailing_zeros(bin)
-    za::Int = trailing_zeros(ain)
+    zb = trailing_zeros(bin) % UInt64
+    za = trailing_zeros(ain) % UInt64
     a::UInt64 = reinterpret(UInt64, abs(ain))
     b::UInt64 = reinterpret(UInt64, abs(bin >> zb))
-    k::Int = min(za, zb)
+    k = min(zb, za)
 
     while a != zero(UInt64)
-        a >>= za
-        diff::Int64 = reinterpret(Int64, a) - reinterpret(Int64, b)
-        absd::UInt64 = reinterpret(UInt64, abs(diff))
-        za = trailing_zeros(reinterpret(UInt64, diff))
+        a = unsafe_lshr(a, za)
+        diff = reinterpret(Int64, a) - reinterpret(Int64, b)
+        absd = reinterpret(UInt64, abs(diff))
+        za = trailing_zeros(reinterpret(UInt64, diff)) % UInt64
         b = min(a, b)
         a = absd
     end
@@ -79,10 +86,10 @@ function run_tests()
     @assert mygcd(Int64(-48), Int64(-18)) == 6
     @assert mygcd(Int64(1071), Int64(462)) == 21
 
-    # Test UInt64
-    @assert mygcd(UInt64(0), UInt64(5)) == 5
-    @assert mygcd(UInt64(12), UInt64(8)) == 4
-    @assert mygcd(UInt64(1071), UInt64(462)) == 21
+    # Test against Base.gcd
+    for a in 1:100, b in 1:100
+        @assert mygcd(a, b) == gcd(a, b) "Failed for ($a, $b)"
+    end
 
     println("All tests passed!")
 end
