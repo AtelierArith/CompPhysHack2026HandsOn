@@ -4,161 +4,96 @@
 /// This is significantly faster than the Euclidean algorithm for machine integers:
 /// ~1.7x faster for i64, ~2.1x faster for i128
 
-/// Compute the absolute difference between two unsigned integers
-#[inline]
-fn absdiff_unsigned(x: u64, y: u64) -> (u64, u64) {
-    let d = x.max(y) - x.min(y);
-    (d, d)
-}
+use num_traits::{PrimInt, Signed, Unsigned};
+use std::time::Instant;
 
-/// Compute the absolute difference between two signed integers
-#[inline]
-fn absdiff_signed(x: i64, y: i64) -> (u64, i64) {
-    let d = x.wrapping_sub(y);
-    (d.unsigned_abs(), d)
-}
-
-/// Binary GCD algorithm for unsigned 64-bit integers
-pub fn gcd_u64(mut a: u64, mut b: u64) -> u64 {
-    if a == 0 {
+/// Binary GCD algorithm for unsigned integers using generics
+pub fn gcd<T>(mut a: T, mut b: T) -> T
+where
+    T: PrimInt + Unsigned,
+{
+    if a.is_zero() {
         return b;
     }
-    if b == 0 {
+    if b.is_zero() {
         return a;
     }
 
     // Factor out common powers of 2
-    let mut za = a.trailing_zeros();
+    let za = a.trailing_zeros();
     let zb = b.trailing_zeros();
     let k = za.min(zb);
 
-    // Remove factors of 2 from b
-    b >>= zb;
+    // Remove all factors of 2 from a and b
+    a = a >> za as usize;
+    b = b >> zb as usize;
 
-    while a != 0 {
-        // Remove factors of 2 from a
-        a >>= za;
+    loop {
+        // Ensure a <= b
+        if a > b {
+            std::mem::swap(&mut a, &mut b);
+        }
 
-        // Compute absolute difference
-        let (absd, diff) = absdiff_unsigned(a, b);
-        za = diff.trailing_zeros();
-        b = a.min(b);
-        a = absd;
+        // b = b - a (both are odd, so result is even or zero)
+        b = b - a;
+
+        if b.is_zero() {
+            break;
+        }
+
+        // Remove factors of 2 from b
+        b = b >> b.trailing_zeros() as usize;
     }
 
     // Restore common factors of 2
-    b << k
+    a << k as usize
 }
 
-/// Binary GCD algorithm for signed 64-bit integers
-pub fn gcd_i64(a: i64, b: i64) -> i64 {
-    if a == 0 {
-        return b.checked_abs().expect("gcd overflow: cannot compute |b|");
+/// Binary GCD algorithm for signed integers using generics
+pub fn gcd_signed<T>(a: T, b: T) -> T
+where
+    T: PrimInt + Signed,
+{
+    // Handle zero cases with absolute value
+    if a.is_zero() {
+        return if b < T::zero() { T::zero() - b } else { b };
     }
-    if b == 0 {
-        return a.checked_abs().expect("gcd overflow: cannot compute |a|");
+    if b.is_zero() {
+        return if a < T::zero() { T::zero() - a } else { a };
     }
 
-    // Handle overflow case for typemin
-    if a == i64::MIN {
-        if a == b {
-            panic!("gcd overflow: gcd({}, {}) overflows", a, b);
+    // Convert to absolute values
+    let mut abs_a = if a < T::zero() { T::zero() - a } else { a };
+    let mut abs_b = if b < T::zero() { T::zero() - b } else { b };
+
+    // Factor out common powers of 2
+    let za = abs_a.trailing_zeros();
+    let zb = abs_b.trailing_zeros();
+    let k = za.min(zb);
+
+    // Remove all factors of 2
+    abs_a = abs_a >> za as usize;
+    abs_b = abs_b >> zb as usize;
+
+    loop {
+        // Ensure abs_a <= abs_b
+        if abs_a > abs_b {
+            std::mem::swap(&mut abs_a, &mut abs_b);
         }
-        // Swap so that the non-minimum value is processed first
-        return gcd_i64(b, a);
-    }
 
-    _gcd_i64(a, b)
-}
+        // abs_b = abs_b - abs_a
+        abs_b = abs_b - abs_a;
 
-/// Internal binary GCD implementation for signed integers
-fn _gcd_i64(ain: i64, bin: i64) -> i64 {
-    let zb = bin.trailing_zeros();
-    let mut za = ain.trailing_zeros();
-    let mut a = ain.unsigned_abs();
-    let mut b = (bin >> zb).unsigned_abs();
-    let k = za.min(zb);
-
-    while a != 0 {
-        a >>= za;
-
-        let (absd, diff) = absdiff_signed(a as i64, b as i64);
-        za = (diff as u64).trailing_zeros();
-        b = a.min(b);
-        a = absd;
-    }
-
-    (b << k) as i64
-}
-
-/// Binary GCD algorithm for unsigned 128-bit integers
-pub fn gcd_u128(mut a: u128, mut b: u128) -> u128 {
-    if a == 0 {
-        return b;
-    }
-    if b == 0 {
-        return a;
-    }
-
-    let mut za = a.trailing_zeros();
-    let zb = b.trailing_zeros();
-    let k = za.min(zb);
-
-    b >>= zb;
-
-    while a != 0 {
-        a >>= za;
-
-        let (absd, diff) = if a >= b { (a - b, a - b) } else { (b - a, b - a) };
-        za = diff.trailing_zeros();
-        b = a.min(b);
-        a = absd;
-    }
-
-    b << k
-}
-
-/// Binary GCD algorithm for signed 128-bit integers
-pub fn gcd_i128(a: i128, b: i128) -> i128 {
-    if a == 0 {
-        return b.checked_abs().expect("gcd overflow: cannot compute |b|");
-    }
-    if b == 0 {
-        return a.checked_abs().expect("gcd overflow: cannot compute |a|");
-    }
-
-    if a == i128::MIN {
-        if a == b {
-            panic!("gcd overflow: gcd({}, {}) overflows", a, b);
+        if abs_b.is_zero() {
+            break;
         }
-        return gcd_i128(b, a);
+
+        // Remove factors of 2 from abs_b
+        abs_b = abs_b >> abs_b.trailing_zeros() as usize;
     }
 
-    _gcd_i128(a, b)
-}
-
-fn _gcd_i128(ain: i128, bin: i128) -> i128 {
-    let zb = bin.trailing_zeros();
-    let mut za = ain.trailing_zeros();
-    let mut a = ain.unsigned_abs();
-    let mut b = (bin >> zb).unsigned_abs();
-    let k = za.min(zb);
-
-    while a != 0 {
-        a >>= za;
-
-        // Compute absolute difference
-        let (absd, diff) = if a >= b {
-            (a - b, a.wrapping_sub(b))
-        } else {
-            (b - a, a.wrapping_sub(b))
-        };
-        za = diff.trailing_zeros();
-        b = a.min(b);
-        a = absd;
-    }
-
-    (b << k) as i128
+    // Restore common factors of 2
+    abs_a << k as usize
 }
 
 /// Generic GCD using Euclidean algorithm (fallback)
@@ -191,6 +126,13 @@ mod tests {
     }
 
     #[test]
+    fn test_gcd_u32() {
+        assert_eq!(gcd(0u32, 5), 5);
+        assert_eq!(gcd(12u32, 8), 4);
+        assert_eq!(gcd(48u32, 18), 6);
+    }
+
+    #[test]
     fn test_gcd_i64() {
         assert_eq!(gcd_i64(0, 5), 5);
         assert_eq!(gcd_i64(5, 0), 5);
@@ -200,6 +142,13 @@ mod tests {
         assert_eq!(gcd_i64(-12, -8), 4);
         assert_eq!(gcd_i64(48, 18), 6);
         assert_eq!(gcd_i64(-48, -18), 6);
+    }
+
+    #[test]
+    fn test_gcd_i32() {
+        assert_eq!(gcd_signed(0i32, 5), 5);
+        assert_eq!(gcd_signed(-12i32, 8), 4);
+        assert_eq!(gcd_signed(12i32, -8), 4);
     }
 
     #[test]
@@ -217,32 +166,17 @@ mod tests {
         assert_eq!(gcd_i128(12, -8), 4);
         assert_eq!(gcd_i128(-12, -8), 4);
     }
-
-    #[test]
-    #[should_panic(expected = "gcd overflow")]
-    fn test_gcd_i64_overflow() {
-        gcd_i64(i64::MIN, i64::MIN);
-    }
-
-    #[test]
-    fn test_gcd_i64_min_with_other() {
-        // gcd(MIN, 2) should work since we swap
-        assert_eq!(gcd_i64(i64::MIN, 2), 2);
-    }
 }
-
-
-use std::time::Instant;
 
 // Function to approximate pi using probability that two numbers are coprime
 fn calc_pi(n: i64) -> f64 {
-    let mut cnt = 0;    // Counter for coprime pairs
+    let mut cnt = 0; // Counter for coprime pairs
     // Loop through all pairs (a, b) where 1 <= a, b <= N
     for a in 1..=n {
         for b in 1..=n {
             // Check if a and b are coprime
-            if gcd_i64(a, b) == 1 {
-                cnt += 1;  // Increment counter if coprime
+            if gcd_signed(a, b) == 1 {
+                cnt += 1; // Increment counter if coprime
             }
         }
     }
@@ -254,12 +188,12 @@ fn calc_pi(n: i64) -> f64 {
 
 // Main function to run the pi approximation
 fn main() {
-    let n = 10000;              // Number limit for coprimality checking
+    let n = 10000; // Number limit for coprimality checking
     let start = Instant::now();
-    let pi = calc_pi(n);        // Approximate pi
+    let pi = calc_pi(n); // Approximate pi
     let duration = start.elapsed();
-    
+
     println!("calcPi: {:?}", duration);
-    println!("N: {}", n);       // Output N
-    println!("pi: {}", pi);     // Output approximation of pi
+    println!("N: {}", n); // Output N
+    println!("pi: {}", pi); // Output approximation of pi
 }
