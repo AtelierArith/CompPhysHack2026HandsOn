@@ -4,99 +4,96 @@
 /// This is significantly faster than the Euclidean algorithm for machine integers:
 /// ~1.7x faster for i64, ~2.1x faster for i128
 
-use num_traits::{PrimInt, Signed, Unsigned};
 use std::time::Instant;
 
-/// Binary GCD algorithm for unsigned integers using generics
-pub fn gcd<T>(mut a: T, mut b: T) -> T
-where
-    T: PrimInt + Unsigned,
-{
-    if a.is_zero() {
-        return b;
-    }
-    if b.is_zero() {
-        return a;
-    }
+/// Macro to generate optimized GCD implementations for unsigned types
+macro_rules! impl_gcd_unsigned {
+    ($name:ident, $t:ty) => {
+        #[inline]
+        pub fn $name(mut a: $t, mut b: $t) -> $t {
+            if a == 0 {
+                return b;
+            }
+            if b == 0 {
+                return a;
+            }
 
-    // Factor out common powers of 2
-    let za = a.trailing_zeros();
-    let zb = b.trailing_zeros();
-    let k = za.min(zb);
+            // Factor out common powers of 2
+            let mut za = a.trailing_zeros();
+            let zb = b.trailing_zeros();
+            let k = za.min(zb);
 
-    // Remove all factors of 2 from a and b
-    a = a >> za as usize;
-    b = b >> zb as usize;
+            // Remove factors of 2 from b
+            b >>= zb;
 
-    loop {
-        // Ensure a <= b
-        if a > b {
-            std::mem::swap(&mut a, &mut b);
+            while a != 0 {
+                // Remove factors of 2 from a
+                a >>= za;
+
+                // Compute absolute difference (original pattern)
+                let d = a.max(b) - a.min(b);
+                za = d.trailing_zeros();
+                b = a.min(b);
+                a = d;
+            }
+
+            // Restore common factors of 2
+            b << k
         }
-
-        // b = b - a (both are odd, so result is even or zero)
-        b = b - a;
-
-        if b.is_zero() {
-            break;
-        }
-
-        // Remove factors of 2 from b
-        b = b >> b.trailing_zeros() as usize;
-    }
-
-    // Restore common factors of 2
-    a << k as usize
+    };
 }
 
-/// Binary GCD algorithm for signed integers using generics
-pub fn gcd_signed<T>(a: T, b: T) -> T
-where
-    T: PrimInt + Signed,
-{
-    // Handle zero cases with absolute value
-    if a.is_zero() {
-        return if b < T::zero() { T::zero() - b } else { b };
-    }
-    if b.is_zero() {
-        return if a < T::zero() { T::zero() - a } else { a };
-    }
+/// Macro to generate optimized GCD implementations for signed types
+macro_rules! impl_gcd_signed {
+    ($name:ident, $t:ty, $ut:ty) => {
+        #[inline]
+        pub fn $name(ain: $t, bin: $t) -> $t {
+            if ain == 0 {
+                return bin.abs();
+            }
+            if bin == 0 {
+                return ain.abs();
+            }
 
-    // Convert to absolute values
-    let mut abs_a = if a < T::zero() { T::zero() - a } else { a };
-    let mut abs_b = if b < T::zero() { T::zero() - b } else { b };
+            // Match original Julia port pattern exactly
+            let zb = bin.trailing_zeros();
+            let mut za = ain.trailing_zeros();
+            let mut a = ain.unsigned_abs();
+            let mut b = (bin >> zb).unsigned_abs();
+            let k = za.min(zb);
 
-    // Factor out common powers of 2
-    let za = abs_a.trailing_zeros();
-    let zb = abs_b.trailing_zeros();
-    let k = za.min(zb);
+            while a != 0 {
+                a >>= za;
 
-    // Remove all factors of 2
-    abs_a = abs_a >> za as usize;
-    abs_b = abs_b >> zb as usize;
+                // Use wrapping_sub pattern from original
+                let diff = (a as $t).wrapping_sub(b as $t);
+                let absd = diff.unsigned_abs();
+                za = (diff as $ut).trailing_zeros();
+                b = a.min(b);
+                a = absd;
+            }
 
-    loop {
-        // Ensure abs_a <= abs_b
-        if abs_a > abs_b {
-            std::mem::swap(&mut abs_a, &mut abs_b);
+            (b << k) as $t
         }
-
-        // abs_b = abs_b - abs_a
-        abs_b = abs_b - abs_a;
-
-        if abs_b.is_zero() {
-            break;
-        }
-
-        // Remove factors of 2 from abs_b
-        abs_b = abs_b >> abs_b.trailing_zeros() as usize;
-    }
-
-    // Restore common factors of 2
-    abs_a << k as usize
+    };
 }
 
-/// Generic GCD using Euclidean algorithm (fallback)
+// Generate specialized implementations
+impl_gcd_unsigned!(gcd_u8, u8);
+impl_gcd_unsigned!(gcd_u16, u16);
+impl_gcd_unsigned!(gcd_u32, u32);
+impl_gcd_unsigned!(gcd_u64, u64);
+impl_gcd_unsigned!(gcd_u128, u128);
+impl_gcd_unsigned!(gcd_usize, usize);
+
+impl_gcd_signed!(gcd_i8, i8, u8);
+impl_gcd_signed!(gcd_i16, i16, u16);
+impl_gcd_signed!(gcd_i32, i32, u32);
+impl_gcd_signed!(gcd_i64, i64, u64);
+impl_gcd_signed!(gcd_i128, i128, u128);
+impl_gcd_signed!(gcd_isize, isize, usize);
+
+/// Generic GCD using Euclidean algorithm (fallback for any type)
 pub fn gcd_euclidean<T>(mut a: T, mut b: T) -> T
 where
     T: Copy + PartialEq + Default + std::ops::Rem<Output = T>,
@@ -127,9 +124,9 @@ mod tests {
 
     #[test]
     fn test_gcd_u32() {
-        assert_eq!(gcd(0u32, 5), 5);
-        assert_eq!(gcd(12u32, 8), 4);
-        assert_eq!(gcd(48u32, 18), 6);
+        assert_eq!(gcd_u32(0, 5), 5);
+        assert_eq!(gcd_u32(12, 8), 4);
+        assert_eq!(gcd_u32(48, 18), 6);
     }
 
     #[test]
@@ -146,9 +143,9 @@ mod tests {
 
     #[test]
     fn test_gcd_i32() {
-        assert_eq!(gcd_signed(0i32, 5), 5);
-        assert_eq!(gcd_signed(-12i32, 8), 4);
-        assert_eq!(gcd_signed(12i32, -8), 4);
+        assert_eq!(gcd_i32(0, 5), 5);
+        assert_eq!(gcd_i32(-12, 8), 4);
+        assert_eq!(gcd_i32(12, -8), 4);
     }
 
     #[test]
@@ -170,12 +167,12 @@ mod tests {
 
 // Function to approximate pi using probability that two numbers are coprime
 fn calc_pi(n: i64) -> f64 {
-    let mut cnt = 0; // Counter for coprime pairs
+    let mut cnt = 0i64; // Counter for coprime pairs
     // Loop through all pairs (a, b) where 1 <= a, b <= N
     for a in 1..=n {
         for b in 1..=n {
             // Check if a and b are coprime
-            if gcd_signed(a, b) == 1 {
+            if gcd_i64(a, b) == 1 {
                 cnt += 1; // Increment counter if coprime
             }
         }
@@ -188,7 +185,7 @@ fn calc_pi(n: i64) -> f64 {
 
 // Main function to run the pi approximation
 fn main() {
-    let n = 10000; // Number limit for coprimality checking
+    let n: i64 = 10000; // Number limit for coprimality checking
     let start = Instant::now();
     let pi = calc_pi(n); // Approximate pi
     let duration = start.elapsed();
