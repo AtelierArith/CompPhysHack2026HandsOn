@@ -1,10 +1,21 @@
 ---
-title: "Quarto Slide Example"
+title: "CompPhysHack2026HandsOn by AtelierArith"
 ---
 
-## Description
+# Description
 
-Quarto slide example for private use.
+このホームページは [CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) の参加者のための講義資料を提供する．
 
-- [Slides](slide/slide.qmd)
-  - Blah blah blah
+## Introduction
+
+人工知能，大規模言語モデルをはじめとする技術の発展により コーディングエージェント が登場している．これは人間の指示のもとソースコードの生成・コマンドの実行を自律的に行い，コーディング・ソフトウェア開発の支援を提供してくれる．本講義はコーディングエージェントとして Claude Code, Cursor を中心に紹介しいくつかの題材を用いてコーディングエージェントの活用の仕方を学ぶ．
+
+## Handouts
+
+- [Slide](slides/slide.qmd)
+- [01-preparation](handouts/01-preparation.qmd)
+
+## その他
+
+このホームページは [Quarto](https://quarto.org/) を使って構築されている．
+このホームページは，教育・研究目的であれば自由に使用ができる．
