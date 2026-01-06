@@ -1179,11 +1179,11 @@ pi: 3.141534239016629
 
 ### Exercise
 
-- Binary GCD Algorithm をさらに高速化せよ
+- Binary GCD Algorithm をさらに高速化せよ (1.45 -> 1.07 seconds on Julia)
 
 #### Hint
 
-- Binary GCD Algorithm を Rust で実装する
+- Binary GCD Algorithm を Rust で実装し，実行時間を計測せよ
 - Rust の実装は Julia より速い場合，Rust の実行ファイルを読み込んで Julia の `@code_native` マクロが出力する機械語と比べよ
 - 命令数が少ないと実行速度が向上するので比較結果を Julia のコードにフィードバックせよ
 
@@ -1192,6 +1192,29 @@ pi: 3.141534239016629
 ## Answer
 
 - [Opus 4.5 generated this!](https://gist.github.com/terasakisatoshi/03b41d4cc068d3565eaf2e5dae99968b)
+
+
+Rust
+
+```sh
+Benchmark:
+Run 1: 1.05132725s  pi=3.141534239016629
+Run 2: 1.0358485s  pi=3.141534239016629
+Run 3: 1.034275125s  pi=3.141534239016629
+```
+
+Julia
+
+```sh
+$ julia src/main.jl
+Running tests...
+All tests passed!
+
+Benchmark:
+Run 1: 1.072994208s  pi=3.141534239016629
+Run 2: 1.07328325s  pi=3.141534239016629
+Run 3: 1.072947583s  pi=3.141534239016629
+```
 
 ---
 
