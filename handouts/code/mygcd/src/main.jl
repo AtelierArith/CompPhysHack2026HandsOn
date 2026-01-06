@@ -1,15 +1,11 @@
 # Binary GCD algorithm (Stein's algorithm)
 # Optimized implementation matching Rust performance
 
-using Base: llvmcall
-
-# Unsafe right shift without overflow check (matches Rust behavior)
-# Uses @generated to create type-specific LLVM IR
-@generated function unsafe_lshr(x::T, n::T) where T<:Unsigned
-    bits = sizeof(T) * 8
-    llvm_type = "i$bits"
-    ir = "%res = lshr $llvm_type %0, %1\nret $llvm_type %res"
-    return :(llvmcall($ir, $T, Tuple{$T, $T}, x, n))
+# Fast right shift without bounds check
+# Masking shift amount lets compiler emit single lsr instruction
+# (ARM64/x86-64 lsr only uses low bits of shift amount anyway)
+@inline function unsafe_lshr(x::T, n::T) where T<:Unsigned
+    x >> (n & T(8 * sizeof(T) - 1))
 end
 
 """

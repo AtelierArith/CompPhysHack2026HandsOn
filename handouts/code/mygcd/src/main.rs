@@ -185,12 +185,17 @@ fn calc_pi(n: i64) -> f64 {
 
 // Main function to run the pi approximation
 fn main() {
-    let n: i64 = 10000; // Number limit for coprimality checking
-    let start = Instant::now();
-    let pi = calc_pi(n); // Approximate pi
-    let duration = start.elapsed();
+    let n: i64 = 10000;
 
-    println!("calcPi: {:?}", duration);
-    println!("N: {}", n); // Output N
-    println!("pi: {}", pi); // Output approximation of pi
+    // Warmup
+    let _ = calc_pi(100);
+
+    // Benchmark
+    println!("Benchmark:");
+    for i in 1..=3 {
+        let start = Instant::now();
+        let pi = calc_pi(n);
+        let duration = start.elapsed();
+        println!("Run {}: {:?}  pi={}", i, duration, pi);
+    }
 }
