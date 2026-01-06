@@ -1192,3 +1192,45 @@ pi: 3.141534239016629
 ## Answer
 
 - [Opus 4.5 generated this!](https://gist.github.com/terasakisatoshi/03b41d4cc068d3565eaf2e5dae99968b)
+
+---
+
+## Another example
+
+What is the expected number of random numbers (generated uniformly) such that their sum of numbers exceeds one?
+
+Refer [this discussion on MathOverflow](https://mathoverflow.net/questions/141942/what-is-the-expected-number-of-random-numbers-generated-uniformly-such-that-their-sum-exceeds-one).
+
+### 練習問題
+
+数値計算のプログラムを書いてみよう．色々なプログラミング言語でトライしてみよう
+
+---
+
+## Answer (Julia)
+
+```julia
+function count_upto_one()
+    counter = 0
+    accumulated = 0.0
+    while true
+        accumulated += rand()
+        counter += 1
+        if accumulated >= 1.0
+            break
+        end
+    end
+    return counter
+end
+
+function main()
+    n_trial =1e8
+    total_count=0
+    for trial in 1:n_trial
+        total_count+=count_upto_one()
+    end
+    println(total_count/n_trial)
+end
+
+main()
+```
