@@ -16,8 +16,9 @@ format:
 
 ## Overview
 
+- 自己紹介
 - AIエージェントの導入
-- いくつかの題材をもとに使う
+- いくつかの題材をもとに演習
 
 ---
 
@@ -25,44 +26,145 @@ format:
 
 Name: Satoshi Terasaki
 
-- ソフトウェアエンジニア．フリーランス
-- 大学教員と科学計算の共同開発
-  - Hiroshi Shinaoka, Hitoshi Mori との共同開発
-    - [libsparseir](https://github.com/SpM-lab/libsparseir) (C++)
-    - [sparse-ir-rs](https://github.com/SpM-lab/sparse-ir-rs) (Rust)
-    - [SparseIR.jl](https://github.com/SpM-lab/SparseIR.jl) v2.0 (Julia)
-    - [sparse-ir](https://github.com/SpM-lab/sparse-ir) v2.0 (Python)
-- ソフトウェア開発のコンサルティングを行なっている
-  - Porting C project to Julia
+- フリーランスソフトウェアエンジニア． 大学教員と科学計算の共同開発
+- Hiroshi Shinaoka, Hitoshi Mori との共同開発
+    - Porting SparseIR.jl v1.0 to C++: [libsparseir](https://github.com/SpM-lab/libsparseir) (C++)
+    - Porting `libsparseir` to Rust: [sparse-ir-rs](https://github.com/SpM-lab/sparse-ir-rs)
+    - [SparseIR.jl](https://github.com/SpM-lab/SparseIR.jl) v2.0 (Julia interface for sparse-ir-rs)
+    - [sparse-ir](https://github.com/SpM-lab/sparse-ir) v2.0 (Python interface for sparse-ir-rs)
+
+```{mermaid}
+flowchart LR
+  Julia[Julia]
+  Python[Python]
+  Fortran[Fortran]
+
+  CAPI[C-API]
+  Sparseir[sparse-ir-rs]
+
+  Fortran --> CAPI
+  Python --> CAPI
+  Julia --> CAPI
+  CAPI --> Sparseir
+```
+
+---
+
+## 自己紹介
+
+Name: Satoshi Terasaki
+
+- [tensor4all](https://github.com/tensor4all/tensor4all-rs): A Rust implementation of tensor networks
+  - Porting [Strided.jl](https://github.com/Jutho/Strided.jl) to Rust [strided-rs](https://github.com/tensor4all/strided-rs)
+  - [strided-rs-benchmark-suite](https://github.com/tensor4all/strided-rs-benchmark-suite)
+
+---
+
+## 自己紹介
+
+Name: Satoshi Terasaki
+
+- Misawa et al.
+  - Porting C project [mVMC](https://github.com/issp-center-dev/mVMC) to Julia (WIP)
+
+```{mermaid}
+flowchart TD
+  MVMC[mVMC]
+
+  STM[STM-19937.jl<br/>rng package]
+  StdFace[StdFaceInterface.jl<br/>Parser for StdFace.def]
+  ExpertMode[MVMCExpertModeParsers.jl<br/>ExpertMode parser]
+  PfaPack[MVMCPfaPack.jl<br/>Pfaffians]
+  Optimizers[MVMCOptimizers.jl<br/>Core implementation]
+
+  MVMC --> STM
+  MVMC --> StdFace
+  MVMC --> ExpertMode
+  MVMC --> PfaPack
+  MVMC --> Optimizers
+```
+
+This project is still work in progress. It will be released in the future.
+
+---
+
+## 自己紹介
+
+Name: Satoshi Terasaki
+
 - プロダクト開発
   - SubsetJuliaVM (iOS)
 
----
-
-## ソフトウェア開発
-
-- アイデアを考える
-- 仕様を考える．
-- コードを書く
-  - アルゴリズムの実装
-  - テストを書く
-  - ドキュメントを書く
-- メンテナンスをする
-- 上記を繰り返す
+TODO マンデルブロー集合のデモのスクリーンショットを置く
 
 ---
 
-## コーディングエージェントの登場
+## 自己紹介
 
-人工知能・生成 AI の発展により
-コーディングエージェント・AI エージェントは人間が指示を与えたら目標を達成するために下記の行動をすることが可能になった:
+Name: Satoshi Terasaki
 
-- 計画を立てる(具体的にどのような実装をするかを事前に決める)
-- 既存のコードの読解
-- コード生成
-- バグ修正
-- ソフトウェアののビルド・実行をするためにコマンドを実行する
-- 開発ワークフローの実行 (`git commit`, プルリクエストを作成などをができる)
+- better-pluto-client
+
+TODO Pluto Notebook のデモを置く
+
+---
+
+## 自己紹介
+
+Name: Satoshi Terasaki
+
+- [RustCall.jl](https://github.com/AtelierArith/RustCall.jl)
+
+```julia
+using RustCall
+
+rust"""
+#[julia]
+fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+"""
+
+# Call directly - wrapper is auto-generated
+add(10, 20)  # => 30
+```
+
+---
+
+## Actually
+
+今まで紹介したソフトウェアは 9 割以上は AI を用いてコードを生成している．これは事実です．
+
+人間は自然言語で作りたいものを指示し AI Agent はソースコードを生成・コマンドの実行を行う．
+
+AI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ
+
+---
+
+## 従来のソフトウェア開発
+
+- 1. アイデアを考える
+- 2. 仕様を考える．
+- 3. コードを書く
+  - 3-1 アルゴリズムの実装
+  - 3-2 テストを書く
+  - 3-3 ドキュメントを書く
+- 4. メンテナンスをする
+- 5. 上記を繰り返す
+
+これを人間がすべて行ってきた．
+
+::: {.fragment}
+本当ですか？
+:::
+
+::: {.fragment}
+あなたは全部真面目に取り組みましたか？
+:::
+
+::: {.fragment}
+常に，いつも効率の良い開発方法を考えてましたか？
+:::
 
 ---
 
@@ -71,16 +173,112 @@ Name: Satoshi Terasaki
 - 人間は「創造」することができるが「疲れる」,「飽きる」,「固執する」
   - 研究活動のような新しいアイデアを出す
   - `git commit -m "update"` `git commit -m "fix"` を使いまくる
-  - メンテナンスを放置する
-  - 特定のプログラミング言語を使い続ける
 
-- 機械は「飽きない」,「疲れない」,「モデルが成長」するが「人間の指示」が必要
+::: {.fragment}
+```{mermaid}
+gitGraph
+  commit id: "init"
+  commit id: "wip"
+  commit id: "tmp"
+  commit id: "fix"
+  commit id: "fix fix"
+  commit id: "ok"
+  branch hotfix
+  checkout hotfix
+  commit id: "pls"
+  commit id: "final"
+  checkout main
+  merge hotfix id: "merge??"
+  commit id: "real final (actually)"
+```
+:::
+
+::: {.fragment}
+- メンテナンスを放置する
+- 特定のプログラミング言語を使い続ける
+  - パッケージマネージャを使うなど現代的な開発手法を取り入れることが困難な環境を生む
+:::
+
+---
+
+## 人間と機械
+
+- 人間は「創造」することができるが「疲れる」,「飽きる」,「固執する」
+
+::: {.fragment}
+親愛なる科学者の皆様，科学技術計算には Julia または Rust を使いましょう．
+これらは現代的なパッケージマネージメントシステムを備えており，共同で開発することを可能にします．
+:::
+
+::: {.fragment}
+Julia は高級言語でありながら高速な実行をユーザに提供します．
+あなたが普段 Fortran を書くのであれば使うべきでしょう．
+ただし, 型不安定なコード, GC (ガベージコレクション) が頻発するケース, メモリアロケーションが発生するケースでは十分なパフォーマンスが発揮できません．
+多次元配列を扱うテンソルネットワークのパッケージはこの問題によく出会います．
+:::
+
+::: {.fragment}
+Rust は高速に動作する静的言語です．
+C/C++ を書く人はこの言語に乗り換えることを検討するべきでしょう．
+Rust は人間が手動で書くのは学習コストがかかりますが，AI によるコード生成により開発体験が劇的に改善します．
+:::
+
+::: {.fragment}
+tensor4all-rs は科学技術計算のために Rust を採用した非常に良い例となるでしょう．
+:::
+
+---
+
+## 人間と機械
+
+- 機械は「飽きない」,「疲れない」,「モデルが成長」
   - コードの差分から適切なコミット・プリクエストの概要を作成
-  - いつでも動作をする
-  - 様々な言語を使える．移植も得意:
+
+```{mermaid}
+gitGraph
+  commit id: "chore: initialize repository"
+  commit id: "docs: add README and contribution guidelines"
+  commit id: "feat: add initial project scaffold"
+  commit id: "feat: implement core workflow"
+  commit id: "test: add unit tests for core workflow"
+  commit id: "refactor: simplify core workflow logic"
+  commit id: "ci: set up CI pipeline"
+  commit id: "chore: prepare v0.1.0 release"
+
+  branch hotfix
+  checkout hotfix
+  commit id: "fix: resolve crash on empty input"
+  commit id: "test: add regression test for empty input"
+
+  checkout main
+  merge hotfix id: "merge: hotfix crash on empty input"
+  commit id: "chore(release): v0.1.1"
+```
+
+- いつでも動作をする
+    - 様々な言語を使える．移植も得意:
     - `Julia -> C++`, `C++ -> Rust`, `C -> Julia`
-    - 要請に応じて変更が可能．現代的な言語にマイグレーションが可能
-  - 人間からの適切な指示が必要
+
+- 要請に応じて変更が可能．現代的な言語にマイグレーションが可能
+- 人間からの適切な指示が必要
+
+---
+
+## コーディングエージェントの登場
+
+人工知能・生成 AI の発展により
+コーディングエージェント・AI エージェントは人間が指示を与えたら目標を達成するために下記の行動をすることが可能になった:
+
+```{mermaid}
+flowchart TD
+  I["アイデアを考える (人間)"]
+  S["仕様を考える (人間)"]
+  C["コードを書く (AI Agent)"]
+  M["メンテナンスをする (人間+AI)"]
+  R["繰り返す"]
+
+  I --> S --> C --> M --> R --> I
+```
 
 ---
 
