@@ -71,13 +71,13 @@ flowchart LR
 flowchart TD
   MVMC[mVMC]
 
-  STM[STM-19937.jl<br/>rng package]
+  SFMT[SFMT19937.jl<br/>rng package]
   StdFace[StdFaceInterface.jl<br/>Parser for StdFace.def]
   ExpertMode[MVMCExpertModeParsers.jl<br/>ExpertMode parser]
   PfaPack[MVMCPfaPack.jl<br/>Pfaffians]
   Optimizers[MVMCOptimizers.jl<br/>Core implementation]
 
-  MVMC --> STM
+  MVMC --> SFMT
   MVMC --> StdFace
   MVMC --> ExpertMode
   MVMC --> PfaPack
