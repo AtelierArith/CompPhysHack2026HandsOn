@@ -17,16 +17,20 @@ format:
 ## Overview
 
 - 自己紹介
-- AIエージェントの導入
+- AI を用いたソフトウェアの紹介
+- AI エージェントの導入
 - いくつかの題材をもとに演習
 
 ---
 
 ## 自己紹介
 
-Name: Satoshi Terasaki
-
 - フリーランスソフトウェアエンジニア． 大学教員と科学計算の共同開発
+- GitHub: `terasakisatoshi`
+- Organization: `AtelierArith`
+
+## 最近行ってること: Organizing SparseIR ecosystem
+
 - Hiroshi Shinaoka, Hitoshi Mori との共同開発
     - Porting SparseIR.jl v1.0 to C++: [libsparseir](https://github.com/SpM-lab/libsparseir) (C++)
     - Porting `libsparseir` to Rust: [sparse-ir-rs](https://github.com/SpM-lab/sparse-ir-rs)
@@ -42,17 +46,15 @@ flowchart LR
   CAPI[C-API]
   Sparseir[sparse-ir-rs]
 
-  Fortran --> CAPI
-  Python --> CAPI
   Julia --> CAPI
+  Python --> CAPI
+  Fortran --> CAPI
   CAPI --> Sparseir
 ```
 
 ---
 
-## 自己紹介
-
-Name: Satoshi Terasaki
+## 最近行ってること: tensor4all
 
 - [tensor4all](https://github.com/tensor4all/tensor4all-rs): A Rust implementation of tensor networks
   - Porting [Strided.jl](https://github.com/Jutho/Strided.jl) to Rust [strided-rs](https://github.com/tensor4all/strided-rs)
@@ -60,9 +62,7 @@ Name: Satoshi Terasaki
 
 ---
 
-## 自己紹介
-
-Name: Satoshi Terasaki
+## 最近行ってること: mVMC
 
 - Misawa et al.
   - Porting C project [mVMC](https://github.com/issp-center-dev/mVMC) to Julia (WIP)
@@ -88,32 +88,25 @@ This project is still work in progress. It will be released in the future.
 
 ---
 
-## 自己紹介
+## 最近行ってること: SubsetJuliaVM
 
-Name: Satoshi Terasaki
+Let's run Julia on iPad and iPhone
 
-- プロダクト開発
-  - SubsetJuliaVM (iOS)
-
-TODO マンデルブロー集合のデモのスクリーンショットを置く
+![](assets/subset_julia_vm.png)
 
 ---
 
-## 自己紹介
+## 最近行ってること: better-pluto-client
 
-Name: Satoshi Terasaki
+We can view pluto notebook on VS Code.
 
-- better-pluto-client
-
-TODO Pluto Notebook のデモを置く
+![](assets/better-pluto-client.png)
 
 ---
 
-## 自己紹介
+## 最近行ってること: [RustCall.jl](https://github.com/AtelierArith/RustCall.jl)
 
-Name: Satoshi Terasaki
-
-- [RustCall.jl](https://github.com/AtelierArith/RustCall.jl)
+Julia から Rust を呼び出すことができるパッケージ．
 
 ```julia
 using RustCall
@@ -139,7 +132,7 @@ add(10, 20)  # => 30
 
 AI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ
 
-TODO: ここに AI による開発をしている様子の挿絵を追加
+![](assets/human-orders.png)
 
 ---
 
@@ -175,7 +168,7 @@ TODO: ここに AI による開発をしている様子の挿絵を追加
 ![](assets/human-suffering.png)
 
 - Git が使われていない．バージョン管理されてない
-- ドキュメントがない
+- ドキュメントがない，または古い
 - 単体テストがない
 - コンパイルができない
 - 実行時エラーが起きる(セグメンテーションフォルトなど)
@@ -209,7 +202,6 @@ gitGraph
 :::
 
 ::: {.fragment}
-- メンテナンスを放置する
 - 特定のプログラミング言語を使い続ける
   - パッケージマネージャを使うなど現代的な開発手法を取り入れることが困難な環境を生む
 :::
@@ -221,7 +213,7 @@ gitGraph
 - 人間は「創造」することができるが「疲れる」,「飽きる」,「固執する」
 
 ::: {.fragment}
-親愛なる科学者の皆様，科学技術計算には Julia または Rust を使いましょう．
+親愛なる科学者の皆様，これから新しい数値計算ソフトウェアを書く場合は科学技術計算には Julia または Rust を使いましょう．
 これらは現代的なパッケージマネージメントシステムを備えており，共同で開発することを可能にします．
 :::
 
@@ -239,7 +231,7 @@ Rust は人間が手動で書くのは学習コストがかかりますが，AI 
 :::
 
 ::: {.fragment}
-tensor4all-rs は科学技術計算のために Rust を採用した非常に良い例となるでしょう．
+テンソルネットワークに関するエコシステム tensor4all-rs は科学技術計算のために Rust を採用した非常に良い例を目指しています．
 :::
 
 ---
@@ -270,51 +262,18 @@ gitGraph
   commit id: "chore(release): v0.1.1"
 ```
 
-- いつでも動作をする
-    - 様々な言語を使える．移植も得意:
-    - `Julia -> C++`, `C++ -> Rust`, `C -> Julia`
-
-- 要請に応じて変更が可能．現代的な言語にマイグレーションが可能
-- 人間からの適切な指示が必要
-
 ---
 
 ## 人間と機械
 
 - 機械は「飽きない」,「疲れない」,「モデルが成長」
 - いつでも動作をする
-- 様々な言語を使える．移植も得意:
-    - `Julia -> C++`: libsparseir
-    - `C++ -> Rust`: sparse-ir-rs 
-    - `C -> Julia`: mVMC
+    - 様々な言語を使える．移植も得意:
+    - `Julia -> C++`, `C++ -> Rust`, `C -> Julia`
+    - `TypeScript, Swift, Flutter/Dart`
 
 - 要請に応じて変更が可能．現代的な言語にマイグレーションが可能
-
-::: {.fragment}
-人間からの適切な指示が必要
-:::
-
-::: {.fragment}
-様々な工夫で自律運用はできる．
-:::
-
----
-
-## コーディングエージェントの登場
-
-人工知能・生成 AI の発展により
-コーディングエージェント・AI エージェントは人間が指示を与えたら目標を達成するために下記の行動をすることが可能になった:
-
-```{mermaid}
-flowchart TD
-  I["アイデアを考える (人間)"]
-  S["仕様を考える (人間)"]
-  C["コードを書く (AI Agent)"]
-  M["メンテナンスをする (人間+AI)"]
-  R["繰り返す"]
-
-  I --> S --> C --> M --> R --> I
-```
+- 人間からの適切な指示が必要
 
 ---
 
@@ -331,7 +290,7 @@ flowchart TD
 
 - LLM は多くの知識を持っているが，研究者のように最先端の知識を持っているとは限らない．何を実装するか，しないかは人間の能力に左右される．
 - ソフトウェアエンジニアはコーディングする時間から解放されるが，どのような技術をどの場面で使うか，高品質なソフトウェアを作成・維持するためのアーキテクチャを考える・意思決定をする上位の能力が求められるようになる．コーディング以外に研究者と議論するための最低限のドメイン知識も求められるようになる．
-- 研究者は暇にならない．ある研究者は `Claude Code MAX $200` を契約し，AI をフル活用したせいで目眩を引き起こした．
+- 我々研究者は暇にならない．ある研究者は `Claude Code MAX $200` を契約し，AI をフル活用したせいで目眩を引き起こした．
   - 私は `$100` プランまでダウングレードすることを推奨した．ジョークのようで本当の話
 
 ---
@@ -345,6 +304,25 @@ flowchart TD
   - Julia だと多重ディスパッチを使わない，export を多用する
   - Rust だと `.clone()` の多用をする．パフォーマンスの劣化
 - 最低限のコードの実行方法，コーディングの知識，プログラミング言語の知識は必要．
+
+---
+
+## ソフトウェアエンジニアは不要か？
+
+- AI が発達することで研究者は不要になるというぐらい過激な主張
+- AI の導入によって言語の学習コスト・細かい文法・コーディングスタイルのような局所的な議論から解放される．
+- 「ユーザにとって体験が良いソフトウェアをどのように設計するか」，「状況・目的に応じてどのような技術，プログラミング言語を選択すべきか」といったアーキテクチャレベルの設計・大域的な議論に集中することができる．
+- Visual profiler を用いたボトルネックの調査は AI による完全自動化は難しい．そのようはワークフローはまだ存在する．
+  - ミリ秒, マイクロ秒, ナノ秒レベルの最適化をする仕事は人間の直感が大事．需要はまだあると思う
+
+---
+
+## ソフトウェアエンジニアは不要か？
+
+- ドメイン知識を身についけることが大事，物理学者とコミュニケーションする程度の物理学の知識
+- Rust で書かれたコードは Web Assembly の技術で Web で実行することができる．数値計算のデモを Web で公開・メンテナンスをする仕事は出てくる．
+- 研究者は忙しくなる．今までできなかったけれど，やりたかったことができるようになる．それに応じて仕事も増えてくるはず．
+- 仕事がなくなるときはある種の情熱がなくなるときだと思う．
 
 ---
 
@@ -394,6 +372,12 @@ $$
 $$
 
 ここで，$\zeta$ はリーマン・ゼータ関数である．
+
+$$
+\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}= \prod_{p: \mathrm{primes} } \left(\frac{1}{1 - p^{-s}}  \right) \mathrm{}
+$$
+
+ここで，2番目の等式は Euler product によるものである．
 
 ## 証明
 
