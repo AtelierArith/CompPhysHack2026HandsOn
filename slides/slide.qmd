@@ -346,6 +346,14 @@ Cursor を用いたコーディングの方法を紹介する．
 
 ---
 
+## どのツールを使うべきか(as for me)
+
+- Claude Code MAX `$200/$100`: Opus-4.6
+- ChatGPT Plus plan: Codex: GPT-5.3
+- Cursor Pro: 日常のエディタとして Composer 1.5
+
+---
+
 ## 必要な CLI ツール
 
 - `git`, `gh`: Git/GitHub を操作する
@@ -356,6 +364,9 @@ Cursor を用いたコーディングの方法を紹介する．
 
 Optional:
 
+- `docker`
+- `devcontainer`
+- `rg`
 - `tree`
 - `htop`
 - `quarto`
