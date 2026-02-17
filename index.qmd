@@ -12,8 +12,8 @@ title: "CompPhysHack2026HandsOn by AtelierArith"
 
 ## Handouts
 
+- [Preparation](handouts/preparation/preparation.qmd)
 - [Slide](slides/slide.qmd)
-- [01-preparation](handouts/01-preparation.qmd)
 
 ## その他
 

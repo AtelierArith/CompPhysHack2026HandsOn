@@ -6,7 +6,7 @@ website:
   navbar:
     left:
       - href: slides/slide.qmd
-        text: slides
+        text: slide
 
 format:
   html:

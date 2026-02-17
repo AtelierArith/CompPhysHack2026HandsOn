@@ -64,7 +64,7 @@ flowchart LR
 
 ## 最近行ってること: mVMC
 
-- Misawa et al.
+- Takahiro Misawa et al.
   - Porting C project [mVMC](https://github.com/issp-center-dev/mVMC) to Julia (WIP)
 
 ```{mermaid}
@@ -375,7 +375,7 @@ Optional:
 
 ## インストール
 
-TODO preparation-01.md に記述する
+TODO [01-preparation.qmd](../handouts/preparation/preparation.qmd) に記述する
 
 ---
 
