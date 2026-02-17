@@ -24,8 +24,7 @@ I want to create a Rust crate for simulating and visualizing elastic collisions 
 
 ## どのツールを使うべきか
 
-- AI Agent は常に進化しているので答えはない．
-- どのアカウントを持っているかによる．
+- AI Agent は常に進化しているので答えはない．良いスタート地点はどのアカウントを持っているかによる．または近くの同僚・友達に聞いてみるとよい．
     - ChatGPT を契約していれば [Codex](https://openai.com/codex/), [GPT-5.3-Codex](https://openai.com/index/introducing-gpt-5-3-codex/) を使ってみる
     - Claude を契約していれば Claude Code: [Opus-4.6](https://www.anthropic.com/news/claude-opus-4-6) を使ってみる
 - とにかく無料で使いたい
@@ -52,7 +51,9 @@ I want to create a Rust crate for simulating and visualizing elastic collisions 
 
 [`npm`](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager) は Node.js のためのパッケージマネージャである. [Node.js](https://nodejs.org/en) は JavaScript ランタイムである. Codex CLI, Gemini CLI をインストールするにはこの手順が必要である．
 
-- [Download Node.js](https://nodejs.org/en/download) の指示に従う
+- [Download Node.js](https://nodejs.org/en/download) の指示に従うこと．
+
+以下は各種 CLI ツールの導入について書いているが，全てを導入する必要はない．
 
 ### Codex CLI
 
@@ -70,7 +71,7 @@ $ npm i -g @openai/codex
 $ npm install -g @google/gemini-cli
 ```
 
-See https://github.com/google-gemini/gemini-cli to learn more.
+See [https://github.com/google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) to learn more.
 
 利用するには Google アカウントが必要である．
 
@@ -94,28 +95,28 @@ PS> irm https://claude.ai/install.ps1 | iex
 npm install -g @github/copilot
 ```
 
-See https://github.com/github/copilot-cli?locale=en-US to learn more.
+See [https://github.com/github/copilot-cli](https://github.com/github/copilot-cli) to learn more.
 
-## AI 統合開発環境の導入
+## AI 付属統合開発環境の導入
 
-VS Code または派生の Cursor, Google Antigravity を導入する．
+VS Code または派生の Cursor, Google Antigravity を導入する．全て入れる必要はない．
 
 ### VS Code
 
 下記のリンク先の指示に従う
 
-- https://code.visualstudio.com/download
-- https://github.com/features/copilot
+- [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
+- [https://github.com/features/copilot](https://github.com/features/copilot)
 
 ### Cursor
 
 下記のリンク先の指示に従う
 
-https://cursor.com/download
+[https://cursor.com/download](https://cursor.com/download)
 
 ### Google Antigravity
 
 下記リンク先の指示に従う
 
-https://antigravity.google/download
+[https://antigravity.google/download](https://antigravity.google/download)
 
