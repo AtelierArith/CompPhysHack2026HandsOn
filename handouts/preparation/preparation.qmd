@@ -61,6 +61,7 @@ I want to create a Rust crate for simulating and visualizing elastic collisions 
 
 ```sh
 $ npm i -g @openai/codex
+$ codex
 ```
 
 利用するには ChatGPT を契約しているアカウントが必要である．
@@ -69,6 +70,7 @@ $ npm i -g @openai/codex
 
 ```sh
 $ npm install -g @google/gemini-cli
+$ gemini
 ```
 
 See [https://github.com/google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) to learn more.
@@ -81,6 +83,7 @@ macOS, Linux, WSL:
 
 ```sh
 $ curl -fsSL https://claude.ai/install.sh | bash
+$ claude
 ```
 
 Windows PowerShell:
@@ -92,7 +95,8 @@ PS> irm https://claude.ai/install.ps1 | iex
 ### Copilot CLI
 
 ```sh
-npm install -g @github/copilot
+$ npm install -g @github/copilot
+$ copilot
 ```
 
 See [https://github.com/github/copilot-cli](https://github.com/github/copilot-cli) to learn more.
@@ -113,6 +117,8 @@ VS Code または派生の Cursor, Google Antigravity を導入する．全て�
 下記のリンク先の指示に従う
 
 [https://cursor.com/download](https://cursor.com/download)
+
+また `cursor-agent` で Cursor を CLI ツールとして利用できる．
 
 ### Google Antigravity
 
