@@ -34,9 +34,10 @@ function record_simulation(state::SimulationState, filename::AbstractString;
     nframes = round(Int, duration * framerate)
 
     # Observables drive Makie's reactive rendering
-    positions = Observable(Point2f[Point2f(b.pos...) for b in state.balls])
-    radii     = Observable(Float32[b.radius           for b in state.balls])
-    colors    = Observable([b.color                   for b in state.balls])
+    # markersize in :data space = diameter, so pass 2*radius
+    positions = Observable(Point2f[Point2f(b.pos...)   for b in state.balls])
+    diameters = Observable(Float32[2f0 * b.radius       for b in state.balls])
+    colors    = Observable([b.color                    for b in state.balls])
 
     fig = Figure(; size=resolution)
     ax  = Axis(fig[1, 1];
@@ -49,7 +50,7 @@ function record_simulation(state::SimulationState, filename::AbstractString;
 
     scatter!(ax, positions;
         color       = colors,
-        markersize  = radii,
+        markersize  = diameters,
         markerspace = :data,
         marker      = Circle,
         strokewidth = 1,
@@ -61,8 +62,8 @@ function record_simulation(state::SimulationState, filename::AbstractString;
             for _ in 1:substeps
                 step!(state)
             end
-            positions[] = Point2f[Point2f(b.pos...) for b in state.balls]
-            radii[]     = Float32[b.radius           for b in state.balls]
+            positions[] = Point2f[Point2f(b.pos...)  for b in state.balls]
+            diameters[] = Float32[2f0 * b.radius      for b in state.balls]
             colors[]    = [b.color                   for b in state.balls]
             recordframe!(io)
         end
