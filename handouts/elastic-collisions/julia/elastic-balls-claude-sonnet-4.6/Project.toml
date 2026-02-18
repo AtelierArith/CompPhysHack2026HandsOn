@@ -1,0 +1,22 @@
+name = "ElasticBalls2D"
+uuid = "b1e2f3a4-c5d6-7890-abcd-ef1234567890"
+version = "0.1.0"
+
+[deps]
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+Colors = "5ae59095-9a9b-59fe-a467-6f913c188581"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
+
+[compat]
+julia = "1.9"
+CairoMakie = "0.10, 0.11, 0.12, 0.13, 0.14, 0.15"
+Colors = "0.12, 0.13"
+StaticArrays = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
