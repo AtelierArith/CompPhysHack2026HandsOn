@@ -32,7 +32,7 @@ end
 """
     are_colliding(b1, b2) -> Bool
 
-Return `true` if the two balls overlap (distance < sum of radii).
+Return `true` if the two balls overlap (distance ≤ sum of radii).
 Uses squared distance to avoid a square root.
 """
 function are_colliding(b1::Ball, b2::Ball)

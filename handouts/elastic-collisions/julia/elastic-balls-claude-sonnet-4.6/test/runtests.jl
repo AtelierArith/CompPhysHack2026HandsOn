@@ -144,5 +144,19 @@ using LinearAlgebra
             dist = sqrt(dot(dx, dx))
             @test dist >= balls[i].radius + balls[j].radius - 1e-8
         end
+
+        # random_balls(0) should return empty vector without error
+        @test random_balls(0) == Ball[]
+
+        # Single ball simulation: no crash, time advances
+        s1 = SimulationState([Ball(pos=Vec2(5.0, 5.0), vel=Vec2(1.0, 0.0))]; boundary=box)
+        simulate!(s1, 1.0)
+        @test s1.time ≈ 1.0  atol=1e-10
+
+        # Zero-velocity ball stays put (no wall collisions)
+        s2 = SimulationState([Ball(pos=Vec2(5.0, 5.0), vel=Vec2(0.0, 0.0))]; boundary=box)
+        simulate!(s2, 1.0)
+        @test s2.balls[1].pos == Vec2(5.0, 5.0)
+        @test s2.balls[1].vel == Vec2(0.0, 0.0)
     end
 end

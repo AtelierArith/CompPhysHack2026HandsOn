@@ -58,7 +58,8 @@ function record_simulation(state::SimulationState, filename::AbstractString;
     )
 
     record(fig, filename; framerate=framerate) do io
-        for _ in 1:nframes
+        recordframe!(io)  # record initial state at t=0
+        for _ in 1:(nframes - 1)
             for _ in 1:substeps
                 step!(state)
             end

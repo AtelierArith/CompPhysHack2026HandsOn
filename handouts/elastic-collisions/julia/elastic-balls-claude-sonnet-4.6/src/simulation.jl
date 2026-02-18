@@ -64,6 +64,7 @@ function random_balls(n::Int;
     speed_range  = (0.5, 3.0),
     mass_range   = (0.5, 2.0),
 )
+    n == 0 && return Ball[]
     balls = Ball[]
     hues  = range(0.0, 360.0; length=n+1)[1:n]
 
