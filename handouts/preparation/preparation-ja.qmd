@@ -28,7 +28,7 @@ I want to create a Rust crate for simulating and visualizing elastic collisions 
     - ChatGPT を契約していれば [Codex](https://openai.com/codex/), [GPT-5.3-Codex](https://openai.com/index/introducing-gpt-5-3-codex/) を使ってみる
     - Claude を契約していれば Claude Code: [Opus-4.6](https://www.anthropic.com/news/claude-opus-4-6) を使ってみる
 - とにかく無料で使いたい
-	- [GitHub Copilot](https://github.com/features/copilot)
+  - [GitHub Copilot](https://github.com/features/copilot)
     - [Gemini CLI](https://geminicli.com/)
     - [Google Antigravity](https://antigravity.google/) を使う
 - どのサービスも使用上限が存在する. すべてはお金次第. [CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) 参加者が全日程を楽しむには何かしらの有料プランに加入する必要があるだろう．
@@ -126,3 +126,349 @@ VS Code または派生の Cursor, Google Antigravity を導入する．全て�
 
 [https://antigravity.google/download](https://antigravity.google/download)
 
+## Software Installation
+
+### Julia
+
+Julia は科学技術計算が得意な汎用プログラミング言語である．
+
+[Installing Julia](https://julialang.org/downloads/) の指示に従う.
+
+macOS or Linux:
+
+```sh
+$ curl -fsSL https://install.julialang.org | sh
+```
+
+Windows:
+
+```ps
+PS> winget install --name Julia --id 9NJNWW8PVKMN -e -s msstore
+```
+
+### Rust
+
+Rust はシステムプログラミング向けに開発されているが，科学技術計算でも注目されている．[Install Rust](https://rust-lang.org/tools/install/) の指示に従う．
+
+macOS or Linux:
+
+```sh
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+See [this instructions](https://forge.rust-lang.org/infra/other-installation-methods.html) if you are using Windows.
+
+上記のコマンドで `cargo`, `rustc` のようなコマンドが使えるようになる．動作確認は次のとおり．
+
+```sh
+$ cargo new hello-world
+$ cd hello-world 
+$ cargo run --release
+cargo run --release
+   Compiling hello-world v0.1.0 (path/to/your-workspace/hello-world)
+    Finished `release` profile [optimized] target(s) in 1.38s
+     Running `target/release/hello-world`
+Hello, world!
+```
+
+### Python
+
+Python はスクリプト言語として優秀であるが，パッケージマネージャが乱立しており多くの混乱をコミュニティに招いている．`uv` はそれに終止符を打つであろう．私はそのように願っている．`uv` は Python の高速なパッケージマネージャである．`uv` は Rust で実装されている．
+
+[Installing uv](https://docs.astral.sh/uv/getting-started/installation/
+) の指示に従う．
+
+macOS or Linux:
+
+```sh
+$ curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+動作確認
+
+```sh
+$ mkdir path/to/your-workspace
+$ cd path/to/your-workspace
+$ uv init
+$ uv run python main.py
+```
+
+### Docker
+
+Claude Code や Codex はユーザからの許可をバイパスするオプションを備えている．たとえば `--allow-dangerously-skip-permissions`, `--yolo` といったオプションだ．このようなオプションは便利だが `rm -rf /` のような危険なコマンドの実行も許すことになる．このような状況を防ぐためにサンドボックス環境を使うのが望ましい．たとえば Docker が提供するコンテナはマウントするファイルを制限することで制限された範囲で AI Agent を行動させることが可能である．
+
+OS に応じてインストールすること:
+
+- [Install Docker Desktop on Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
+- [Install Docker Desktop on Mac
+](https://docs.docker.com/desktop/setup/install/mac-install/)
+- [Install Docker Desktop on Linux](https://docs.docker.com/desktop/setup/install/linux/)
+
+
+動作確認は下記のコマンドでできる:
+
+```sh
+$ docker run --rm hello-world
+```
+
+### Dev Containers
+
+Docker を使って環境構築するには [Dockerfile](https://docs.docker.com/reference/dockerfile/) を作る必要がある．何もないところから構築するのは大変である．そこで Devcontainer が提供する [Development Container Features](https://github.com/devcontainers/features) を利用することで，`Feature` と呼ばれる自己完結した設定をブロックとして組み立てて環境構築することにする．これにより Docker コンテナ内部で Julia, Python, Rust などを自由に使うことができる．
+
+[Dev Container CLI](https://code.visualstudio.com/docs/devcontainers/devcontainer-cli) に従って下記のようにインストールする．
+
+```sh
+$ npm install -g @devcontainers/cli
+```
+
+下記のコマンドで確かめることができる.
+
+```sh
+$ git clone https://github.com/microsoft/vscode-remote-try-rust
+$ cd vscode-remote-try-rust
+$ devcontainer build
+$ devcontainer up --workspace-folder ./
+$ devcontainer exec --workspace-folder ./ bash
+vscode ➜ /workspaces/vscode-remote-try-rust (main) $ cargo run
+   Compiling hello_remote_world v0.1.0 (/workspaces/vscode-remote-try-rust)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.45s
+     Running `target/debug/hello_remote_world`
+Hello, VS Code Remote - Containers!
+```
+# Software installation for Agentic coding
+
+この資料は [CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) のために作成された．
+
+人間は自然言語で作りたいものを指示し AI Agent はソースコードを生成・コマンドの実行を行う．このような AI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ. [Vibe coding](https://x.com/karpathy/status/1886192184808149383?s=20), [Agentic engineering](https://x.com/karpathy/status/2019137879310836075?s=20), [Agentic coding](https://cloud.google.com/discover/what-is-agentic-coding) などのような言い方も存在する．
+
+試すのは非常に簡単である．好きなプラットフォーマが提供している AI Agent をインストールし下記のプロンプトを試すとよい．
+
+For Julia users:
+
+```
+I want to create a Julia package for simulating and visualizing elastic collisions of multiple balls in 2D space.
+```
+
+For Rust users:
+
+```
+I want to create a Rust crate for simulating and visualizing elastic collisions of multiple balls in 2D space.
+```
+
+ここでは英語によるプロンプトを用いたが，日本語など，好きな自然言語で指示ができる．例えばこのような出力が期待できる．ソースコード生成には [Cursor](https://cursor.com/home) が提供している [Composer 1.5](https://cursor.com/blog/composer-1-5) モデルを用いた．
+
+![](./demo.gif)
+
+## どのツールを使うべきか
+
+- AI Agent は常に進化しているので答えはない．良いスタート地点はどのアカウントを持っているかによる．または近くの同僚・友達に聞いてみるとよい．
+    - ChatGPT を契約していれば [Codex](https://openai.com/codex/), [GPT-5.3-Codex](https://openai.com/index/introducing-gpt-5-3-codex/) を使ってみる
+    - Claude を契約していれば Claude Code: [Opus-4.6](https://www.anthropic.com/news/claude-opus-4-6) を使ってみる
+- とにかく無料で使いたい
+  - [GitHub Copilot](https://github.com/features/copilot)
+    - [Gemini CLI](https://geminicli.com/)
+    - [Google Antigravity](https://antigravity.google/) を使う
+- どのサービスも使用上限が存在する. すべてはお金次第. [CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) 参加者が全日程を楽しむには何かしらの有料プランに加入する必要があるだろう．
+
+この資料を作成している筆者の場合，下記のような構成である．
+
+- Claude Code MAX `$200/$100`: Opus-4.6
+  - Coding を AI に任せている
+- ChatGPT Plus plan `$20`: Codex: GPT-5.3
+  - Claude Code とは別の視点が欲しい
+- Cursor Pro plan `$20`: 日常のエディタとして Composer 1.5
+  - ソースコードの補完が得意. 統合ターミナルでのエラー出力を AI エージェントにシームレスに渡せるのがユーザ体験が良い
+
+
+## Command Line Interface (CLI) ツールの導入
+
+[CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) の参加者はある程度ソフトウェア開発経験があることを想定している．ここでは CLI ツールを経由して各種 AI エージェントをインストールしよう．
+
+### `npm` コマンドのインストール
+
+[`npm`](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager) は Node.js のためのパッケージマネージャである. [Node.js](https://nodejs.org/en) は JavaScript ランタイムである. Codex CLI, Gemini CLI をインストールするにはこの手順が必要である．
+
+- [Download Node.js](https://nodejs.org/en/download) の指示に従うこと．
+
+以下は各種 CLI ツールの導入について書いているが，全てを導入する必要はない．
+
+### Codex CLI
+
+- https://developers.openai.com/codex/cli/
+
+```sh
+$ npm i -g @openai/codex
+$ codex
+```
+
+利用するには ChatGPT を契約しているアカウントが必要である．
+
+### Gemini CLI
+
+```sh
+$ npm install -g @google/gemini-cli
+$ gemini
+```
+
+See [https://github.com/google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) to learn more.
+
+利用するには Google アカウントが必要である．
+
+### Claude Code
+
+macOS, Linux, WSL:
+
+```sh
+$ curl -fsSL https://claude.ai/install.sh | bash
+$ claude
+```
+
+Windows PowerShell:
+
+```ps
+PS> irm https://claude.ai/install.ps1 | iex
+```
+
+### Copilot CLI
+
+```sh
+$ npm install -g @github/copilot
+$ copilot
+```
+
+See [https://github.com/github/copilot-cli](https://github.com/github/copilot-cli) to learn more.
+
+## AI 付属統合開発環境の導入
+
+VS Code または派生の Cursor, Google Antigravity を導入する．全て入れる必要はない．
+
+### VS Code
+
+下記のリンク先の指示に従う
+
+- [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
+- [https://github.com/features/copilot](https://github.com/features/copilot)
+
+### Cursor
+
+下記のリンク先の指示に従う
+
+[https://cursor.com/download](https://cursor.com/download)
+
+また `cursor-agent` で Cursor を CLI ツールとして利用できる．
+
+### Google Antigravity
+
+下記リンク先の指示に従う
+
+[https://antigravity.google/download](https://antigravity.google/download)
+
+## Software Installation
+
+### Julia
+
+Julia は科学技術計算が得意な汎用プログラミング言語である．
+
+[Installing Julia](https://julialang.org/downloads/) の指示に従う.
+
+macOS or Linux:
+
+```sh
+$ curl -fsSL https://install.julialang.org | sh
+```
+
+Windows:
+
+```ps
+PS> winget install --name Julia --id 9NJNWW8PVKMN -e -s msstore
+```
+
+### Rust
+
+Rust はシステムプログラミング向けに開発されているが，科学技術計算でも注目されている．[Install Rust](https://rust-lang.org/tools/install/) の指示に従う．
+
+macOS or Linux:
+
+```sh
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+See [this instructions](https://forge.rust-lang.org/infra/other-installation-methods.html) if you are using Windows.
+
+上記のコマンドで `cargo`, `rustc` のようなコマンドが使えるようになる．動作確認は次のとおり．
+
+```sh
+$ cargo new hello-world
+$ cd hello-world 
+$ cargo run --release
+cargo run --release
+   Compiling hello-world v0.1.0 (path/to/your-workspace/hello-world)
+    Finished `release` profile [optimized] target(s) in 1.38s
+     Running `target/release/hello-world`
+Hello, world!
+```
+
+### Python
+
+Python はスクリプト言語として優秀であるが，パッケージマネージャが乱立しており多くの混乱をコミュニティに招いている．`uv` はそれに終止符を打つであろう．私はそのように願っている．`uv` は Python の高速なパッケージマネージャである．`uv` は Rust で実装されている．
+
+[Installing uv](https://docs.astral.sh/uv/getting-started/installation/
+) の指示に従う．
+
+macOS or Linux:
+
+```sh
+$ curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+動作確認
+
+```sh
+$ mkdir path/to/your-workspace
+$ cd path/to/your-workspace
+$ uv init
+$ uv run python main.py
+```
+
+### Docker
+
+Claude Code や Codex はユーザからの許可をバイパスするオプションを備えている．たとえば `--allow-dangerously-skip-permissions`, `--yolo` といったオプションだ．このようなオプションは便利だが `rm -rf /` のような危険なコマンドの実行も許すことになる．このような状況を防ぐためにサンドボックス環境を使うのが望ましい．たとえば Docker が提供するコンテナはマウントするファイルを制限することで制限された範囲で AI Agent を行動させることが可能である．
+
+OS に応じてインストールすること:
+
+- [Install Docker Desktop on Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
+- [Install Docker Desktop on Mac
+](https://docs.docker.com/desktop/setup/install/mac-install/)
+- [Install Docker Desktop on Linux](https://docs.docker.com/desktop/setup/install/linux/)
+
+
+動作確認は下記のコマンドでできる:
+
+```sh
+$ docker run --rm hello-world
+```
+
+### Dev Containers
+
+Docker を使って環境構築するには [Dockerfile](https://docs.docker.com/reference/dockerfile/) を作る必要がある．何もないところから構築するのは大変である．そこで Devcontainer が提供する [Development Container Features](https://github.com/devcontainers/features) を利用することで，`Feature` と呼ばれる自己完結した設定をブロックとして組み立てて環境構築することにする．これにより Docker コンテナ内部で Julia, Python, Rust などを自由に使うことができる．
+
+[Dev Container CLI](https://code.visualstudio.com/docs/devcontainers/devcontainer-cli) に従って下記のようにインストールする．
+
+```sh
+$ npm install -g @devcontainers/cli
+```
+
+下記のコマンドで確かめることができる.
+
+```sh
+$ git clone https://github.com/microsoft/vscode-remote-try-rust
+$ cd vscode-remote-try-rust
+$ devcontainer build
+$ devcontainer up --workspace-folder ./
+$ devcontainer exec --workspace-folder ./ bash
+vscode ➜ /workspaces/vscode-remote-try-rust (main) $ cargo run
+   Compiling hello_remote_world v0.1.0 (/workspaces/vscode-remote-try-rust)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.45s
+     Running `target/debug/hello_remote_world`
+Hello, VS Code Remote - Containers!
+```
