@@ -472,3 +472,38 @@ vscode ➜ /workspaces/vscode-remote-try-rust (main) $ cargo run
      Running `target/debug/hello_remote_world`
 Hello, VS Code Remote - Containers!
 ```
+
+## Software Installation (Optional)
+
+下記はこの資料の作成者が使っているコマンドをインストールするための手順である．読まなくてよい．
+
+### `tig`
+
+Text-mode interface for git
+
+```zsh
+% brew install tig
+```
+
+### `htop`
+
+リッチな `top` コマンド．CPU 利用率を目視で計測するために用いている．
+
+```zsh
+% brew install htop
+```
+
+### `rg` command
+
+Codex ユーザは入れてもよいかもしれない．
+
+```zsh
+% brew install ripgrep
+```
+
+### `quarto`
+
+この資料をローカルで見たい場合には必要
+
+See [Welcome to Quarto](https://quarto.org/) to learn more.
+
