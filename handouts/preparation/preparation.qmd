@@ -365,7 +365,25 @@ VS Code または派生の Cursor, Google Antigravity を導入する．全て�
 
 ## Software Installation
 
-### Julia
+ここでは現代的な一般的なソフトウェア開発(数値計算もこのカテゴリの中に入る)で有用な CLI ツールを導入する．
+
+### GitHub CLI (`gh`)
+
+多くの AI エージェントは `gh` コマンドを経由して GitHub にある Issue の作成，プルリクエストの作成を行う．これにより多くの面倒な作業を自動化することができる．
+
+インストールするには [https://cli.github.com/](https://cli.github.com/) にある説明を読むこと
+
+macOS
+
+```sh
+% brew install gh
+```
+
+Linux ユーザは [Installing gh on Linux and BSD](https://github.com/cli/cli/blob/trunk/docs/install_linux.md) を参考に導入すること．
+
+Windows ユーザは [Installing gh on Windows](https://github.com/cli/cli/blob/trunk/docs/install_windows.md) を参考に導入すること．
+
+### Julia (`julia`)
 
 Julia は科学技術計算が得意な汎用プログラミング言語である．
 
@@ -383,7 +401,7 @@ Windows:
 PS> winget install --name Julia --id 9NJNWW8PVKMN -e -s msstore
 ```
 
-### Rust
+### Rust(`cargo`, `rustc`)
 
 Rust はシステムプログラミング向けに開発されているが，科学技術計算でも注目されている．[Install Rust](https://rust-lang.org/tools/install/) の指示に従う．
 
@@ -408,7 +426,7 @@ cargo run --release
 Hello, world!
 ```
 
-### Python
+### Python (`uv`)
 
 Python はスクリプト言語として優秀であるが，パッケージマネージャが乱立しており多くの混乱をコミュニティに招いている．`uv` はそれに終止符を打つであろう．私はそのように願っている．`uv` は Python の高速なパッケージマネージャである．`uv` は Rust で実装されている．
 
@@ -430,7 +448,7 @@ $ uv init
 $ uv run python main.py
 ```
 
-### Docker
+### Docker (`docker`)
 
 Claude Code や Codex はユーザからの許可をバイパスするオプションを備えている．たとえば `--allow-dangerously-skip-permissions`, `--yolo` といったオプションだ．このようなオプションは便利だが `rm -rf /` のような危険なコマンドの実行も許すことになる．このような状況を防ぐためにサンドボックス環境を使うのが望ましい．たとえば Docker が提供するコンテナはマウントするファイルを制限することで制限された範囲で AI Agent を行動させることが可能である．
 
@@ -448,7 +466,7 @@ OS に応じてインストールすること:
 $ docker run --rm hello-world
 ```
 
-### Dev Containers
+### Dev Containers (`devcontainer`)
 
 Docker を使って環境構築するには [Dockerfile](https://docs.docker.com/reference/dockerfile/) を作る必要がある．何もないところから構築するのは大変である．そこで Devcontainer が提供する [Development Container Features](https://github.com/devcontainers/features) を利用することで，`Feature` と呼ばれる自己完結した設定をブロックとして組み立てて環境構築することにする．これにより Docker コンテナ内部で Julia, Python, Rust などを自由に使うことができる．
 
