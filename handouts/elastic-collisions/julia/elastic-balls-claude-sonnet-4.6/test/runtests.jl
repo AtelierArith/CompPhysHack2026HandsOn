@@ -117,4 +117,32 @@ using LinearAlgebra
         @test b5n.vel == b5.vel
         @test b6n.vel == b6.vel
     end
+
+    @testset "Simulation" begin
+        box = BoundaryBox(0.0, 10.0, 0.0, 10.0)
+        b1 = Ball(pos=Vec2(3.0, 5.0), vel=Vec2(1.0, 0.5), mass=1.0, radius=0.3,
+                  color=RGB{Float64}(1.0, 0.0, 0.0))
+        b2 = Ball(pos=Vec2(7.0, 5.0), vel=Vec2(-1.0, -0.5), mass=1.0, radius=0.3,
+                  color=RGB{Float64}(0.0, 0.0, 1.0))
+        state = SimulationState([b1, b2]; boundary=box, dt=0.01)
+
+        # Total momentum conserved (no external forces)
+        p_init = sum(b.mass * b.vel for b in state.balls)
+        simulate!(state, 2.0)
+        p_final = sum(b.mass * b.vel for b in state.balls)
+        @test p_final ≈ p_init  atol=1e-8
+
+        # Time advanced correctly
+        @test state.time ≈ 2.0  atol=1e-10
+
+        # random_balls: non-overlapping, correct count
+        using Random
+        balls = random_balls(5; boundary=box, rng=MersenneTwister(123))
+        @test length(balls) == 5
+        for i in 1:5, j in (i+1):5
+            dx = balls[i].pos - balls[j].pos
+            dist = sqrt(dot(dx, dx))
+            @test dist >= balls[i].radius + balls[j].radius - 1e-8
+        end
+    end
 end
