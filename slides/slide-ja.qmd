@@ -1,0 +1,1542 @@
+---
+title: Introduction to Coding Agents
+author: SatoshiTerasaki@AtelierArith
+format:
+  revealjs:
+    theme: "black"
+    css: "../styles/style.css"
+    embed-resources: true
+    slide-number: true
+    show-notes: separate-page
+    mermaid:
+      theme: default
+    gfm:
+    mermaid-format: png
+---
+
+## Overview
+
+- 自己紹介
+- AI を用いたソフトウェアの紹介
+- AI エージェントの導入
+- いくつかの題材をもとに演習
+
+---
+
+## 自己紹介
+
+- フリーランスソフトウェアエンジニア． 大学教員と科学計算の共同開発
+- GitHub: `terasakisatoshi`
+- Organization: `AtelierArith`
+
+## 最近行ってること: Organizing SparseIR ecosystem
+
+- Hiroshi Shinaoka, Hitoshi Mori との共同開発
+    - Porting SparseIR.jl v1.0 to C++: [libsparseir](https://github.com/SpM-lab/libsparseir) (C++)
+    - Porting `libsparseir` to Rust: [sparse-ir-rs](https://github.com/SpM-lab/sparse-ir-rs)
+    - [SparseIR.jl](https://github.com/SpM-lab/SparseIR.jl) v2.0 (Julia interface for sparse-ir-rs)
+    - [sparse-ir](https://github.com/SpM-lab/sparse-ir) v2.0 (Python interface for sparse-ir-rs)
+
+```{mermaid}
+flowchart LR
+  Julia[Julia]
+  Python[Python]
+  Fortran[Fortran]
+
+  CAPI[C-API]
+  Sparseir[sparse-ir-rs]
+
+  Julia --> CAPI
+  Python --> CAPI
+  Fortran --> CAPI
+  CAPI --> Sparseir
+```
+
+---
+
+## 最近行ってること: tensor4all
+
+- [tensor4all](https://github.com/tensor4all/tensor4all-rs): A Rust implementation of tensor networks
+  - Porting [Strided.jl](https://github.com/Jutho/Strided.jl) to Rust [strided-rs](https://github.com/tensor4all/strided-rs)
+  - [strided-rs-benchmark-suite](https://github.com/tensor4all/strided-rs-benchmark-suite)
+
+---
+
+## 最近行ってること: mVMC
+
+- Takahiro Misawa et al.
+  - Porting C project [mVMC](https://github.com/issp-center-dev/mVMC) to Julia (WIP)
+
+```{mermaid}
+flowchart TD
+  MVMC[mVMC]
+
+  SFMT[SFMT19937.jl<br/>rng package]
+  StdFace[StdFaceInterface.jl<br/>Parser for StdFace.def]
+  ExpertMode[MVMCExpertModeParsers.jl<br/>ExpertMode parser]
+  PfaPack[MVMCPfaPack.jl<br/>Pfaffians]
+  Optimizers[MVMCOptimizers.jl<br/>Core implementation]
+
+  MVMC --> SFMT
+  MVMC --> StdFace
+  MVMC --> ExpertMode
+  MVMC --> PfaPack
+  MVMC --> Optimizers
+```
+
+This project is still work in progress. It will be released in the future.
+
+---
+
+## 最近行ってること: SubsetJuliaVM
+
+Let's run Julia on iPad and iPhone
+
+![](assets/subset_julia_vm.png)
+
+---
+
+## 最近行ってること: better-pluto-client
+
+We can view pluto notebook on VS Code.
+
+![](assets/better-pluto-client.png)
+
+---
+
+## 最近行ってること: [RustCall.jl](https://github.com/AtelierArith/RustCall.jl)
+
+Julia から Rust を呼び出すことができるパッケージ．
+
+```julia
+using RustCall
+
+rust"""
+#[julia]
+fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+"""
+
+# Call directly - wrapper is auto-generated
+add(10, 20)  # => 30
+```
+
+---
+
+## Actually
+
+今まで紹介したソフトウェアは 9 割以上は AI を用いてコードを生成している．これは事実です．
+
+人間は自然言語で作りたいものを指示し AI Agent はソースコードを生成・コマンドの実行を行う．
+
+AI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ
+
+![](assets/human-orders.png)
+
+---
+
+![](assets/traditional-software-development.png)
+
+::: {.fragment}
+本当ですか？
+:::
+
+::: {.fragment}
+あなたは全部真面目に取り組みましたか？
+:::
+
+::: {.fragment}
+常に，いつも効率の良い開発方法を考えてましたか？
+:::
+
+---
+
+## 現実では
+
+![](assets/human-suffering.png)
+
+- Git が使われていない．バージョン管理されてない
+- ドキュメントがない，または古い
+- 単体テストがない
+- コンパイルができない
+- 実行時エラーが起きる(セグメンテーションフォルトなど)
+- データセットの URL が 研究者個人の C ドライブ(変数のハードコーディング)
+
+---
+
+## 人間と機械
+
+- 人間は「創造」することができるが「疲れる」,「飽きる」,「固執する」
+  - 研究活動のような新しいアイデアを出す
+  - `git commit -m "update"` `git commit -m "fix"` を使いまくる
+
+::: {.fragment}
+```{mermaid}
+gitGraph
+  commit id: "init"
+  commit id: "wip"
+  commit id: "tmp"
+  commit id: "fix"
+  commit id: "fix fix"
+  commit id: "ok"
+  branch hotfix
+  checkout hotfix
+  commit id: "pls"
+  commit id: "final"
+  checkout main
+  merge hotfix id: "merge??"
+  commit id: "real final (actually)"
+```
+:::
+
+::: {.fragment}
+- 特定のプログラミング言語を使い続ける
+  - パッケージマネージャを使うなど現代的な開発手法を取り入れることが困難な環境を生む
+:::
+
+---
+
+## 人間と機械
+
+- 人間は「創造」することができるが「疲れる」,「飽きる」,「固執する」
+
+::: {.fragment}
+親愛なる科学者の皆様，これから新しい数値計算ソフトウェアを書く場合は科学技術計算には Julia または Rust を使いましょう．
+これらは現代的なパッケージマネージメントシステムを備えており，共同で開発することを可能にします．
+:::
+
+::: {.fragment}
+Julia は高級言語でありながら高速な実行をユーザに提供します．
+あなたが普段 Fortran を書くのであれば使うべきでしょう．
+ただし, 型不安定なコード, GC (ガベージコレクション) が頻発するケース, メモリアロケーションが発生するケースでは十分なパフォーマンスが発揮できません．
+多次元配列を扱うテンソルネットワークのパッケージはこの問題によく出会います．
+:::
+
+::: {.fragment}
+Rust は高速に動作する静的言語です．
+C/C++ を書く人はこの言語に乗り換えることを検討するべきでしょう．
+Rust は人間が手動で書くのは学習コストがかかりますが，AI によるコード生成により開発体験が劇的に改善します．
+:::
+
+::: {.fragment}
+テンソルネットワークに関するエコシステム tensor4all-rs は科学技術計算のために Rust を採用した非常に良い例を目指しています．
+:::
+
+---
+
+## 人間と機械
+
+- 機械は「飽きない」,「疲れない」,「モデルが成長」
+  - コードの差分から適切なコミット・プリクエストの概要を作成
+
+```{mermaid}
+gitGraph
+  commit id: "chore: initialize repository"
+  commit id: "docs: add README and contribution guidelines"
+  commit id: "feat: add initial project scaffold"
+  commit id: "feat: implement core workflow"
+  commit id: "test: add unit tests for core workflow"
+  commit id: "refactor: simplify core workflow logic"
+  commit id: "ci: set up CI pipeline"
+  commit id: "chore: prepare v0.1.0 release"
+
+  branch hotfix
+  checkout hotfix
+  commit id: "fix: resolve crash on empty input"
+  commit id: "test: add regression test for empty input"
+
+  checkout main
+  merge hotfix id: "merge: hotfix crash on empty input"
+  commit id: "chore(release): v0.1.1"
+```
+
+---
+
+## 人間と機械
+
+- 機械は「飽きない」,「疲れない」,「モデルが成長」
+- いつでも動作をする
+    - 様々な言語を使える．移植も得意:
+    - `Julia -> C++`, `C++ -> Rust`, `C -> Julia`
+    - `TypeScript, Swift, Flutter/Dart`
+
+- 要請に応じて変更が可能．現代的な言語にマイグレーションが可能
+- 人間からの適切な指示が必要
+
+---
+
+## コーディングエージェントの登場
+
+人工知能・生成 AI の発展により
+コーディングエージェント・AI エージェントは人間が指示を与えたら目標を達成するために下記の行動をすることが可能になった:
+
+![](assets/human-and-ai.png)
+
+---
+
+## 人間は不要か？(No)
+
+- LLM は多くの知識を持っているが，研究者のように最先端の知識を持っているとは限らない．何を実装するか，しないかは人間の能力に左右される．
+- ソフトウェアエンジニアはコーディングする時間から解放されるが，どのような技術をどの場面で使うか，高品質なソフトウェアを作成・維持するためのアーキテクチャを考える・意思決定をする上位の能力が求められるようになる．コーディング以外に研究者と議論するための最低限のドメイン知識も求められるようになる．
+
+---
+
+## 人間は不要か？(No)
+
+- AI がコードを書いてもサボるケースがある
+  - プレースホルダーだけ書いて満足する
+  - 汎用な実装が求められるケースで特殊なケースだけを想定したケースでのみ実装してしまう．
+- ベストプラクティスな実装とは限らない．
+  - Julia だと多重ディスパッチを使わない，export を多用する
+  - Rust だと `.clone()` の多用をする．パフォーマンスの劣化
+- 最低限のコードの実行方法，コーディングの知識，プログラミング言語の知識は必要．
+
+---
+
+## ソフトウェアエンジニアは不要か？
+
+- AI が発達することで研究者は不要になるというぐらい過激な主張
+- AI の導入によって言語の学習コスト・細かい文法・コーディングスタイルのような局所的な議論から解放される．
+- 「ユーザにとって体験が良いソフトウェアをどのように設計するか」，「状況・目的に応じてどのような技術，プログラミング言語を選択すべきか」「高品質なソフトウェアをどのように維持するべきか」といったアーキテクチャレベルの設計・大域的な議論に集中することができる．
+何を実装するか実装すべきでないかは人間の判断に大きく判断される．
+- Visual profiler を用いたボトルネックの調査は AI による完全自動化は難しい．そのようはワークフローはまだ存在する．
+  - ミリ秒, マイクロ秒, ナノ秒レベルの最適化をする仕事は人間の直感が大事．需要はまだあると思う
+
+---
+
+## ソフトウェアエンジニアは不要か？
+
+- ドメイン知識を身についけることが大事，物理学者とコミュニケーションする程度の物理学の知識
+- Rust で書かれたコードは Web Assembly の技術で Web で実行することができる．数値計算のデモを Web で公開・メンテナンスをする仕事は出てくる．
+
+---
+
+## ソフトウェアエンジニアは不要か？
+
+- 研究者は忙しくなる．今までできなかったけれど，やりたかったことができるようになる．それに応じて仕事も増えてくるはず．
+- 研究者は暇にならない．ある研究者は `Claude Code MAX $200` を契約し，AI をフル活用したせいで目眩を引き起こした．
+  - 私は `$100` プランまでダウングレードすることを推奨した．ジョークのようで本当の話
+
+---
+
+## ソフトウェアエンジニアは不要か？
+
+- 仕事がなくなるときはある種の情熱がなくなるときだと思う．
+
+---
+
+## デモを行います
+
+Cursor を用いたコーディングの方法を紹介する．
+
+代替として Antigravity, Claude Code, Codex を使うこともできる．
+
+---
+
+## どのツールを使うべきか
+
+- AI Agent は常に進化しているので答えはない．
+- どのアカウントを持っているかによる．
+    - ChatGPT を契約していれば Codex, GPT-5.3 を使ってみる
+    - Claude を契約していれば Claude Code: Opus-4.6 を使ってみる
+- 無料で使いたい
+    - Google が出している Antigravity を使う
+- どのサービスも使用上限が存在する．すべてはお金次第．
+
+---
+
+## どのツールを使うべきか(as for me)
+
+- Claude Code MAX `$200/$100`: Opus-4.6
+- ChatGPT Plus plan: Codex: GPT-5.3
+- Cursor Pro: 日常のエディタとして Composer 1.5
+
+---
+
+## 必要な CLI ツール
+
+- `git`, `gh`: Git/GitHub を操作する
+- `uv`: Python package manager
+- `npm`, `node`: コーディングエージェントのインストール
+- `juliaup`, `julia`: Julia のコードを実行するために必要
+- `rustup`, `rustc`, `cargo`: Rust のコードをビルド・実行に必要
+
+Optional:
+
+- `docker`
+- `devcontainer`
+- `rg`
+- `tree`
+- `htop`
+- `quarto`
+
+---
+
+## インストール
+
+TODO [01-preparation.qmd](../handouts/preparation/preparation.qmd) に記述する
+
+---
+
+## インストール
+
+下記リンクに移動し
+
+- https://cursor.com/download
+- VS Code ユーザは extension をマイグレートできる．
+
+---
+
+## Math Quiz
+
+二つのの正の整数 $a$, $b$ が与えられた時，最大公約数 $\gcd(a,b)$ が 1 になる確率はどれくらい？
+
+::: {.fragment}
+正解は
+
+$$
+\frac{1}{\zeta(2)} = \frac{6}{\pi^2} \approx 0.6079271018540267
+$$
+
+ここで，$\zeta$ はリーマン・ゼータ関数である．
+
+$$
+\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}= \prod_{p: \mathrm{primes} } \left(\frac{1}{1 - p^{-s}}  \right) \mathrm{}
+$$
+
+ここで，2番目の等式は Euler product によるものである．
+:::
+
+---
+
+## 証明
+
+$$
+\begin{aligned}
+\mathrm{Prob}(\gcd(a, b) = 1)
+&= \prod_{p: \mathrm{primes} } \left( 1 - \mathrm{Prob}(p | a \textrm{ and } p | b)\right) \\
+&= \prod_{p: \mathrm{primes} } \left( 1 - \mathrm{Prob}(p | a)\mathrm{Prob}(p | b)\right) \\
+&= \prod_{p: \mathrm{primes} } \left( 1 - \frac{1}{p}\cdot\frac{1}{p}\right) \\
+&= \prod_{p: \mathrm{primes} } \left( 1 - p^{-2}\right) \\
+&= \left(\prod_{p: \mathrm{primes} } \left(\frac{1}{1 - p^{-2}}  \right)\right)^{-1} \\
+&=\left(\zeta(2)\right)^{-1} \\
+&= \frac{1}{\zeta(2)} = \frac{6}{\pi^2}
+\end{aligned}
+$$
+
+---
+
+## Application (JS implementation)
+
+先ほどの証明から次を得る:
+
+$$
+\pi = \sqrt{\frac{6}{\mathrm{Prob}(\gcd(a, b)=1)}}
+$$
+
+数値計算で確かめてみよう
+
+```js
+// Function to approximate pi
+// using probability that two numbers are coprime
+function calcPi(N) {
+    let cnt = 0;    // Counter for coprime pairs
+    // Loop through all pairs (a, b) where 1 <= a, b <= N
+    for (let a = 1; a <= N; a++) {
+        for (let b = 1; b <= N; b++) {
+            // Check if a and b are coprime
+            if (mygcd(a, b) === 1) {
+                cnt += 1;  // Increment counter if coprime
+            }
+        }
+    }
+    // Probability that two numbers are coprime
+    let prob = cnt / (N * N);
+    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)
+    return Math.sqrt(6 / prob);
+}
+```
+
+---
+
+## Application (JS implementation)
+
+Let's calculate the $\pi \approx 3.14...$ from GCD function:
+
+```js
+// approx_pi_gcd.js
+
+// Function to compute the greatest common divisor (GCD) using the Euclidean algorithm
+function mygcd(a, b) {
+    // Loop until the remainder is zero
+    while (b !== 0) {
+        let tmp = b;    // Store the value of b temporarily
+        b = a % b;      // Update b to the remainder of a divided by b
+        a = tmp;        // Set a to the previous value of b
+    }
+    return a;           // When b is zero, a is the GCD
+}
+
+// Function to approximate pi using probability that two numbers are coprime
+function calcPi(N) {
+    let cnt = 0;    // Counter for coprime pairs
+    // Loop through all pairs (a, b) where 1 <= a, b <= N
+    for (let a = 1; a <= N; a++) {
+        for (let b = 1; b <= N; b++) {
+            // Check if a and b are coprime
+            if (mygcd(a, b) === 1) {
+                cnt += 1;  // Increment counter if coprime
+            }
+        }
+    }
+    // Probability that two numbers are coprime
+    let prob = cnt / (N * N);
+    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)
+    return Math.sqrt(6 / prob);
+}
+
+// Main function to run the pi approximation
+function main() {
+    let N = 10000;            // Number limit for coprimality checking
+    let pi = calcPi(N);       // Approximate pi
+    console.log(`N: ${N}`);   // Output N
+    console.log(`pi: ${pi}`); // Output approximation of pi
+}
+
+main(); // Call the main function
+```
+
+Result
+
+```sh
+$ node approx_pi_gcd.js
+calcPi: 2.175s
+N: 10000
+pi: 3.141534239016629
+```
+
+---
+
+## Exercise
+
+先ほどの JavaScript のコードを Julia, Rust に移植してください．
+`N=10000` の時の実行時間を計測してください．
+
+#### Hint
+
+下記のプロンプトを使う
+
+> Port `approx_pi_gcd.js` to Julia and save the result as approx_pi_gcd.jl
+
+> Port `approx_pi_gcd.rs` to Rust and save the result as approx_pi_gcd.rs
+
+---
+
+## Answer
+
+![](assets/prompt_port2julia.png)
+
+---
+
+## Answer(Julia)
+
+```julia
+# Function to compute the greatest common divisor (GCD) using the Euclidean algorithm
+function mygcd(a, b)
+    # Loop until the remainder is zero
+    while b != 0
+        tmp = b    # Store the value of b temporarily
+        b = a % b  # Update b to the remainder of a divided by b
+        a = tmp    # Set a to the previous value of b
+    end
+    return a       # When b is zero, a is the GCD
+end
+
+# Function to approximate pi using probability that two numbers are coprime
+function calcPi(N)
+    cnt = 0    # Counter for coprime pairs
+    # Loop through all pairs (a, b) where 1 <= a, b <= N
+    for a in 1:N
+        for b in 1:N
+            # Check if a and b are coprime
+            if mygcd(a, b) == 1
+                cnt += 1  # Increment counter if coprime
+            end
+        end
+    end
+    # Probability that two numbers are coprime
+    prob = cnt / (N * N)
+    # Approximate pi using the formula: pi ≈ sqrt(6 / prob)
+    return sqrt(6 / prob)
+end
+
+# Main function to run the pi approximation
+function main()
+    N = 10000            # Number limit for coprimality checking
+    approx_pi = @time calcPi(N) # Approximate pi and time it
+    println("N: $(N)")   # Output N
+    println("pi: $(approx_pi)") # Output approximation of pi
+end
+
+main() # Call the main function
+```
+
+Result
+
+```julia
+$ julia approx_pi_gcd.jl
+  1.865392 seconds
+N: 10000
+pi: 3.141534239016629
+```
+
+---
+
+## Answer (Rust)
+
+```rust
+// Function to compute the greatest common divisor (GCD) using the Euclidean algorithm
+fn mygcd(a: u64, b: u64) -> u64 {
+    let mut a = a;
+    let mut b = b;
+    // Loop until the remainder is zero
+    while b != 0 {
+        let tmp = b;    // Store the value of b temporarily
+        b = a % b;      // Update b to the remainder of a divided by b
+        a = tmp;        // Set a to the previous value of b
+    }
+    a                   // When b is zero, a is the GCD
+}
+
+// Function to approximate pi using probability that two numbers are coprime
+fn calc_pi(n: u64) -> f64 {
+    let mut cnt = 0u64; // Counter for coprime pairs
+    // Loop through all pairs (a, b) where 1 <= a, b <= N
+    for a in 1..=n {
+        for b in 1..=n {
+            // Check if a and b are coprime
+            if mygcd(a, b) == 1 {
+                cnt += 1;  // Increment counter if coprime
+            }
+        }
+    }
+    // Probability that two numbers are coprime
+    let prob = cnt as f64 / (n as f64 * n as f64);
+    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)
+    (6.0 / prob).sqrt()
+}
+
+// Main function to run the pi approximation
+fn main() {
+    let n = 10000u64;   // Number limit for coprimality checking
+    let start = std::time::Instant::now();
+    let pi = calc_pi(n); // Approximate pi
+    let duration = start.elapsed();
+    println!("calcPi: {:?}", duration);
+    println!("N: {}", n);   // Output N
+    println!("pi: {}", pi); // Output approximation of pi
+}
+```
+
+Result
+
+```sh
+$ rustc -C opt-level=3 approx_pi_gcd.rs && ./approx_pi_gcd
+calcPi: 1.754083333s
+N: 10000
+pi: 3.141534239016629
+```
+
+---
+
+## Answer (C)
+
+```c
+#include <stdio.h>
+#include <math.h>
+#include <time.h>
+
+// Function to compute the greatest common divisor (GCD) using the Euclidean algorithm
+int mygcd(int a, int b) {
+    // Loop until the remainder is zero
+    while (b != 0) {
+        int tmp = b;    // Store the value of b temporarily
+        b = a % b;      // Update b to the remainder of a divided by b
+        a = tmp;        // Set a to the previous value of b
+    }
+    return a;           // When b is zero, a is the GCD
+}
+
+// Function to approximate pi using probability that two numbers are coprime
+double calcPi(int N) {
+    int cnt = 0;    // Counter for coprime pairs
+    // Loop through all pairs (a, b) where 1 <= a, b <= N
+    for (int a = 1; a <= N; a++) {
+        for (int b = 1; b <= N; b++) {
+            // Check if a and b are coprime
+            if (mygcd(a, b) == 1) {
+                cnt += 1;  // Increment counter if coprime
+            }
+        }
+    }
+    // Probability that two numbers are coprime
+    double prob = (double)cnt / (N * N);
+    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)
+    return sqrt(6.0 / prob);
+}
+
+// Main function to run the pi approximation
+int main() {
+    int N = 10000;            // Number limit for coprimality checking
+    clock_t start = clock();
+    double pi = calcPi(N);    // Approximate pi
+    clock_t end = clock();
+    double cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+
+    printf("calcPi: %f seconds\n", cpu_time_used);
+    printf("N: %d\n", N);     // Output N
+    printf("pi: %f\n", pi);   // Output approximation of pi
+
+    return 0;
+}
+```
+
+Result
+
+```sh
+$ gcc -O3 approx_pi_gcd.c && ./a.out
+calcPi: 1.753796 seconds
+N: 10000
+pi: 3.141534
+```
+
+---
+
+## Julia can execute this much faster.
+
+```julia
+# Function to approximate pi using probability that two numbers are coprime
+function calcPi(N)
+    cnt = 0    # Counter for coprime pairs
+    # Loop through all pairs (a, b) where 1 <= a, b <= N
+    for a in 1:N
+        for b in 1:N
+            # Check if a and b are coprime
+            if gcd(a, b) == 1
+                cnt += 1  # Increment counter if coprime
+            end
+        end
+    end
+    # Probability that two numbers are coprime
+    prob = cnt / (N * N)
+    # Approximate pi using the formula: pi ≈ sqrt(6 / prob)
+    return sqrt(6 / prob)
+end
+
+# Main function to run the pi approximation
+function main()
+    N = 10000            # Number limit for coprimality checking
+    approx_pi = @time calcPi(N) # Approximate pi and time it
+    println("N: $(N)")   # Output N
+    println("pi: $(approx_pi)") # Output approximation of pi
+end
+
+main() # Call the main function
+```
+
+Result
+
+```sh
+julia approx_pi_gcd.jl
+  1.454210 seconds
+N: 10000
+pi: 3.141534239016629
+```
+
+---
+
+## Julia が速くなった?!
+
+`1.865392 seconds -> 1.454210 seconds` となる理由は？
+
+Julia が提供する `gcd` 関数はユークリッド互除法とは異なるアルゴリズムを用いているからである．
+
+## Exercise
+
+- Julia のリポジトリをクローンしてコーディングエージェントに `gcd` 関数がどのようになっているかを答えさせよ．
+
+- 採用しているアルゴリズムは何かを答えさせよ．
+- 先ほど JavaScript から Rust に移植したコードで `mygcd` の代わりに Julia が実装している `gcd` 関数を移植させよ．
+
+#### Hint
+
+- `git clone --depth 1 <url>` ですばやくクローンができる(shallow clone). Use the following prompt:
+
+> `Read the Julia code and answer how the gcd function is defined. Read @julia`
+
+> Port these `gcd` functions to Rust
+
+---
+
+## Answer
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](assets/binary_gcd_algorithm_explained.png)
+
+:::
+
+::: {.column width="50%"}
+
+Indeed, the code is as follows:
+
+```julia
+# binary GCD (aka Stein's) algorithm
+# about 1.7x (2.1x) faster for random Int64s (Int128s)
+# Unfortunately, we need to manually annotate this as `@assume_effects :terminates_locally` to work around #41694.
+# Since this is used in the Rational constructor, constant folding is something we do care about here.
+@assume_effects :terminates_locally function _gcd(ain::T, bin::T) where T<:BitInteger
+    zb = trailing_zeros(bin)
+    za = trailing_zeros(ain)
+    a = abs(ain)
+    b = abs(bin >> zb)
+    k = min(za, zb)
+    while a != 0
+        a >>= za
+        absd, diff = absdiff(a, b)
+        za = trailing_zeros(diff)
+        b = min(a, b)
+        a = absd
+    end
+    r = b << k
+    return r % T
+end
+```
+:::
+
+::::
+
+---
+
+## Answer (Cursor with Auto-mode)
+
+
+![](assets/porting_binary_gcd_to_rust.png)
+
+## Answer (Rust implementation)
+
+```rust
+// Port of Julia's gcd functions from base/intfuncs.jl
+// Greatest common divisor implementations using Euclidean and Binary GCD algorithms
+
+use std::ops::{Rem, Shr, Shl, Sub, BitAnd};
+
+/// Greatest common (positive) divisor (or zero if all arguments are zero).
+///
+/// This is the general implementation for all integer types using the Euclidean algorithm.
+pub fn gcd<T>(mut a: T, mut b: T) -> T
+where
+    T: Copy + PartialEq + Rem<Output = T> + From<u8> + Default,
+{
+    let zero = T::from(0u8);
+    while b != zero {
+        let t = b;
+        b = a % b;
+        a = t;
+    }
+    checked_abs(a)
+}
+
+/// Greatest common divisor for fixed-width integer types using Binary GCD (Stein's) algorithm.
+///
+/// This is about 1.7x (2.1x) faster for random Int64s (Int128s) compared to Euclidean algorithm.
+pub fn gcd_bitinteger<T>(a: T, b: T) -> T
+where
+    T: Copy
+        + PartialEq
+        + PartialOrd
+        + Shr<usize, Output = T>
+        + Shl<usize, Output = T>
+        + BitAnd<Output = T>
+        + Sub<Output = T>
+        + From<u8>
+        + Default,
+{
+    let zero = T::from(0u8);
+
+    if a == zero {
+        return checked_abs(b);
+    }
+    if b == zero {
+        return checked_abs(a);
+    }
+
+    // Handle typemin case for signed types
+    // In Rust, we check for the minimum value differently
+    // For now, we'll proceed with the algorithm
+
+    _gcd(a, b)
+}
+
+/// Binary GCD (aka Stein's) algorithm implementation.
+///
+/// This is the core algorithm that's faster for fixed-width integers.
+fn _gcd<T>(ain: T, bin: T) -> T
+where
+    T: Copy
+        + PartialEq
+        + PartialOrd
+        + Shr<usize, Output = T>
+        + Shl<usize, Output = T>
+        + BitAnd<Output = T>
+        + Sub<Output = T>
+        + From<u8>
+        + Default,
+{
+    let zero = T::from(0u8);
+
+    let zb = trailing_zeros(bin);
+    let mut za = trailing_zeros(ain);
+    let mut a = abs(ain);
+    let mut b = abs(bin >> zb);
+    let k = if za < zb { za } else { zb };
+
+    while a != zero {
+        a = a >> za;
+        let (absd, diff) = absdiff(a, b);
+        za = trailing_zeros(diff);
+        b = if a < b { a } else { b };
+        a = absd;
+    }
+
+    let r = b << k;
+    r
+}
+
+/// Compute absolute difference between two values.
+/// Returns (absolute difference, signed difference).
+fn absdiff<T>(x: T, y: T) -> (T, T)
+where
+    T: Copy + PartialOrd + Sub<Output = T> + From<u8>,
+{
+    if x >= y {
+        let d = x - y;
+        (d, d)
+    } else {
+        let d = y - x;
+        (d, d)
+    }
+}
+
+/// Compute the number of trailing zeros in the binary representation.
+///
+/// For unsigned types, this counts trailing zeros.
+/// For signed types, we convert to unsigned first.
+fn trailing_zeros<T>(x: T) -> usize
+where
+    T: Copy,
+{
+    // This is a simplified version. In practice, you'd use the built-in
+    // trailing_zeros method for each integer type.
+    // For a generic implementation, we'd need trait bounds that include
+    // the actual integer traits.
+
+    // For now, we'll use a basic implementation
+    // In real code, you'd specialize for each integer type
+    if let Some(val) = try_to_u64(x) {
+        val.trailing_zeros() as usize
+    } else {
+        // Fallback: count manually
+        count_trailing_zeros_fallback(x)
+    }
+}
+
+/// Try to convert a value to u64 for trailing_zeros calculation.
+fn try_to_u64<T>(_x: T) -> Option<u64> {
+    None // Generic implementation - would need specialization
+}
+
+/// Fallback trailing zeros counting.
+fn count_trailing_zeros_fallback<T>(_x: T) -> usize {
+    0 // Placeholder - would need proper implementation
+}
+
+/// Compute absolute value with overflow checking.
+fn checked_abs<T>(x: T) -> T
+where
+    T: Copy,
+{
+    // For unsigned types, abs is a no-op
+    // For signed types, we'd use checked_abs
+    // This is a simplified version
+    abs(x)
+}
+
+/// Compute absolute value.
+fn abs<T>(x: T) -> T
+where
+    T: Copy,
+{
+    // For unsigned types, this is a no-op
+    // For signed types, we'd need to handle negation
+    // This is a simplified generic version
+    x
+}
+
+// Specialized implementations for specific integer types
+
+/// GCD for u8
+pub fn gcd_u8(a: u8, b: u8) -> u8 {
+    gcd_bitinteger_u8(a, b)
+}
+
+/// Binary GCD for u8 (Stein's algorithm matching Julia's implementation)
+pub fn gcd_bitinteger_u8(ain: u8, bin: u8) -> u8 {
+    if ain == 0 {
+        return bin;
+    }
+    if bin == 0 {
+        return ain;
+    }
+
+    let zb = bin.trailing_zeros() as usize;
+    let mut za = ain.trailing_zeros() as usize;
+    let mut a = ain;
+    let mut b = bin >> zb;
+    let k = za.min(zb);
+
+    while a != 0 {
+        a >>= za;
+        let absd = if a >= b { a - b } else { b - a };
+        let diff = absd;
+        za = diff.trailing_zeros() as usize;
+        b = a.min(b);
+        a = absd;
+    }
+
+    b << k
+}
+
+/// GCD for u16
+pub fn gcd_u16(a: u16, b: u16) -> u16 {
+    gcd_bitinteger_u16(a, b)
+}
+
+/// Binary GCD for u16 (Stein's algorithm matching Julia's implementation)
+pub fn gcd_bitinteger_u16(ain: u16, bin: u16) -> u16 {
+    if ain == 0 {
+        return bin;
+    }
+    if bin == 0 {
+        return ain;
+    }
+
+    let zb = bin.trailing_zeros() as usize;
+    let mut za = ain.trailing_zeros() as usize;
+    let mut a = ain;
+    let mut b = bin >> zb;
+    let k = za.min(zb);
+
+    while a != 0 {
+        a >>= za;
+        let absd = if a >= b { a - b } else { b - a };
+        let diff = absd;
+        za = diff.trailing_zeros() as usize;
+        b = a.min(b);
+        a = absd;
+    }
+
+    b << k
+}
+
+/// GCD for u32
+pub fn gcd_u32(a: u32, b: u32) -> u32 {
+    gcd_bitinteger_u32(a, b)
+}
+
+/// Binary GCD for u32 (Stein's algorithm matching Julia's implementation)
+pub fn gcd_bitinteger_u32(ain: u32, bin: u32) -> u32 {
+    if ain == 0 {
+        return bin;
+    }
+    if bin == 0 {
+        return ain;
+    }
+
+    let zb = bin.trailing_zeros() as usize;
+    let mut za = ain.trailing_zeros() as usize;
+    let mut a = ain;
+    let mut b = bin >> zb;
+    let k = za.min(zb);
+
+    while a != 0 {
+        a >>= za;
+        let absd = if a >= b { a - b } else { b - a };
+        let diff = absd;
+        za = diff.trailing_zeros() as usize;
+        b = a.min(b);
+        a = absd;
+    }
+
+    b << k
+}
+
+/// GCD for u64
+pub fn gcd_u64(a: u64, b: u64) -> u64 {
+    gcd_bitinteger_u64(a, b)
+}
+
+/// Binary GCD for u64 (Stein's algorithm matching Julia's implementation)
+pub fn gcd_bitinteger_u64(ain: u64, bin: u64) -> u64 {
+    if ain == 0 {
+        return bin;
+    }
+    if bin == 0 {
+        return ain;
+    }
+
+    let zb = bin.trailing_zeros() as usize;
+    let mut za = ain.trailing_zeros() as usize;
+    let mut a = ain;
+    let mut b = bin >> zb;
+    let k = za.min(zb);
+
+    while a != 0 {
+        a >>= za;
+        let absd = if a >= b { a - b } else { b - a };
+        let diff = absd;
+        za = diff.trailing_zeros() as usize;
+        b = a.min(b);
+        a = absd;
+    }
+
+    b << k
+}
+
+/// GCD for u128
+pub fn gcd_u128(a: u128, b: u128) -> u128 {
+    gcd_bitinteger_u128(a, b)
+}
+
+/// Binary GCD for u128 (Stein's algorithm matching Julia's implementation)
+pub fn gcd_bitinteger_u128(ain: u128, bin: u128) -> u128 {
+    if ain == 0 {
+        return bin;
+    }
+    if bin == 0 {
+        return ain;
+    }
+
+    let zb = bin.trailing_zeros() as usize;
+    let mut za = ain.trailing_zeros() as usize;
+    let mut a = ain;
+    let mut b = bin >> zb;
+    let k = za.min(zb);
+
+    while a != 0 {
+        a >>= za;
+        let absd = if a >= b { a - b } else { b - a };
+        let diff = absd;
+        za = diff.trailing_zeros() as usize;
+        b = a.min(b);
+        a = absd;
+    }
+
+    b << k
+}
+
+/// GCD for i8
+pub fn gcd_i8(a: i8, b: i8) -> i8 {
+    gcd_bitinteger_i8(a, b)
+}
+
+/// Binary GCD for i8 with signed integer handling (matching Julia's algorithm)
+pub fn gcd_bitinteger_i8(ain: i8, bin: i8) -> i8 {
+    if ain == 0 {
+        return bin.abs();
+    }
+    if bin == 0 {
+        return ain.abs();
+    }
+
+    // Handle typemin case
+    if ain == i8::MIN && ain == bin {
+        panic!("gcd({}, {}) overflows", ain, bin);
+    }
+
+    let zb = bin.unsigned_abs().trailing_zeros() as usize;
+    let mut za = ain.unsigned_abs().trailing_zeros() as usize;
+    let mut a = ain.unsigned_abs();
+    let mut b = bin.unsigned_abs() >> zb;
+    let k = za.min(zb);
+
+    while a != 0 {
+        a >>= za;
+        let absd = if a >= b { a - b } else { b - a };
+        let diff = absd;
+        za = diff.trailing_zeros() as usize;
+        b = a.min(b);
+        a = absd;
+    }
+
+    (b << k) as i8
+}
+
+/// GCD for i16
+pub fn gcd_i16(a: i16, b: i16) -> i16 {
+    gcd_bitinteger_i16(a, b)
+}
+
+/// Binary GCD for i16 with signed integer handling (matching Julia's algorithm)
+pub fn gcd_bitinteger_i16(ain: i16, bin: i16) -> i16 {
+    if ain == 0 {
+        return bin.abs();
+    }
+    if bin == 0 {
+        return ain.abs();
+    }
+
+    if ain == i16::MIN && ain == bin {
+        panic!("gcd({}, {}) overflows", ain, bin);
+    }
+
+    let zb = bin.unsigned_abs().trailing_zeros() as usize;
+    let mut za = ain.unsigned_abs().trailing_zeros() as usize;
+    let mut a = ain.unsigned_abs();
+    let mut b = bin.unsigned_abs() >> zb;
+    let k = za.min(zb);
+
+    while a != 0 {
+        a >>= za;
+        let absd = if a >= b { a - b } else { b - a };
+        let diff = absd;
+        za = diff.trailing_zeros() as usize;
+        b = a.min(b);
+        a = absd;
+    }
+
+    (b << k) as i16
+}
+
+/// GCD for i32
+pub fn gcd_i32(a: i32, b: i32) -> i32 {
+    gcd_bitinteger_i32(a, b)
+}
+
+/// Binary GCD for i32 with signed integer handling (matching Julia's algorithm)
+pub fn gcd_bitinteger_i32(ain: i32, bin: i32) -> i32 {
+    if ain == 0 {
+        return bin.abs();
+    }
+    if bin == 0 {
+        return ain.abs();
+    }
+
+    if ain == i32::MIN && ain == bin {
+        panic!("gcd({}, {}) overflows", ain, bin);
+    }
+
+    let zb = bin.unsigned_abs().trailing_zeros() as usize;
+    let mut za = ain.unsigned_abs().trailing_zeros() as usize;
+    let mut a = ain.unsigned_abs();
+    let mut b = bin.unsigned_abs() >> zb;
+    let k = za.min(zb);
+
+    while a != 0 {
+        a >>= za;
+        let absd = if a >= b { a - b } else { b - a };
+        let diff = absd;
+        za = diff.trailing_zeros() as usize;
+        b = a.min(b);
+        a = absd;
+    }
+
+    (b << k) as i32
+}
+
+/// GCD for i64
+pub fn gcd_i64(a: i64, b: i64) -> i64 {
+    gcd_bitinteger_i64(a, b)
+}
+
+/// Binary GCD for i64 with signed integer handling (matching Julia's algorithm)
+pub fn gcd_bitinteger_i64(ain: i64, bin: i64) -> i64 {
+    if ain == 0 {
+        return bin.abs();
+    }
+    if bin == 0 {
+        return ain.abs();
+    }
+
+    if ain == i64::MIN && ain == bin {
+        panic!("gcd({}, {}) overflows", ain, bin);
+    }
+
+    let zb = bin.unsigned_abs().trailing_zeros() as usize;
+    let mut za = ain.unsigned_abs().trailing_zeros() as usize;
+    let mut a = ain.unsigned_abs();
+    let mut b = bin.unsigned_abs() >> zb;
+    let k = za.min(zb);
+
+    while a != 0 {
+        a >>= za;
+        let absd = if a >= b { a - b } else { b - a };
+        let diff = absd;
+        za = diff.trailing_zeros() as usize;
+        b = a.min(b);
+        a = absd;
+    }
+
+    (b << k) as i64
+}
+
+/// GCD for i128
+pub fn gcd_i128(a: i128, b: i128) -> i128 {
+    gcd_bitinteger_i128(a, b)
+}
+
+/// Binary GCD for i128 with signed integer handling (matching Julia's algorithm)
+pub fn gcd_bitinteger_i128(ain: i128, bin: i128) -> i128 {
+    if ain == 0 {
+        return bin.abs();
+    }
+    if bin == 0 {
+        return ain.abs();
+    }
+
+    if ain == i128::MIN && ain == bin {
+        panic!("gcd({}, {}) overflows", ain, bin);
+    }
+
+    let zb = bin.unsigned_abs().trailing_zeros() as usize;
+    let mut za = ain.unsigned_abs().trailing_zeros() as usize;
+    let mut a = ain.unsigned_abs();
+    let mut b = bin.unsigned_abs() >> zb;
+    let k = za.min(zb);
+
+    while a != 0 {
+        a >>= za;
+        let absd = if a >= b { a - b } else { b - a };
+        let diff = absd;
+        za = diff.trailing_zeros() as usize;
+        b = a.min(b);
+        a = absd;
+    }
+
+    (b << k) as i128
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_gcd_u64() {
+        assert_eq!(gcd_u64(6, 9), 3);
+        assert_eq!(gcd_u64(6, 0), 6);
+        assert_eq!(gcd_u64(0, 0), 0);
+        assert_eq!(gcd_u64(48, 18), 6);
+        assert_eq!(gcd_u64(17, 13), 1);
+    }
+
+    #[test]
+    fn test_gcd_i64() {
+        assert_eq!(gcd_i64(6, 9), 3);
+        assert_eq!(gcd_i64(6, -9), 3);
+        assert_eq!(gcd_i64(-6, 9), 3);
+        assert_eq!(gcd_i64(-6, -9), 3);
+        assert_eq!(gcd_i64(6, 0), 6);
+        assert_eq!(gcd_i64(0, 0), 0);
+    }
+
+    #[test]
+    fn test_gcd_u32() {
+        assert_eq!(gcd_u32(48, 18), 6);
+        assert_eq!(gcd_u32(100, 25), 25);
+    }
+
+    #[test]
+    fn test_gcd_i32() {
+        assert_eq!(gcd_i32(48, -18), 6);
+        assert_eq!(gcd_i32(-100, 25), 25);
+    }
+}
+
+// Function to approximate pi using probability that two numbers are coprime
+fn calc_pi(n: u64) -> f64 {
+    let mut cnt = 0u64; // Counter for coprime pairs
+    // Loop through all pairs (a, b) where 1 <= a, b <= N
+    for a in 1..=n {
+        for b in 1..=n {
+            // Check if a and b are coprime using the fast binary GCD algorithm
+            if gcd::gcd_u64(a, b) == 1 {
+                cnt += 1;  // Increment counter if coprime
+            }
+        }
+    }
+    // Probability that two numbers are coprime
+    let prob = cnt as f64 / (n as f64 * n as f64);
+    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)
+    (6.0 / prob).sqrt()
+}
+
+// Main function to run the pi approximation
+fn main() {
+    let n = 10000u64;   // Number limit for coprimality checking
+    let start = std::time::Instant::now();
+    let pi = calc_pi(n); // Approximate pi
+    let duration = start.elapsed();
+    println!("calcPi: {:?}", duration);
+    println!("N: {}", n);   // Output N
+    println!("pi: {}", pi); // Output approximation of pi
+}
+```
+
+Result
+
+```sh
+rustc -C opt-level=3 gcd.rs && ./gcd
+calcPi: 1.2510425s
+N: 10000
+pi: 3.141534239016629
+```
+
+---
+
+# Advanced topics
+
+---
+
+ここにこれまでの計測結果をまとめる
+
+<table>
+  <thead>
+    <tr>
+      <th>アルゴリズム</th>
+      <th>言語</th>
+      <th>実行時間</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ユークリッド互除法</td>
+      <td>JavaScript</td>
+      <td>2.175 秒</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Julia</td>
+      <td>1.865392 秒</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Rust</td>
+      <td>1.754083 秒</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>C</td>
+      <td>1.753796 秒</td>
+    </tr>
+    <tr>
+      <td>バイナリGCDアルゴリズム</td>
+      <td>Julia</td>
+      <td>1.454210 秒</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Rust</td>
+      <td>1.251042 秒</td>
+    </tr>
+  </tbody>
+</table>
+
+もっと Rust と同等の性能を Julia で実現するにはどうすればよいか？
+
+---
+
+## Binary GCD Algorithm はさらに速くすることができる
+
+### Exercise
+
+- Binary GCD Algorithm をさらに高速化せよ (1.45 -> 1.07 seconds on Julia)
+
+#### Hint
+
+- Binary GCD Algorithm を Rust で実装し，実行時間を計測せよ
+- Rust の実装は Julia より速い場合，Rust の実行ファイルを読み込んで Julia の `@code_native` マクロが出力する機械語と比べよ
+- 命令数が少ないと実行速度が向上するので比較結果を Julia のコードにフィードバックせよ
+
+---
+
+## Answer
+
+- [Opus 4.5 generated this!](https://gist.github.com/terasakisatoshi/03b41d4cc068d3565eaf2e5dae99968b)
+
+
+Rust
+
+```sh
+Benchmark:
+Run 1: 1.05132725s  pi=3.141534239016629
+Run 2: 1.0358485s  pi=3.141534239016629
+Run 3: 1.034275125s  pi=3.141534239016629
+```
+
+Julia
+
+```sh
+$ julia src/main.jl
+Running tests...
+All tests passed!
+
+Benchmark:
+Run 1: 1.072994208s  pi=3.141534239016629
+Run 2: 1.07328325s  pi=3.141534239016629
+Run 3: 1.072947583s  pi=3.141534239016629
+```
+
+---
+
+## Another example
+
+What is the expected number of random numbers (generated uniformly) such that their sum of numbers exceeds one?
+
+Refer [this discussion on MathOverflow](https://mathoverflow.net/questions/141942/what-is-the-expected-number-of-random-numbers-generated-uniformly-such-that-their-sum-exceeds-one).
+
+### 練習問題
+
+数値計算のプログラムを書いてみよう．色々なプログラミング言語でトライしてみよう
+
+---
+
+## Answer (Julia)
+
+```julia
+function count_upto_one()
+    counter = 0
+    accumulated = 0.0
+    while true
+        accumulated += rand()
+        counter += 1
+        if accumulated >= 1.0
+            break
+        end
+    end
+    return counter
+end
+
+function main()
+    n_trial =1e8
+    total_count=0
+    for trial in 1:n_trial
+        total_count+=count_upto_one()
+    end
+    println(total_count/n_trial)
+end
+
+main()
+```
