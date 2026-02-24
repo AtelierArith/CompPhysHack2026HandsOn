@@ -1,5 +1,7 @@
 project:
   type: website
+  pre-render: scripts/update-last-modified.sh
+  post-render: scripts/restore-last-modified.sh
 
 website:
   title: "Introduction to Coding Agents"
