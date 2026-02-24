@@ -1,10 +1,10 @@
 # Software installation for Agentic coding
 
-この資料は [CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) のために作成された．
+This document was created for [CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/).
 
-人間は自然言語で作りたいものを指示し AI Agent はソースコードを生成・コマンドの実行を行う．このような AI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ. [Vibe coding](https://x.com/karpathy/status/1886192184808149383?s=20), [Agentic engineering](https://x.com/karpathy/status/2019137879310836075?s=20), [Agentic coding](https://cloud.google.com/discover/what-is-agentic-coding) などのような言い方も存在する．
+Humans give instructions in natural language for what they want to build, and AI agents generate source code and execute commands. This approach to development using AI is called AI-driven development. Similar terms include [Vibe coding](https://x.com/karpathy/status/1886192184808149383?s=20), [Agentic engineering](https://x.com/karpathy/status/2019137879310836075?s=20), and [Agentic coding](https://cloud.google.com/discover/what-is-agentic-coding).
 
-試すのは非常に簡単である．好きなプラットフォーマが提供している AI Agent をインストールし下記のプロンプトを試すとよい．
+Getting started is very easy. Install an AI agent from your preferred platform and try the prompts below.
 
 For Julia users:
 
@@ -18,42 +18,42 @@ For Rust users:
 I want to create a Rust crate for simulating and visualizing elastic collisions of multiple balls in 2D space.
 ```
 
-ここでは英語によるプロンプトを用いたが，日本語など，好きな自然言語で指示ができる．例えばこのような出力が期待できる．ソースコード生成には [Cursor](https://cursor.com/home) が提供している [Composer 1.5](https://cursor.com/blog/composer-1-5) モデルを用いた．
+We used English prompts here, but you can give instructions in any natural language such as Japanese. You can expect output similar to this example. The source code was generated using the [Composer 1.5](https://cursor.com/blog/composer-1-5) model from [Cursor](https://cursor.com/home).
 
 ![](./demo.gif)
 
-## どのツールを使うべきか
+## Which Tool Should You Use?
 
-- AI Agent は常に進化しているので答えはない．良いスタート地点はどのアカウントを持っているかによる．または近くの同僚・友達に聞いてみるとよい．
-    - ChatGPT を契約していれば [Codex](https://openai.com/codex/), [GPT-5.3-Codex](https://openai.com/index/introducing-gpt-5-3-codex/) を使ってみる
-    - Claude を契約していれば Claude Code: [Opus-4.6](https://www.anthropic.com/news/claude-opus-4-6) を使ってみる
-- とにかく無料で使いたい
+- There is no single answer since AI agents are constantly evolving. A good starting point depends on which accounts you have. You can also ask colleagues or friends nearby.
+    - If you have a ChatGPT subscription, try [Codex](https://openai.com/codex/) or [GPT-5.3-Codex](https://openai.com/index/introducing-gpt-5-3-codex/)
+    - If you have a Claude subscription, try Claude Code: [Opus-4.6](https://www.anthropic.com/news/claude-opus-4-6)
+- If you want to use something for free:
   - [GitHub Copilot](https://github.com/features/copilot)
     - [Gemini CLI](https://geminicli.com/)
-    - [Google Antigravity](https://antigravity.google/) を使う
-- どのサービスも使用上限が存在する. すべてはお金次第. [CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) 参加者が全日程を楽しむには何かしらの有料プランに加入する必要があるだろう．
+    - [Google Antigravity](https://antigravity.google/)
+- All services have usage limits. It all comes down to budget. Participants of [CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) will likely need some paid plan to fully enjoy the event.
 
-この資料を作成している筆者の場合，下記のような構成である．
+The author of this document uses the following setup:
 
 - Claude Code MAX `$200/$100`: Opus-4.6
-  - Coding を AI に任せている
+  - Delegates coding to AI
 - ChatGPT Plus plan `$20`: Codex: GPT-5.3
-  - Claude Code とは別の視点が欲しい
-- Cursor Pro plan `$20`: 日常のエディタとして Composer 1.5
-  - ソースコードの補完が得意. 統合ターミナルでのエラー出力を AI エージェントにシームレスに渡せるのがユーザ体験が良い
+  - Wants a different perspective from Claude Code
+- Cursor Pro plan `$20`: Daily editor with Composer 1.5
+  - Excels at code completion. Seamlessly passing integrated terminal error output to the AI agent provides a good user experience
 
 
-## Command Line Interface (CLI) ツールの導入
+## Installing Command Line Interface (CLI) Tools
 
-[CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) の参加者はある程度ソフトウェア開発経験があることを想定している．ここでは CLI ツールを経由して各種 AI エージェントをインストールしよう．
+Participants of [CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) are assumed to have some software development experience. Here we install various AI agents via CLI tools.
 
-### `npm` コマンドのインストール
+### Installing the `npm` Command
 
-[`npm`](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager) は Node.js のためのパッケージマネージャである. [Node.js](https://nodejs.org/en) は JavaScript ランタイムである. Codex CLI, Gemini CLI をインストールするにはこの手順が必要である．
+[`npm`](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager) is the package manager for Node.js. [Node.js](https://nodejs.org/en) is a JavaScript runtime. This step is required to install Codex CLI and Gemini CLI.
 
-- [Download Node.js](https://nodejs.org/en/download) の指示に従うこと．
+- Follow the instructions at [Download Node.js](https://nodejs.org/en/download).
 
-以下は各種 CLI ツールの導入について書いているが，全てを導入する必要はない．
+The following describes installation of various CLI tools; you do not need to install all of them.
 
 ### Codex CLI
 
@@ -64,7 +64,7 @@ $ npm i -g @openai/codex
 $ codex
 ```
 
-利用するには ChatGPT を契約しているアカウントが必要である．
+A ChatGPT subscription is required to use it.
 
 ### Gemini CLI
 
@@ -75,7 +75,7 @@ $ gemini
 
 See [https://github.com/google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) to learn more.
 
-利用するには Google アカウントが必要である．
+A Google account is required to use it.
 
 ### Claude Code
 
@@ -101,28 +101,28 @@ $ copilot
 
 See [https://github.com/github/copilot-cli](https://github.com/github/copilot-cli) to learn more.
 
-## AI 付属統合開発環境の導入
+## Installing AI-Enabled Integrated Development Environments
 
-VS Code または派生の Cursor, Google Antigravity を導入する．全て入れる必要はない．
+Install VS Code or its derivatives: Cursor or Google Antigravity. You do not need to install all of them.
 
 ### VS Code
 
-下記のリンク先の指示に従う
+Follow the instructions at the links below:
 
 - [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
 - [https://github.com/features/copilot](https://github.com/features/copilot)
 
 ### Cursor
 
-下記のリンク先の指示に従う
+Follow the instructions at the link below:
 
 [https://cursor.com/download](https://cursor.com/download)
 
-また `cursor-agent` で Cursor を CLI ツールとして利用できる．
+You can also use Cursor as a CLI tool with `cursor-agent`.
 
 ### Google Antigravity
 
-下記リンク先の指示に従う
+Follow the instructions at the link below:
 
 [https://antigravity.google/download](https://antigravity.google/download)
 
@@ -130,9 +130,9 @@ VS Code または派生の Cursor, Google Antigravity を導入する．全て�
 
 ### Julia
 
-Julia は科学技術計算が得意な汎用プログラミング言語である．
+Julia is a general-purpose programming language well-suited for scientific and technical computing.
 
-[Installing Julia](https://julialang.org/downloads/) の指示に従う.
+Follow the instructions at [Installing Julia](https://julialang.org/downloads/).
 
 macOS or Linux:
 
@@ -148,7 +148,7 @@ PS> winget install --name Julia --id 9NJNWW8PVKMN -e -s msstore
 
 ### Rust
 
-Rust はシステムプログラミング向けに開発されているが，科学技術計算でも注目されている．[Install Rust](https://rust-lang.org/tools/install/) の指示に従う．
+Rust was developed for systems programming but is also gaining attention in scientific computing. Follow the instructions at [Install Rust](https://rust-lang.org/tools/install/).
 
 macOS or Linux:
 
@@ -158,7 +158,7 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 See [this instructions](https://forge.rust-lang.org/infra/other-installation-methods.html) if you are using Windows.
 
-上記のコマンドで `cargo`, `rustc` のようなコマンドが使えるようになる．動作確認は次のとおり．
+The commands above will make `cargo`, `rustc`, and similar commands available. Verify the installation as follows:
 
 ```sh
 $ cargo new hello-world
@@ -173,10 +173,9 @@ Hello, world!
 
 ### Python
 
-Python はスクリプト言語として優秀であるが，パッケージマネージャが乱立しており多くの混乱をコミュニティに招いている．`uv` はそれに終止符を打つであろう．私はそのように願っている．`uv` は Python の高速なパッケージマネージャである．`uv` は Rust で実装されている．
+Python excels as a scripting language, but the proliferation of package managers has caused much confusion in the community. `uv` may put an end to that—at least, we hope so. `uv` is a fast Python package manager implemented in Rust.
 
-[Installing uv](https://docs.astral.sh/uv/getting-started/installation/
-) の指示に従う．
+Follow the instructions at [Installing uv](https://docs.astral.sh/uv/getting-started/installation/).
 
 macOS or Linux:
 
@@ -184,7 +183,7 @@ macOS or Linux:
 $ curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-動作確認
+Verify the installation:
 
 ```sh
 $ mkdir path/to/your-workspace
@@ -195,9 +194,9 @@ $ uv run python main.py
 
 ### Docker
 
-Claude Code や Codex はユーザからの許可をバイパスするオプションを備えている．たとえば `--allow-dangerously-skip-permissions`, `--yolo` といったオプションだ．このようなオプションは便利だが `rm -rf /` のような危険なコマンドの実行も許すことになる．このような状況を防ぐためにサンドボックス環境を使うのが望ましい．たとえば Docker が提供するコンテナはマウントするファイルを制限することで制限された範囲で AI Agent を行動させることが可能である．
+Claude Code and Codex offer options to bypass user permission prompts, such as `--allow-dangerously-skip-permissions` and `--yolo`. While convenient, these options can also allow execution of dangerous commands like `rm -rf /`. To prevent such situations, it is advisable to use a sandboxed environment. For example, Docker containers can restrict the scope of AI agent actions by limiting which files are mounted.
 
-OS に応じてインストールすること:
+Install according to your OS:
 
 - [Install Docker Desktop on Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
 - [Install Docker Desktop on Mac
@@ -205,7 +204,7 @@ OS に応じてインストールすること:
 - [Install Docker Desktop on Linux](https://docs.docker.com/desktop/setup/install/linux/)
 
 
-動作確認は下記のコマンドでできる:
+Verify the installation with the following command:
 
 ```sh
 $ docker run --rm hello-world
@@ -213,15 +212,15 @@ $ docker run --rm hello-world
 
 ### Dev Containers
 
-Docker を使って環境構築するには [Dockerfile](https://docs.docker.com/reference/dockerfile/) を作る必要がある．何もないところから構築するのは大変である．そこで Devcontainer が提供する [Development Container Features](https://github.com/devcontainers/features) を利用することで，`Feature` と呼ばれる自己完結した設定をブロックとして組み立てて環境構築することにする．これにより Docker コンテナ内部で Julia, Python, Rust などを自由に使うことができる．
+Building an environment with Docker requires creating a [Dockerfile](https://docs.docker.com/reference/dockerfile/). Building from scratch is tedious. Devcontainer's [Development Container Features](https://github.com/devcontainers/features) let you assemble self-contained configurations called "Features" as building blocks for your environment. This allows you to use Julia, Python, Rust, and more freely inside Docker containers.
 
-[Dev Container CLI](https://code.visualstudio.com/docs/devcontainers/devcontainer-cli) に従って下記のようにインストールする．
+Install as follows according to [Dev Container CLI](https://code.visualstudio.com/docs/devcontainers/devcontainer-cli):
 
 ```sh
 $ npm install -g @devcontainers/cli
 ```
 
-下記のコマンドで確かめることができる.
+You can verify with the following commands:
 
 ```sh
 $ git clone https://github.com/microsoft/vscode-remote-try-rust
@@ -237,11 +236,11 @@ Hello, VS Code Remote - Containers!
 ```
 # Software installation for Agentic coding
 
-この資料は [CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) のために作成された．
+This document was created for [CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/).
 
-人間は自然言語で作りたいものを指示し AI Agent はソースコードを生成・コマンドの実行を行う．このような AI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ. [Vibe coding](https://x.com/karpathy/status/1886192184808149383?s=20), [Agentic engineering](https://x.com/karpathy/status/2019137879310836075?s=20), [Agentic coding](https://cloud.google.com/discover/what-is-agentic-coding) などのような言い方も存在する．
+Humans give instructions in natural language for what they want to build, and AI agents generate source code and execute commands. This approach to development using AI is called AI-driven development. Similar terms include [Vibe coding](https://x.com/karpathy/status/1886192184808149383?s=20), [Agentic engineering](https://x.com/karpathy/status/2019137879310836075?s=20), and [Agentic coding](https://cloud.google.com/discover/what-is-agentic-coding).
 
-試すのは非常に簡単である．好きなプラットフォーマが提供している AI Agent をインストールし下記のプロンプトを試すとよい．
+Getting started is very easy. Install an AI agent from your preferred platform and try the prompts below.
 
 For Julia users:
 
@@ -255,42 +254,42 @@ For Rust users:
 I want to create a Rust crate for simulating and visualizing elastic collisions of multiple balls in 2D space.
 ```
 
-ここでは英語によるプロンプトを用いたが，日本語など，好きな自然言語で指示ができる．例えばこのような出力が期待できる．ソースコード生成には [Cursor](https://cursor.com/home) が提供している [Composer 1.5](https://cursor.com/blog/composer-1-5) モデルを用いた．
+We used English prompts here, but you can give instructions in any natural language such as Japanese. You can expect output similar to this example. The source code was generated using the [Composer 1.5](https://cursor.com/blog/composer-1-5) model from [Cursor](https://cursor.com/home).
 
 ![](./demo.gif)
 
-## どのツールを使うべきか
+## Which Tool Should You Use?
 
-- AI Agent は常に進化しているので答えはない．良いスタート地点はどのアカウントを持っているかによる．または近くの同僚・友達に聞いてみるとよい．
-    - ChatGPT を契約していれば [Codex](https://openai.com/codex/), [GPT-5.3-Codex](https://openai.com/index/introducing-gpt-5-3-codex/) を使ってみる
-    - Claude を契約していれば Claude Code: [Opus-4.6](https://www.anthropic.com/news/claude-opus-4-6) を使ってみる
-- とにかく無料で使いたい
+- There is no single answer since AI agents are constantly evolving. A good starting point depends on which accounts you have. You can also ask colleagues or friends nearby.
+    - If you have a ChatGPT subscription, try [Codex](https://openai.com/codex/) or [GPT-5.3-Codex](https://openai.com/index/introducing-gpt-5-3-codex/)
+    - If you have a Claude subscription, try Claude Code: [Opus-4.6](https://www.anthropic.com/news/claude-opus-4-6)
+- If you want to use something for free:
   - [GitHub Copilot](https://github.com/features/copilot)
     - [Gemini CLI](https://geminicli.com/)
-    - [Google Antigravity](https://antigravity.google/) を使う
-- どのサービスも使用上限が存在する. すべてはお金次第. [CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) 参加者が全日程を楽しむには何かしらの有料プランに加入する必要があるだろう．
+    - [Google Antigravity](https://antigravity.google/)
+- All services have usage limits. It all comes down to budget. Participants of [CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) will likely need some paid plan to fully enjoy the event.
 
-この資料を作成している筆者の場合，下記のような構成である．
+The author of this document uses the following setup:
 
 - Claude Code MAX `$200/$100`: Opus-4.6
-  - Coding を AI に任せている
+  - Delegates coding to AI
 - ChatGPT Plus plan `$20`: Codex: GPT-5.3
-  - Claude Code とは別の視点が欲しい
-- Cursor Pro plan `$20`: 日常のエディタとして Composer 1.5
-  - ソースコードの補完が得意. 統合ターミナルでのエラー出力を AI エージェントにシームレスに渡せるのがユーザ体験が良い
+  - Wants a different perspective from Claude Code
+- Cursor Pro plan `$20`: Daily editor with Composer 1.5
+  - Excels at code completion. Seamlessly passing integrated terminal error output to the AI agent provides a good user experience
 
 
-## Command Line Interface (CLI) ツールの導入
+## Installing Command Line Interface (CLI) Tools
 
-[CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) の参加者はある程度ソフトウェア開発経験があることを想定している．ここでは CLI ツールを経由して各種 AI エージェントをインストールしよう．
+Participants of [CompPhysHack 2026](https://qc-hybrid.github.io/CompPhysHack2026/) are assumed to have some software development experience. Here we install various AI agents via CLI tools.
 
-### `npm` コマンドのインストール
+### Installing the `npm` Command
 
-[`npm`](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager) は Node.js のためのパッケージマネージャである. [Node.js](https://nodejs.org/en) は JavaScript ランタイムである. Codex CLI, Gemini CLI をインストールするにはこの手順が必要である．
+[`npm`](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager) is the package manager for Node.js. [Node.js](https://nodejs.org/en) is a JavaScript runtime. This step is required to install Codex CLI and Gemini CLI.
 
-- [Download Node.js](https://nodejs.org/en/download) の指示に従うこと．
+- Follow the instructions at [Download Node.js](https://nodejs.org/en/download).
 
-以下は各種 CLI ツールの導入について書いているが，全てを導入する必要はない．
+The following describes installation of various CLI tools; you do not need to install all of them.
 
 ### Codex CLI
 
@@ -301,7 +300,7 @@ $ npm i -g @openai/codex
 $ codex
 ```
 
-利用するには ChatGPT を契約しているアカウントが必要である．
+A ChatGPT subscription is required to use it.
 
 ### Gemini CLI
 
@@ -312,7 +311,7 @@ $ gemini
 
 See [https://github.com/google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) to learn more.
 
-利用するには Google アカウントが必要である．
+A Google account is required to use it.
 
 ### Claude Code
 
@@ -338,56 +337,56 @@ $ copilot
 
 See [https://github.com/github/copilot-cli](https://github.com/github/copilot-cli) to learn more.
 
-## AI 付属統合開発環境の導入
+## Installing AI-Enabled Integrated Development Environments
 
-VS Code または派生の Cursor, Google Antigravity を導入する．全て入れる必要はない．
+Install VS Code or its derivatives: Cursor or Google Antigravity. You do not need to install all of them.
 
 ### VS Code
 
-下記のリンク先の指示に従う
+Follow the instructions at the links below:
 
 - [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
 - [https://github.com/features/copilot](https://github.com/features/copilot)
 
 ### Cursor
 
-下記のリンク先の指示に従う
+Follow the instructions at the link below:
 
 [https://cursor.com/download](https://cursor.com/download)
 
-また `cursor-agent` で Cursor を CLI ツールとして利用できる．
+You can also use Cursor as a CLI tool with `cursor-agent`.
 
 ### Google Antigravity
 
-下記リンク先の指示に従う
+Follow the instructions at the link below:
 
 [https://antigravity.google/download](https://antigravity.google/download)
 
 ## Software Installation
 
-ここでは現代的な一般的なソフトウェア開発(数値計算もこのカテゴリの中に入る)で有用な CLI ツールを導入する．
+Here we install CLI tools useful for modern general software development (including numerical computing).
 
 ### GitHub CLI (`gh`)
 
-多くの AI エージェントは `gh` コマンドを経由して GitHub にある Issue の作成，プルリクエストの作成を行う．これにより多くの面倒な作業を自動化することができる．
+Many AI agents use the `gh` command to create GitHub issues and pull requests. This automates many tedious tasks.
 
-インストールするには [https://cli.github.com/](https://cli.github.com/) にある説明を読むこと
+Read the instructions at [https://cli.github.com/](https://cli.github.com/) to install.
 
-macOS
+macOS:
 
 ```sh
 % brew install gh
 ```
 
-Linux ユーザは [Installing gh on Linux and BSD](https://github.com/cli/cli/blob/trunk/docs/install_linux.md) を参考に導入すること．
+Linux users should refer to [Installing gh on Linux and BSD](https://github.com/cli/cli/blob/trunk/docs/install_linux.md).
 
-Windows ユーザは [Installing gh on Windows](https://github.com/cli/cli/blob/trunk/docs/install_windows.md) を参考に導入すること．
+Windows users should refer to [Installing gh on Windows](https://github.com/cli/cli/blob/trunk/docs/install_windows.md).
 
 ### Julia (`julia`)
 
-Julia は科学技術計算が得意な汎用プログラミング言語である．
+Julia is a general-purpose programming language well-suited for scientific and technical computing.
 
-[Installing Julia](https://julialang.org/downloads/) の指示に従う.
+Follow the instructions at [Installing Julia](https://julialang.org/downloads/).
 
 macOS or Linux:
 
@@ -401,9 +400,9 @@ Windows:
 PS> winget install --name Julia --id 9NJNWW8PVKMN -e -s msstore
 ```
 
-### Rust(`cargo`, `rustc`)
+### Rust (`cargo`, `rustc`)
 
-Rust はシステムプログラミング向けに開発されているが，科学技術計算でも注目されている．[Install Rust](https://rust-lang.org/tools/install/) の指示に従う．
+Rust was developed for systems programming but is also gaining attention in scientific computing. Follow the instructions at [Install Rust](https://rust-lang.org/tools/install/).
 
 macOS or Linux:
 
@@ -413,7 +412,7 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 See [this instructions](https://forge.rust-lang.org/infra/other-installation-methods.html) if you are using Windows.
 
-上記のコマンドで `cargo`, `rustc` のようなコマンドが使えるようになる．動作確認は次のとおり．
+The commands above will make `cargo`, `rustc`, and similar commands available. Verify the installation as follows:
 
 ```sh
 $ cargo new hello-world
@@ -428,10 +427,9 @@ Hello, world!
 
 ### Python (`uv`)
 
-Python はスクリプト言語として優秀であるが，パッケージマネージャが乱立しており多くの混乱をコミュニティに招いている．`uv` はそれに終止符を打つであろう．私はそのように願っている．`uv` は Python の高速なパッケージマネージャである．`uv` は Rust で実装されている．
+Python excels as a scripting language, but the proliferation of package managers has caused much confusion in the community. `uv` may put an end to that—at least, we hope so. `uv` is a fast Python package manager implemented in Rust.
 
-[Installing uv](https://docs.astral.sh/uv/getting-started/installation/
-) の指示に従う．
+Follow the instructions at [Installing uv](https://docs.astral.sh/uv/getting-started/installation/).
 
 macOS or Linux:
 
@@ -439,7 +437,7 @@ macOS or Linux:
 $ curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-動作確認
+Verify the installation:
 
 ```sh
 $ mkdir path/to/your-workspace
@@ -450,9 +448,9 @@ $ uv run python main.py
 
 ### Docker (`docker`)
 
-Claude Code や Codex はユーザからの許可をバイパスするオプションを備えている．たとえば `--allow-dangerously-skip-permissions`, `--yolo` といったオプションだ．このようなオプションは便利だが `rm -rf /` のような危険なコマンドの実行も許すことになる．このような状況を防ぐためにサンドボックス環境を使うのが望ましい．たとえば Docker が提供するコンテナはマウントするファイルを制限することで制限された範囲で AI Agent を行動させることが可能である．
+Claude Code and Codex offer options to bypass user permission prompts, such as `--allow-dangerously-skip-permissions` and `--yolo`. While convenient, these options can also allow execution of dangerous commands like `rm -rf /`. To prevent such situations, it is advisable to use a sandboxed environment. For example, Docker containers can restrict the scope of AI agent actions by limiting which files are mounted.
 
-OS に応じてインストールすること:
+Install according to your OS:
 
 - [Install Docker Desktop on Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
 - [Install Docker Desktop on Mac
@@ -460,7 +458,7 @@ OS に応じてインストールすること:
 - [Install Docker Desktop on Linux](https://docs.docker.com/desktop/setup/install/linux/)
 
 
-動作確認は下記のコマンドでできる:
+Verify the installation with the following command:
 
 ```sh
 $ docker run --rm hello-world
@@ -468,15 +466,15 @@ $ docker run --rm hello-world
 
 ### Dev Containers (`devcontainer`)
 
-Docker を使って環境構築するには [Dockerfile](https://docs.docker.com/reference/dockerfile/) を作る必要がある．何もないところから構築するのは大変である．そこで Devcontainer が提供する [Development Container Features](https://github.com/devcontainers/features) を利用することで，`Feature` と呼ばれる自己完結した設定をブロックとして組み立てて環境構築することにする．これにより Docker コンテナ内部で Julia, Python, Rust などを自由に使うことができる．
+Building an environment with Docker requires creating a [Dockerfile](https://docs.docker.com/reference/dockerfile/). Building from scratch is tedious. Devcontainer's [Development Container Features](https://github.com/devcontainers/features) let you assemble self-contained configurations called "Features" as building blocks for your environment. This allows you to use Julia, Python, Rust, and more freely inside Docker containers.
 
-[Dev Container CLI](https://code.visualstudio.com/docs/devcontainers/devcontainer-cli) に従って下記のようにインストールする．
+Install as follows according to [Dev Container CLI](https://code.visualstudio.com/docs/devcontainers/devcontainer-cli):
 
 ```sh
 $ npm install -g @devcontainers/cli
 ```
 
-下記のコマンドで確かめることができる.
+You can verify with the following commands:
 
 ```sh
 $ git clone https://github.com/microsoft/vscode-remote-try-rust
@@ -493,7 +491,7 @@ Hello, VS Code Remote - Containers!
 
 ## Software Installation (Optional)
 
-下記はこの資料の作成者が使っているコマンドをインストールするための手順である．読まなくてよい．
+The following are installation steps for commands used by the author of this document. You may skip this section.
 
 ### `tig`
 
@@ -505,7 +503,7 @@ Text-mode interface for git
 
 ### `htop`
 
-リッチな `top` コマンド．CPU 利用率を目視で計測するために用いている．
+A richer alternative to the `top` command. Used for visually monitoring CPU usage.
 
 ```zsh
 % brew install htop
@@ -513,7 +511,7 @@ Text-mode interface for git
 
 ### `rg` command
 
-Codex ユーザは入れてもよいかもしれない．
+Codex users may find this useful.
 
 ```zsh
 % brew install ripgrep
@@ -521,7 +519,7 @@ Codex ユーザは入れてもよいかもしれない．
 
 ### `quarto`
 
-この資料をローカルで見たい場合には必要
+Required if you want to view this document locally.
 
 See [Welcome to Quarto](https://quarto.org/) to learn more.
 

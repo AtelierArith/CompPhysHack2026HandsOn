@@ -16,22 +16,22 @@ format:
 
 ## Overview
 
-- 自己紹介
-- AI を用いたソフトウェアの紹介
-- AI エージェントの導入
-- いくつかの題材をもとに演習
+- Self-introduction
+- Introduction to AI-powered software
+- Introduction to AI agents
+- Hands-on exercises with several topics
 
 ---
 
-## 自己紹介
+## Self-introduction
 
-- フリーランスソフトウェアエンジニア． 大学教員と科学計算の共同開発
+- Freelance software engineer. Collaborative development of scientific computing with university faculty
 - GitHub: `terasakisatoshi`
 - Organization: `AtelierArith`
 
-## 最近行ってること: Organizing SparseIR ecosystem
+## Recent work: Organizing SparseIR ecosystem
 
-- Hiroshi Shinaoka, Hitoshi Mori との共同開発
+- Collaborative development with Hiroshi Shinaoka and Hitoshi Mori
     - Porting SparseIR.jl v1.0 to C++: [libsparseir](https://github.com/SpM-lab/libsparseir) (C++)
     - Porting `libsparseir` to Rust: [sparse-ir-rs](https://github.com/SpM-lab/sparse-ir-rs)
     - [SparseIR.jl](https://github.com/SpM-lab/SparseIR.jl) v2.0 (Julia interface for sparse-ir-rs)
@@ -54,7 +54,7 @@ flowchart LR
 
 ---
 
-## 最近行ってること: tensor4all
+## Recent work: tensor4all
 
 - [tensor4all](https://github.com/tensor4all/tensor4all-rs): A Rust implementation of tensor networks
   - Porting [Strided.jl](https://github.com/Jutho/Strided.jl) to Rust [strided-rs](https://github.com/tensor4all/strided-rs)
@@ -62,7 +62,7 @@ flowchart LR
 
 ---
 
-## 最近行ってること: mVMC
+## Recent work: mVMC
 
 - Takahiro Misawa et al.
   - Porting C project [mVMC](https://github.com/issp-center-dev/mVMC) to Julia (WIP)
@@ -88,7 +88,7 @@ This project is still work in progress. It will be released in the future.
 
 ---
 
-## 最近行ってること: SubsetJuliaVM
+## Recent work: SubsetJuliaVM
 
 Let's run Julia on iPad and iPhone
 
@@ -96,7 +96,7 @@ Let's run Julia on iPad and iPhone
 
 ---
 
-## 最近行ってること: better-pluto-client
+## Recent work: better-pluto-client
 
 We can view pluto notebook on VS Code.
 
@@ -104,9 +104,9 @@ We can view pluto notebook on VS Code.
 
 ---
 
-## 最近行ってること: [RustCall.jl](https://github.com/AtelierArith/RustCall.jl)
+## Recent work: [RustCall.jl](https://github.com/AtelierArith/RustCall.jl)
 
-Julia から Rust を呼び出すことができるパッケージ．
+A package that allows calling Rust from Julia.
 
 ```julia
 using RustCall
@@ -126,11 +126,11 @@ add(10, 20)  # => 30
 
 ## Actually
 
-今まで紹介したソフトウェアは 9 割以上は AI を用いてコードを生成している．これは事実です．
+Over 90% of the software introduced so far was generated using AI. This is a fact.
 
-人間は自然言語で作りたいものを指示し AI Agent はソースコードを生成・コマンドの実行を行う．
+Humans give instructions in natural language for what they want to build, and AI agents generate source code and execute commands.
 
-AI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ
+This approach to development using AI is called AI-driven development.
 
 ![](assets/human-orders.png)
 
@@ -139,37 +139,37 @@ AI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ
 ![](assets/traditional-software-development.png)
 
 ::: {.fragment}
-本当ですか？
+Really?
 :::
 
 ::: {.fragment}
-あなたは全部真面目に取り組みましたか？
+Did you always take it seriously?
 :::
 
 ::: {.fragment}
-常に，いつも効率の良い開発方法を考えてましたか？
+Were you always thinking about efficient development methods?
 :::
 
 ---
 
-## 現実では
+## In reality
 
 ![](assets/human-suffering.png)
 
-- Git が使われていない．バージョン管理されてない
-- ドキュメントがない，または古い
-- 単体テストがない
-- コンパイルができない
-- 実行時エラーが起きる(セグメンテーションフォルトなど)
-- データセットの URL が 研究者個人の C ドライブ(変数のハードコーディング)
+- Git is not used. No version control
+- No documentation, or it's outdated
+- No unit tests
+- Code doesn't compile
+- Runtime errors occur (segmentation faults, etc.)
+- Dataset URLs point to a researcher's personal C: drive (hardcoded variables)
 
 ---
 
-## 人間と機械
+## Humans and machines
 
-- 人間は「創造」することができるが「疲れる」,「飽きる」,「固執する」
-  - 研究活動のような新しいアイデアを出す
-  - `git commit -m "update"` `git commit -m "fix"` を使いまくる
+- Humans can "create" but they "get tired," "get bored," and "get stuck"
+  - Coming up with new ideas like in research activities
+  - Overusing `git commit -m "update"` and `git commit -m "fix"`
 
 ::: {.fragment}
 ```{mermaid}
@@ -191,44 +191,44 @@ gitGraph
 :::
 
 ::: {.fragment}
-- 特定のプログラミング言語を使い続ける
-  - パッケージマネージャを使うなど現代的な開発手法を取り入れることが困難な環境を生む
+- Sticking to a specific programming language
+  - Creates environments where adopting modern practices like package managers is difficult
 :::
 
 ---
 
-## 人間と機械
+## Humans and machines
 
-- 人間は「創造」することができるが「疲れる」,「飽きる」,「固執する」
+- Humans can "create" but they "get tired," "get bored," and "get stuck"
 
 ::: {.fragment}
-親愛なる科学者の皆様，これから新しい数値計算ソフトウェアを書く場合は科学技術計算には Julia または Rust を使いましょう．
-これらは現代的なパッケージマネージメントシステムを備えており，共同で開発することを可能にします．
+Dear scientists, when writing new numerical computing software, use Julia or Rust for scientific computing.
+They have modern package management systems that enable collaborative development.
 :::
 
 ::: {.fragment}
-Julia は高級言語でありながら高速な実行をユーザに提供します．
-あなたが普段 Fortran を書くのであれば使うべきでしょう．
-ただし, 型不安定なコード, GC (ガベージコレクション) が頻発するケース, メモリアロケーションが発生するケースでは十分なパフォーマンスが発揮できません．
-多次元配列を扱うテンソルネットワークのパッケージはこの問題によく出会います．
+Julia provides fast execution while remaining a high-level language.
+You should use it if you typically write Fortran.
+However, type-unstable code, frequent GC (garbage collection), and memory allocation can prevent optimal performance.
+Tensor network packages that handle multidimensional arrays often encounter this issue.
 :::
 
 ::: {.fragment}
-Rust は高速に動作する静的言語です．
-C/C++ を書く人はこの言語に乗り換えることを検討するべきでしょう．
-Rust は人間が手動で書くのは学習コストがかかりますが，AI によるコード生成により開発体験が劇的に改善します．
+Rust is a fast static language.
+Those who write C/C++ should consider switching.
+Rust has a learning curve when written manually, but AI code generation dramatically improves the development experience.
 :::
 
 ::: {.fragment}
-テンソルネットワークに関するエコシステム tensor4all-rs は科学技術計算のために Rust を採用した非常に良い例を目指しています．
+The tensor4all-rs ecosystem for tensor networks aims to be an excellent example of adopting Rust for scientific computing.
 :::
 
 ---
 
-## 人間と機械
+## Humans and machines
 
-- 機械は「飽きない」,「疲れない」,「モデルが成長」
-  - コードの差分から適切なコミット・プリクエストの概要を作成
+- Machines "don't get bored," "don't get tired," and "models improve"
+  - Generate appropriate commit and pull request summaries from code diffs
 
 ```{mermaid}
 gitGraph
@@ -253,114 +253,114 @@ gitGraph
 
 ---
 
-## 人間と機械
+## Humans and machines
 
-- 機械は「飽きない」,「疲れない」,「モデルが成長」
-- いつでも動作をする
-    - 様々な言語を使える．移植も得意:
+- Machines "don't get bored," "don't get tired," and "models improve"
+- Work anytime
+    - Can use various languages. Good at porting:
     - `Julia -> C++`, `C++ -> Rust`, `C -> Julia`
     - `TypeScript, Swift, Flutter/Dart`
 
-- 要請に応じて変更が可能．現代的な言語にマイグレーションが可能
-- 人間からの適切な指示が必要
+- Can adapt to requests. Migration to modern languages is possible
+- Requires appropriate instructions from humans
 
 ---
 
-## コーディングエージェントの登場
+## The rise of coding agents
 
-人工知能・生成 AI の発展により
-コーディングエージェント・AI エージェントは人間が指示を与えたら目標を達成するために下記の行動をすることが可能になった:
+With advances in AI and generative AI,
+coding agents and AI agents can now take the following actions to achieve goals when given human instructions:
 
 ![](assets/human-and-ai.png)
 
 ---
 
-## 人間は不要か？(No)
+## Are humans unnecessary? (No)
 
-- LLM は多くの知識を持っているが，研究者のように最先端の知識を持っているとは限らない．何を実装するか，しないかは人間の能力に左右される．
-- ソフトウェアエンジニアはコーディングする時間から解放されるが，どのような技術をどの場面で使うか，高品質なソフトウェアを作成・維持するためのアーキテクチャを考える・意思決定をする上位の能力が求められるようになる．コーディング以外に研究者と議論するための最低限のドメイン知識も求められるようになる．
-
----
-
-## 人間は不要か？(No)
-
-- AI がコードを書いてもサボるケースがある
-  - プレースホルダーだけ書いて満足する
-  - 汎用な実装が求められるケースで特殊なケースだけを想定したケースでのみ実装してしまう．
-- ベストプラクティスな実装とは限らない．
-  - Julia だと多重ディスパッチを使わない，export を多用する
-  - Rust だと `.clone()` の多用をする．パフォーマンスの劣化
-- 最低限のコードの実行方法，コーディングの知識，プログラミング言語の知識は必要．
+- LLMs have much knowledge but may not have cutting-edge knowledge like researchers. What to implement or not depends on human judgment.
+- Software engineers are freed from coding time but need higher-level skills: choosing which technologies to use when, designing architecture for high-quality software, and making decisions. Minimal domain knowledge to discuss with researchers is also required.
 
 ---
 
-## ソフトウェアエンジニアは不要か？
+## Are humans unnecessary? (No)
 
-- AI が発達することで研究者は不要になるというぐらい過激な主張
-- AI の導入によって言語の学習コスト・細かい文法・コーディングスタイルのような局所的な議論から解放される．
-- 「ユーザにとって体験が良いソフトウェアをどのように設計するか」，「状況・目的に応じてどのような技術，プログラミング言語を選択すべきか」「高品質なソフトウェアをどのように維持するべきか」といったアーキテクチャレベルの設計・大域的な議論に集中することができる．
-何を実装するか実装すべきでないかは人間の判断に大きく判断される．
-- Visual profiler を用いたボトルネックの調査は AI による完全自動化は難しい．そのようはワークフローはまだ存在する．
-  - ミリ秒, マイクロ秒, ナノ秒レベルの最適化をする仕事は人間の直感が大事．需要はまだあると思う
-
----
-
-## ソフトウェアエンジニアは不要か？
-
-- ドメイン知識を身についけることが大事，物理学者とコミュニケーションする程度の物理学の知識
-- Rust で書かれたコードは Web Assembly の技術で Web で実行することができる．数値計算のデモを Web で公開・メンテナンスをする仕事は出てくる．
+- AI can slack off when writing code
+  - Satisfied with writing only placeholders
+  - Implements only special cases when a general implementation is needed
+- Not always best-practice implementation
+  - In Julia: doesn't use multiple dispatch, overuses export
+  - In Rust: overuses `.clone()`, degrading performance
+- Minimal knowledge of how to run code, coding, and programming languages is necessary.
 
 ---
 
-## ソフトウェアエンジニアは不要か？
+## Are software engineers unnecessary?
 
-- 研究者は忙しくなる．今までできなかったけれど，やりたかったことができるようになる．それに応じて仕事も増えてくるはず．
-- 研究者は暇にならない．ある研究者は `Claude Code MAX $200` を契約し，AI をフル活用したせいで目眩を引き起こした．
-  - 私は `$100` プランまでダウングレードすることを推奨した．ジョークのようで本当の話
-
----
-
-## ソフトウェアエンジニアは不要か？
-
-- 仕事がなくなるときはある種の情熱がなくなるときだと思う．
+- An extreme claim: AI development could make researchers unnecessary
+- AI adoption frees us from local concerns like language learning cost, fine grammar, and coding style
+- We can focus on architecture-level design and global discussions: "How to design software with good user experience," "Which technologies and languages to choose for each situation," "How to maintain high-quality software"
+- What to implement or not is largely determined by human judgment
+- Bottleneck investigation with visual profilers is difficult to fully automate with AI. Such workflows still exist
+  - Optimization at millisecond, microsecond, nanosecond levels relies on human intuition. Demand remains
 
 ---
 
-## デモを行います
+## Are software engineers unnecessary?
 
-Cursor を用いたコーディングの方法を紹介する．
-
-代替として Antigravity, Claude Code, Codex を使うこともできる．
-
----
-
-## どのツールを使うべきか
-
-- AI Agent は常に進化しているので答えはない．
-- どのアカウントを持っているかによる．
-    - ChatGPT を契約していれば Codex, GPT-5.3 を使ってみる
-    - Claude を契約していれば Claude Code: Opus-4.6 を使ってみる
-- 無料で使いたい
-    - Google が出している Antigravity を使う
-- どのサービスも使用上限が存在する．すべてはお金次第．
+- Gaining domain knowledge is important—physics knowledge sufficient to communicate with physicists
+- Rust code can run on the web via WebAssembly. Work will emerge for publishing and maintaining numerical computing demos on the web
 
 ---
 
-## どのツールを使うべきか(as for me)
+## Are software engineers unnecessary?
+
+- Researchers will get busier. They can do what they couldn't before but wanted to. Work will increase accordingly
+- Researchers won't be idle. One researcher subscribed to `Claude Code MAX $200` and got dizzy from full AI usage
+  - I recommended downgrading to the `$100` plan. Sounds like a joke but it's true
+
+---
+
+## Are software engineers unnecessary?
+
+- Jobs disappear when a certain passion disappears.
+
+---
+
+## Demo
+
+Introducing coding with Cursor.
+
+Alternatives: Antigravity, Claude Code, Codex.
+
+---
+
+## Which tool should you use?
+
+- There is no single answer since AI agents are constantly evolving
+- Depends on which accounts you have
+    - If you have ChatGPT: try Codex, GPT-5.3
+    - If you have Claude: try Claude Code: Opus-4.6
+- Want to use for free
+    - Use Google's Antigravity
+- All services have usage limits. It all comes down to budget
+
+---
+
+## Which tool should you use? (as for me)
 
 - Claude Code MAX `$200/$100`: Opus-4.6
 - ChatGPT Plus plan: Codex: GPT-5.3
-- Cursor Pro: 日常のエディタとして Composer 1.5
+- Cursor Pro: Daily editor with Composer 1.5
 
 ---
 
-## 必要な CLI ツール
+## Required CLI tools
 
-- `git`, `gh`: Git/GitHub を操作する
+- `git`, `gh`: Operate Git/GitHub
 - `uv`: Python package manager
-- `npm`, `node`: コーディングエージェントのインストール
-- `juliaup`, `julia`: Julia のコードを実行するために必要
-- `rustup`, `rustc`, `cargo`: Rust のコードをビルド・実行に必要
+- `npm`, `node`: Installing coding agents
+- `juliaup`, `julia`: Required to run Julia code
+- `rustup`, `rustc`, `cargo`: Required to build and run Rust code
 
 Optional:
 
@@ -373,44 +373,44 @@ Optional:
 
 ---
 
-## インストール
+## Installation
 
-TODO [01-preparation.qmd](../handouts/preparation/preparation.qmd) に記述する
+TODO: See [01-preparation.qmd](../handouts/preparation/preparation.qmd)
 
 ---
 
-## インストール
+## Installation
 
-下記リンクに移動し
+Go to the link below:
 
 - https://cursor.com/download
-- VS Code ユーザは extension をマイグレートできる．
+- VS Code users can migrate extensions
 
 ---
 
 ## Math Quiz
 
-二つのの正の整数 $a$, $b$ が与えられた時，最大公約数 $\gcd(a,b)$ が 1 になる確率はどれくらい？
+Given two positive integers $a$ and $b$, what is the probability that their greatest common divisor $\gcd(a,b)$ equals 1?
 
 ::: {.fragment}
-正解は
+The answer is
 
 $$
 \frac{1}{\zeta(2)} = \frac{6}{\pi^2} \approx 0.6079271018540267
 $$
 
-ここで，$\zeta$ はリーマン・ゼータ関数である．
+where $\zeta$ is the Riemann zeta function.
 
 $$
 \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}= \prod_{p: \mathrm{primes} } \left(\frac{1}{1 - p^{-s}}  \right) \mathrm{}
 $$
 
-ここで，2番目の等式は Euler product によるものである．
+The second equality is due to the Euler product.
 :::
 
 ---
 
-## 証明
+## Proof
 
 $$
 \begin{aligned}
@@ -429,13 +429,13 @@ $$
 
 ## Application (JS implementation)
 
-先ほどの証明から次を得る:
+From the proof above we obtain:
 
 $$
 \pi = \sqrt{\frac{6}{\mathrm{Prob}(\gcd(a, b)=1)}}
 $$
 
-数値計算で確かめてみよう
+Let's verify with numerical computation
 
 ```js
 // Function to approximate pi
@@ -520,12 +520,12 @@ pi: 3.141534239016629
 
 ## Exercise
 
-先ほどの JavaScript のコードを Julia, Rust に移植してください．
-`N=10000` の時の実行時間を計測してください．
+Port the JavaScript code above to Julia and Rust.
+Measure the execution time when `N=10000`.
 
 #### Hint
 
-下記のプロンプトを使う
+Use the following prompts:
 
 > Port `approx_pi_gcd.js` to Julia and save the result as approx_pi_gcd.jl
 
@@ -756,22 +756,22 @@ pi: 3.141534239016629
 
 ---
 
-## Julia が速くなった?!
+## Julia got faster?!
 
-`1.865392 seconds -> 1.454210 seconds` となる理由は？
+Why did it go from `1.865392 seconds` to `1.454210 seconds`?
 
-Julia が提供する `gcd` 関数はユークリッド互除法とは異なるアルゴリズムを用いているからである．
+Because Julia's `gcd` function uses a different algorithm than the Euclidean algorithm.
 
 ## Exercise
 
-- Julia のリポジトリをクローンしてコーディングエージェントに `gcd` 関数がどのようになっているかを答えさせよ．
+- Clone the Julia repository and have the coding agent explain how the `gcd` function works
 
-- 採用しているアルゴリズムは何かを答えさせよ．
-- 先ほど JavaScript から Rust に移植したコードで `mygcd` の代わりに Julia が実装している `gcd` 関数を移植させよ．
+- Have it answer what algorithm is used
+- Have it port Julia's `gcd` implementation to replace `mygcd` in the code we ported from JavaScript to Rust
 
 #### Hint
 
-- `git clone --depth 1 <url>` ですばやくクローンができる(shallow clone). Use the following prompt:
+- `git clone --depth 1 <url>` enables fast cloning (shallow clone). Use the following prompt:
 
 > `Read the Julia code and answer how the gcd function is defined. Read @julia`
 
@@ -1410,65 +1410,65 @@ pi: 3.141534239016629
 
 ---
 
-ここにこれまでの計測結果をまとめる
+Summary of measurement results so far
 
 <table>
   <thead>
     <tr>
-      <th>アルゴリズム</th>
-      <th>言語</th>
-      <th>実行時間</th>
+      <th>Algorithm</th>
+      <th>Language</th>
+      <th>Execution time</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>ユークリッド互除法</td>
+      <td>Euclidean algorithm</td>
       <td>JavaScript</td>
-      <td>2.175 秒</td>
+      <td>2.175 s</td>
     </tr>
     <tr>
       <td></td>
       <td>Julia</td>
-      <td>1.865392 秒</td>
+      <td>1.865392 s</td>
     </tr>
     <tr>
       <td></td>
       <td>Rust</td>
-      <td>1.754083 秒</td>
+      <td>1.754083 s</td>
     </tr>
     <tr>
       <td></td>
       <td>C</td>
-      <td>1.753796 秒</td>
+      <td>1.753796 s</td>
     </tr>
     <tr>
-      <td>バイナリGCDアルゴリズム</td>
+      <td>Binary GCD algorithm</td>
       <td>Julia</td>
-      <td>1.454210 秒</td>
+      <td>1.454210 s</td>
     </tr>
     <tr>
       <td></td>
       <td>Rust</td>
-      <td>1.251042 秒</td>
+      <td>1.251042 s</td>
     </tr>
   </tbody>
 </table>
 
-もっと Rust と同等の性能を Julia で実現するにはどうすればよいか？
+How can we achieve Rust-equivalent performance in Julia?
 
 ---
 
-## Binary GCD Algorithm はさらに速くすることができる
+## The Binary GCD Algorithm can be made even faster
 
 ### Exercise
 
-- Binary GCD Algorithm をさらに高速化せよ (1.45 -> 1.07 seconds on Julia)
+- Further optimize the Binary GCD Algorithm (1.45 -> 1.07 seconds on Julia)
 
 #### Hint
 
-- Binary GCD Algorithm を Rust で実装し，実行時間を計測せよ
-- Rust の実装は Julia より速い場合，Rust の実行ファイルを読み込んで Julia の `@code_native` マクロが出力する機械語と比べよ
-- 命令数が少ないと実行速度が向上するので比較結果を Julia のコードにフィードバックせよ
+- Implement the Binary GCD Algorithm in Rust and measure execution time
+- If the Rust implementation is faster than Julia, compare the Rust binary with the assembly output from Julia's `@code_native` macro
+- Fewer instructions improve execution speed; feed the comparison results back into the Julia code
 
 ---
 
@@ -1507,9 +1507,9 @@ What is the expected number of random numbers (generated uniformly) such that th
 
 Refer [this discussion on MathOverflow](https://mathoverflow.net/questions/141942/what-is-the-expected-number-of-random-numbers-generated-uniformly-such-that-their-sum-exceeds-one).
 
-### 練習問題
+### Exercise
 
-数値計算のプログラムを書いてみよう．色々なプログラミング言語でトライしてみよう
+Write a numerical computing program. Try it in various programming languages
 
 ---
 
