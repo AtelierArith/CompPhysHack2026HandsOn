@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/slides/slide-ja.html</loc>
-    <lastmod>2026-02-24T01:34:36.770Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/handouts/elastic-collisions/julia/elastic-balls-codex-gpt-5.3/docs/plans/2026-02-09-elastic-balls-2d-design.html</loc>
-    <lastmod>2026-02-24T01:34:36.736Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/handouts/elastic-collisions/julia/elastic-balls-claude-sonnet-4.6/docs/plans/2026-02-18-elastic-balls-2d.html</loc>
-    <lastmod>2026-02-24T01:34:36.735Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/handouts/elastic-collisions/rust/elastic-balls-2d-claude-opus-4.6/plans/cached-popping-cake.html</loc>
-    <lastmod>2026-02-24T01:34:36.737Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/handouts/preparation/preparation-ja.html</loc>
-    <lastmod>2026-02-24T01:34:36.748Z</lastmod>
+    <lastmod>2026-02-24T01:17:19.767Z</lastmod>
   </url>
   <url>
     <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/index.html</loc>
-    <lastmod>2026-02-24T01:34:36.749Z</lastmod>
+    <lastmod>2026-02-24T04:15:29.188Z</lastmod>
   </url>
   <url>
     <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/handouts/preparation/preparation.html</loc>
-    <lastmod>2026-02-24T01:34:36.748Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/handouts/elastic-collisions/rust/elastic-balls-2d-gemini-3-pro-high/PLAN.html</loc>
-    <lastmod>2026-02-24T01:34:36.738Z</lastmod>
+    <lastmod>2026-02-24T01:41:12.638Z</lastmod>
   </url>
   <url>
     <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/handouts/elastic-collisions/julia/elastic-balls-codex-gpt-5.3/docs/plans/2026-02-09-elastic-balls-2d.html</loc>
-    <lastmod>2026-02-24T01:34:36.736Z</lastmod>
+    <lastmod>2026-02-24T01:17:19.681Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/handouts/elastic-collisions/rust/elastic-balls-2d-gemini-3-pro-high/PLAN.html</loc>
+    <lastmod>2026-02-24T01:17:19.685Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/handouts/elastic-collisions/rust/elastic-balls-2d-claude-opus-4.6/plans/cached-popping-cake.html</loc>
+    <lastmod>2026-02-24T01:17:19.684Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/handouts/elastic-collisions/julia/elastic-balls-claude-sonnet-4.6/docs/plans/2026-02-18-elastic-balls-2d.html</loc>
+    <lastmod>2026-02-24T01:17:19.680Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/handouts/elastic-collisions/julia/elastic-balls-codex-gpt-5.3/docs/plans/2026-02-09-elastic-balls-2d-design.html</loc>
+    <lastmod>2026-02-24T01:17:19.681Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/handouts/preparation/preparation-ja.html</loc>
+    <lastmod>2026-02-24T01:41:02.596Z</lastmod>
   </url>
   <url>
     <loc>https://AtelierArith.github.io/CompPhysHack2026HandsOn/slides/slide.html</loc>
-    <lastmod>2026-02-24T01:34:36.771Z</lastmod>
+    <lastmod>2026-02-24T01:17:19.768Z</lastmod>
   </url>
 </urlset>
