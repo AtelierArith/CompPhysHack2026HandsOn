@@ -19,3 +19,6 @@ With advances in artificial intelligence and large language models, coding agent
 
 This website is built with [Quarto](https://quarto.org/).
 It may be used freely for educational and research purposes.
+
+Last modified: __LAST_MODIFIED__
+
