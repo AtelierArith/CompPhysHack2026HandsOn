@@ -1,0 +1,1 @@
+Sitemap: https://AtelierArith.github.io/CompPhysHack2026HandsOn/sitemap.xml
