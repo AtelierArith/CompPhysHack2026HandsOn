@@ -25,9 +25,10 @@ format:
 
 ## Self-introduction
 
-- Freelance software engineer. Collaborative development of scientific computing with university faculty
-- GitHub: `terasakisatoshi`
-- Organization: `AtelierArith`
+- Freelance software engineer. 
+  - Collaborative development of scientific computing with university faculty
+- GitHub: [terasakisatoshi](https://github.com/terasakisatoshi)
+- Organization: [AtelierArith](https://github.com/AtelierArith)
 
 ## Recent work: Organizing SparseIR ecosystem
 

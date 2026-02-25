@@ -25,9 +25,11 @@ format:
 
 ## 自己紹介
 
-- フリーランスソフトウェアエンジニア． 大学教員と科学計算の共同開発
-- GitHub: `terasakisatoshi`
-- Organization: `AtelierArith`
+- フリーランスソフトウェアエンジニア． 
+  - 大学教員と科学計算の共同開発を行っている．
+- GitHub: [terasakisatoshi](https://github.com/terasakisatoshi)
+- Organization: [AtelierArith](https://github.com/AtelierArith)
+  - 自分が作成した Julia パッケージを公開している.
 
 ## 最近行ってること: Organizing SparseIR ecosystem
 
