@@ -15,10 +15,20 @@ With advances in artificial intelligence and large language models, coding agent
 - [Preparation](handouts/preparation/preparation.qmd)
 - [Slide](slides/slide.qmd)
 
-## Other
+## Appendix
 
 This website is built with [Quarto](https://quarto.org/).
-It may be used freely for educational and research purposes.
+This website may be used freely for educational and research purposes.
+
+### How to view the website locally
+
+Download Quarto from [here](https://quarto.org/docs/download/) to use the `quarto` command. Then, just run:
+
+```sh
+$ git clone https://github.com/AtelierArith/CompPhysHack2026HandsOn.git
+$ cd CompPhysHack2026HandsOn
+$ quarto preview
+```
 
 Last modified: __LAST_MODIFIED__
 
