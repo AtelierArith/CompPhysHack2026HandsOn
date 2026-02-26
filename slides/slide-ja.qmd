@@ -33,7 +33,7 @@ format:
 
 ## 最近行ってること: Organizing SparseIR ecosystem
 
-- Hiroshi Shinaoka, Hitoshi Mori との共同開発
+- Hiroshi Shinaoka, Hitoshi Mori, Markus Wallerberger との共同開発
     - Porting SparseIR.jl v1.0 to C++: [libsparseir](https://github.com/SpM-lab/libsparseir) (C++)
     - Porting `libsparseir` to Rust: [sparse-ir-rs](https://github.com/SpM-lab/sparse-ir-rs)
     - [SparseIR.jl](https://github.com/SpM-lab/SparseIR.jl) v2.0 (Julia interface for sparse-ir-rs)
