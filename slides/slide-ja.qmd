@@ -422,7 +422,7 @@ TODO [preparation.qmd](../handouts/preparation/preparation.qmd) に記述する
 
 ## Cursor UI
 
-TODO ここに Cursor のUIを貼る
+![](assets/cursor_ui.png)
 
 ---
 
