@@ -281,6 +281,14 @@ Codex users may find this useful.
 % brew install ripgrep
 ```
 
+### `tmux`
+
+`tmux` is a tool for splitting terminal windows.
+
+```zsh
+% brew install tmux
+```
+
 ### `quarto`
 
 Required if you want to view this document locally.

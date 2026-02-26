@@ -282,6 +282,14 @@ Codex ユーザは入れてもよいかもしれない．
 % brew install ripgrep
 ```
 
+### `tmux`
+
+tmux はターミナルの分割を行うツールである．
+
+```zsh
+% brew install tmux
+```
+
 ### `quarto`
 
 この資料をローカルで見たい場合には必要
