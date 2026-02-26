@@ -31,6 +31,14 @@ format:
 - Organization: [AtelierArith](https://github.com/AtelierArith)
   - 自分が作成した Julia パッケージを公開している.
 
+## Actually
+
+これから紹介するソフトウェアは AI を活用しています．
+私が担当した 9 割の実装は AI によって生成したものです．これは事実です．
+私は Julia のような動的な言語が好きで，コンパイルする言語は苦手でした．
+AI のおかげで Julia 以外のプログラミング言語を活用し多くのソフトウェアを高速に開発することができるようになりました．
+
+
 ## 最近行ってること: Organizing SparseIR ecosystem
 
 - Hiroshi Shinaoka, Hitoshi Mori, Markus Wallerberger との共同開発
@@ -56,15 +64,18 @@ flowchart LR
 
 ---
 
-## 最近行ってること: tensor4all
+## 最近行ってること: `tensor4all` メンバーとの開発
 
-- [tensor4all](https://github.com/tensor4all/tensor4all-rs): A Rust implementation of tensor networks
-  - Porting [Strided.jl](https://github.com/Jutho/Strided.jl) to Rust [strided-rs](https://github.com/tensor4all/strided-rs)
+- [tensor4all-rs](https://github.com/tensor4all/tensor4all-rs): A Rust implementation of tensor networks
+  - Porting [Jutho/Strided.jl](https://github.com/Jutho/Strided.jl) to Rust [strided-rs](https://github.com/tensor4all/strided-rs)
   - [strided-rs-benchmark-suite](https://github.com/tensor4all/strided-rs-benchmark-suite)
+
+- [tenferro-rs](https://github.com/tensor4all/tenferro-rs)
+  - A general-purpose tensor computation library in Rust with CPU/GPU support.
 
 ---
 
-## 最近行ってること: mVMC
+## 最近行ってること: `mVMC`
 
 - Takahiro Misawa et al.
   - Porting C project [mVMC](https://github.com/issp-center-dev/mVMC) to Julia (WIP)
@@ -98,17 +109,9 @@ Let's run Julia on iPad and iPhone
 
 ---
 
-## 最近行ってること: better-pluto-client
-
-We can view pluto notebook on VS Code.
-
-![](assets/better-pluto-client.png)
-
----
-
 ## 最近行ってること: [RustCall.jl](https://github.com/AtelierArith/RustCall.jl)
 
-Julia から Rust を呼び出すことができるパッケージ．
+Julia から Rust を呼び出すことができるパッケージ．Cxx.jl の設計を参考にした．
 
 ```julia
 using RustCall
@@ -126,9 +129,17 @@ add(10, 20)  # => 30
 
 ---
 
-## Actually
+## 最近行ってること: better-pluto-client
 
-今まで紹介したソフトウェアは 9 割以上は AI を用いてコードを生成している．これは事実です．
+We can view Pluto notebook on VS Code.
+
+![](assets/better-pluto-client.png)
+
+---
+
+## AI Driven Development
+
+AI のおかげで Julia 以外のプログラミング言語を活用し多くのソフトウェアを高速に開発することができるようになりました．
 
 人間は自然言語で作りたいものを指示し AI Agent はソースコードを生成・コマンドの実行を行う．
 
@@ -140,9 +151,6 @@ AI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ
 
 ![](assets/traditional-software-development.png)
 
-::: {.fragment}
-本当ですか？
-:::
 
 ::: {.fragment}
 あなたは全部真面目に取り組みましたか？
@@ -152,18 +160,39 @@ AI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ
 常に，いつも効率の良い開発方法を考えてましたか？
 :::
 
+::: {.fragment}
+本当ですか？(特にテストを書くこと，ドキュメントを書くこと)
+:::
+
 ---
 
 ## 現実では
 
 ![](assets/human-suffering.png)
 
-- Git が使われていない．バージョン管理されてない
-- ドキュメントがない，または古い
-- 単体テストがない
-- コンパイルができない
-- 実行時エラーが起きる(セグメンテーションフォルトなど)
-- データセットの URL が 研究者個人の C ドライブ(変数のハードコーディング)
+::: {.fragment}
+ソースコードはどこですか？ (Git が使われていない．バージョン管理されてない)
+:::
+
+::: {.fragment}
+ドキュメントがない，または古い
+:::
+
+::: {.fragment}
+コンパイルができない
+:::
+
+::: {.fragment}
+単体テストがない
+:::
+
+::: {.fragment}
+実行時エラーが起きる(セグメンテーションフォルトなど)
+:::
+
+:::{.fragment}
+データセットの URL が 研究者個人の C ドライブ(変数のハードコーディング)
+:::
 
 ---
 
@@ -205,7 +234,7 @@ gitGraph
 
 ::: {.fragment}
 親愛なる科学者の皆様，これから新しい数値計算ソフトウェアを書く場合は科学技術計算には Julia または Rust を使いましょう．
-これらは現代的なパッケージマネージメントシステムを備えており，共同で開発することを可能にします．
+これらは現代的なパッケージマネージメントシステムを備えており，他の人と共同で開発することを可能にします．
 :::
 
 ::: {.fragment}
@@ -224,6 +253,15 @@ Rust は人間が手動で書くのは学習コストがかかりますが，AI 
 ::: {.fragment}
 テンソルネットワークに関するエコシステム tensor4all-rs は科学技術計算のために Rust を採用した非常に良い例を目指しています．
 :::
+
+---
+
+## コーディングエージェントの登場
+
+人工知能・生成 AI の発展により
+コーディングエージェント・AI エージェントは人間が指示を与えたら目標を達成するために下記の行動をすることが可能になった:
+
+![](assets/human-and-ai.png)
 
 ---
 
@@ -265,15 +303,6 @@ gitGraph
 
 - 要請に応じて変更が可能．現代的な言語にマイグレーションが可能
 - 人間からの適切な指示が必要
-
----
-
-## コーディングエージェントの登場
-
-人工知能・生成 AI の発展により
-コーディングエージェント・AI エージェントは人間が指示を与えたら目標を達成するために下記の行動をすることが可能になった:
-
-![](assets/human-and-ai.png)
 
 ---
 
@@ -366,6 +395,7 @@ Cursor を用いたコーディングの方法を紹介する．
 
 Optional:
 
+- `tmux`
 - `docker`
 - `devcontainer`
 - `rg`
@@ -377,16 +407,22 @@ Optional:
 
 ## インストール
 
-TODO [01-preparation.qmd](../handouts/preparation/preparation.qmd) に記述する
+TODO [preparation.qmd](../handouts/preparation/preparation.qmd) に記述する
 
 ---
 
-## インストール
+## インストール(Cursor)
 
 下記リンクに移動し
 
 - https://cursor.com/download
 - VS Code ユーザは extension をマイグレートできる．
+
+---
+
+## Cursor UI
+
+TODO ここに Cursor のUIを貼る
 
 ---
 
@@ -464,7 +500,7 @@ function calcPi(N) {
 
 ## Application (JS implementation)
 
-Let's calculate the $\pi \approx 3.14...$ from GCD function:
+最大公約数を利用して $\pi \approx 3.14...$ を計算しよう:
 
 ```js
 // approx_pi_gcd.js
