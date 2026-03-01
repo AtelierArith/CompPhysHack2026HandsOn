@@ -55,11 +55,13 @@ flowchart LR
 
   CAPI[C-API]
   Sparseir[sparse-ir-rs]
+  Xprec[xprec-rs]
 
   Julia --> CAPI
   Python --> CAPI
   Fortran --> CAPI
   CAPI --> Sparseir
+  Sparseir --> Xprec
 ```
 
 ---
