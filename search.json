@@ -14,18 +14,25 @@
     "text": "自己紹介\n\nフリーランスソフトウェアエンジニア．\n\n大学教員と科学計算の共同開発を行っている．\n\nGitHub: terasakisatoshi\nOrganization: AtelierArith\n\n自分が作成した Julia パッケージを公開している."
   },
   {
+    "objectID": "slides/slide-ja.html#actually",
+    "href": "slides/slide-ja.html#actually",
+    "title": "Introduction to Coding Agents",
+    "section": "Actually",
+    "text": "Actually\nこれから紹介するソフトウェアは AI を活用しています． 私が担当した 9 割の実装は AI によって生成したものです．これは事実です． 私は Julia のような動的な言語が好きで，コンパイルする言語は苦手でした． AI のおかげで Julia 以外のプログラミング言語を活用し多くのソフトウェアを高速に開発することができるようになりました．"
+  },
+  {
     "objectID": "slides/slide-ja.html#最近行ってること-organizing-sparseir-ecosystem",
     "href": "slides/slide-ja.html#最近行ってること-organizing-sparseir-ecosystem",
     "title": "Introduction to Coding Agents",
     "section": "最近行ってること: Organizing SparseIR ecosystem",
-    "text": "最近行ってること: Organizing SparseIR ecosystem\n\nHiroshi Shinaoka, Hitoshi Mori との共同開発\n\nPorting SparseIR.jl v1.0 to C++: libsparseir (C++)\nPorting libsparseir to Rust: sparse-ir-rs\nSparseIR.jl v2.0 (Julia interface for sparse-ir-rs)\nsparse-ir v2.0 (Python interface for sparse-ir-rs)"
+    "text": "最近行ってること: Organizing SparseIR ecosystem\n\nHiroshi Shinaoka, Hitoshi Mori, Markus Wallerberger との共同開発\n\nPorting SparseIR.jl v1.0 to C++: libsparseir (C++)\nPorting libsparseir to Rust: sparse-ir-rs\nSparseIR.jl v2.0 (Julia interface for sparse-ir-rs)\nsparse-ir v2.0 (Python interface for sparse-ir-rs)"
   },
   {
-    "objectID": "slides/slide-ja.html#最近行ってること-tensor4all",
-    "href": "slides/slide-ja.html#最近行ってること-tensor4all",
+    "objectID": "slides/slide-ja.html#最近行ってること-tensor4all-メンバーとの開発",
+    "href": "slides/slide-ja.html#最近行ってること-tensor4all-メンバーとの開発",
     "title": "Introduction to Coding Agents",
-    "section": "最近行ってること: tensor4all",
-    "text": "最近行ってること: tensor4all\n\ntensor4all: A Rust implementation of tensor networks\n\nPorting Strided.jl to Rust strided-rs\nstrided-rs-benchmark-suite"
+    "section": "最近行ってること: tensor4all メンバーとの開発",
+    "text": "最近行ってること: tensor4all メンバーとの開発\n\ntensor4all-rs: A Rust implementation of tensor networks\n\nPorting Jutho/Strided.jl to Rust strided-rs\nstrided-rs-benchmark-suite\n\ntenferro-rs\n\nA general-purpose tensor computation library in Rust with CPU/GPU support."
   },
   {
     "objectID": "slides/slide-ja.html#最近行ってること-mvmc",
@@ -42,32 +49,32 @@
     "text": "最近行ってること: SubsetJuliaVM\nLet’s run Julia on iPad and iPhone"
   },
   {
-    "objectID": "slides/slide-ja.html#最近行ってること-better-pluto-client",
-    "href": "slides/slide-ja.html#最近行ってること-better-pluto-client",
-    "title": "Introduction to Coding Agents",
-    "section": "最近行ってること: better-pluto-client",
-    "text": "最近行ってること: better-pluto-client\nWe can view pluto notebook on VS Code."
-  },
-  {
     "objectID": "slides/slide-ja.html#最近行ってること-rustcall.jl",
     "href": "slides/slide-ja.html#最近行ってること-rustcall.jl",
     "title": "Introduction to Coding Agents",
     "section": "最近行ってること: RustCall.jl",
-    "text": "最近行ってること: RustCall.jl\nJulia から Rust を呼び出すことができるパッケージ．\nusing RustCall\n\nrust\"\"\"\n#[julia]\nfn add(a: i32, b: i32) -&gt; i32 {\n    a + b\n}\n\"\"\"\n\n# Call directly - wrapper is auto-generated\nadd(10, 20)  # =&gt; 30"
+    "text": "最近行ってること: RustCall.jl\nJulia から Rust を呼び出すことができるパッケージ．Cxx.jl の設計を参考にした．\nusing RustCall\n\nrust\"\"\"\n#[julia]\nfn add(a: i32, b: i32) -&gt; i32 {\n    a + b\n}\n\"\"\"\n\n# Call directly - wrapper is auto-generated\nadd(10, 20)  # =&gt; 30"
   },
   {
-    "objectID": "slides/slide-ja.html#actually",
-    "href": "slides/slide-ja.html#actually",
+    "objectID": "slides/slide-ja.html#最近行ってること-better-pluto-client",
+    "href": "slides/slide-ja.html#最近行ってること-better-pluto-client",
     "title": "Introduction to Coding Agents",
-    "section": "Actually",
-    "text": "Actually\n今まで紹介したソフトウェアは 9 割以上は AI を用いてコードを生成している．これは事実です．\n人間は自然言語で作りたいものを指示し AI Agent はソースコードを生成・コマンドの実行を行う．\nAI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ"
+    "section": "最近行ってること: better-pluto-client",
+    "text": "最近行ってること: better-pluto-client\nWe can view Pluto notebook on VS Code."
+  },
+  {
+    "objectID": "slides/slide-ja.html#ai-driven-development",
+    "href": "slides/slide-ja.html#ai-driven-development",
+    "title": "Introduction to Coding Agents",
+    "section": "AI Driven Development",
+    "text": "AI Driven Development\nAI のおかげで Julia 以外のプログラミング言語を活用し多くのソフトウェアを高速に開発することができるようになりました．\n人間は自然言語で作りたいものを指示し AI Agent はソースコードを生成・コマンドの実行を行う．\nAI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ"
   },
   {
     "objectID": "slides/slide-ja.html#現実では",
     "href": "slides/slide-ja.html#現実では",
     "title": "Introduction to Coding Agents",
     "section": "現実では",
-    "text": "現実では\n\n\nGit が使われていない．バージョン管理されてない\nドキュメントがない，または古い\n単体テストがない\nコンパイルができない\n実行時エラーが起きる(セグメンテーションフォルトなど)\nデータセットの URL が 研究者個人の C ドライブ(変数のハードコーディング)"
+    "text": "現実では\n\n\nソースコードはどこですか？ (Git が使われていない．バージョン管理されてない)\n\n\nドキュメントがない，または古い\n\n\nコンパイルができない\n\n\n単体テストがない\n\n\n実行時エラーが起きる(セグメンテーションフォルトなど)\n\n\nデータセットの URL が 研究者個人の C ドライブ(変数のハードコーディング)"
   },
   {
     "objectID": "slides/slide-ja.html#人間と機械",
@@ -81,7 +88,14 @@
     "href": "slides/slide-ja.html#人間と機械-1",
     "title": "Introduction to Coding Agents",
     "section": "人間と機械",
-    "text": "人間と機械\n\n人間は「創造」することができるが「疲れる」,「飽きる」,「固執する」\n\n\n親愛なる科学者の皆様，これから新しい数値計算ソフトウェアを書く場合は科学技術計算には Julia または Rust を使いましょう． これらは現代的なパッケージマネージメントシステムを備えており，共同で開発することを可能にします．\n\n\nJulia は高級言語でありながら高速な実行をユーザに提供します． あなたが普段 Fortran を書くのであれば使うべきでしょう． ただし, 型不安定なコード, GC (ガベージコレクション) が頻発するケース, メモリアロケーションが発生するケースでは十分なパフォーマンスが発揮できません． 多次元配列を扱うテンソルネットワークのパッケージはこの問題によく出会います．\n\n\nRust は高速に動作する静的言語です． C/C++ を書く人はこの言語に乗り換えることを検討するべきでしょう． Rust は人間が手動で書くのは学習コストがかかりますが，AI によるコード生成により開発体験が劇的に改善します．\n\n\nテンソルネットワークに関するエコシステム tensor4all-rs は科学技術計算のために Rust を採用した非常に良い例を目指しています．"
+    "text": "人間と機械\n\n人間は「創造」することができるが「疲れる」,「飽きる」,「固執する」\n\n\n親愛なる科学者の皆様，これから新しい数値計算ソフトウェアを書く場合は科学技術計算には Julia または Rust を使いましょう． これらは現代的なパッケージマネージメントシステムを備えており，他の人と共同で開発することを可能にします．\n\n\nJulia は高級言語でありながら高速な実行をユーザに提供します． あなたが普段 Fortran を書くのであれば使うべきでしょう． ただし, 型不安定なコード, GC (ガベージコレクション) が頻発するケース, メモリアロケーションが発生するケースでは十分なパフォーマンスが発揮できません． 多次元配列を扱うテンソルネットワークのパッケージはこの問題によく出会います．\n\n\nRust は高速に動作する静的言語です． C/C++ を書く人はこの言語に乗り換えることを検討するべきでしょう． Rust は人間が手動で書くのは学習コストがかかりますが，AI によるコード生成により開発体験が劇的に改善します．\n\n\nテンソルネットワークに関するエコシステム tensor4all-rs は科学技術計算のために Rust を採用した非常に良い例を目指しています．"
+  },
+  {
+    "objectID": "slides/slide-ja.html#コーディングエージェントの登場",
+    "href": "slides/slide-ja.html#コーディングエージェントの登場",
+    "title": "Introduction to Coding Agents",
+    "section": "コーディングエージェントの登場",
+    "text": "コーディングエージェントの登場\n人工知能・生成 AI の発展により コーディングエージェント・AI エージェントは人間が指示を与えたら目標を達成するために下記の行動をすることが可能になった:"
   },
   {
     "objectID": "slides/slide-ja.html#人間と機械-2",
@@ -96,13 +110,6 @@
     "title": "Introduction to Coding Agents",
     "section": "人間と機械",
     "text": "人間と機械\n\n機械は「飽きない」,「疲れない」,「モデルが成長」\nいつでも動作をする\n\n様々な言語を使える．移植も得意:\nJulia -&gt; C++, C++ -&gt; Rust, C -&gt; Julia\nTypeScript, Swift, Flutter/Dart\n\n要請に応じて変更が可能．現代的な言語にマイグレーションが可能\n人間からの適切な指示が必要"
-  },
-  {
-    "objectID": "slides/slide-ja.html#コーディングエージェントの登場",
-    "href": "slides/slide-ja.html#コーディングエージェントの登場",
-    "title": "Introduction to Coding Agents",
-    "section": "コーディングエージェントの登場",
-    "text": "コーディングエージェントの登場\n人工知能・生成 AI の発展により コーディングエージェント・AI エージェントは人間が指示を与えたら目標を達成するために下記の行動をすることが可能になった:"
   },
   {
     "objectID": "slides/slide-ja.html#人間は不要かno",
@@ -172,21 +179,28 @@
     "href": "slides/slide-ja.html#必要な-cli-ツール",
     "title": "Introduction to Coding Agents",
     "section": "必要な CLI ツール",
-    "text": "必要な CLI ツール\n\ngit, gh: Git/GitHub を操作する\nuv: Python package manager\nnpm, node: コーディングエージェントのインストール\njuliaup, julia: Julia のコードを実行するために必要\nrustup, rustc, cargo: Rust のコードをビルド・実行に必要\n\nOptional:\n\ndocker\ndevcontainer\nrg\ntree\nhtop\nquarto"
+    "text": "必要な CLI ツール\n\ngit, gh: Git/GitHub を操作する\nuv: Python package manager\nnpm, node: コーディングエージェントのインストール\njuliaup, julia: Julia のコードを実行するために必要\nrustup, rustc, cargo: Rust のコードをビルド・実行に必要\n\nOptional:\n\ntmux\ndocker\ndevcontainer\nrg\ntree\nhtop\nquarto"
   },
   {
     "objectID": "slides/slide-ja.html#インストール",
     "href": "slides/slide-ja.html#インストール",
     "title": "Introduction to Coding Agents",
     "section": "インストール",
-    "text": "インストール\nTODO 01-preparation.qmd に記述する"
+    "text": "インストール\nTODO preparation.qmd に記述する"
   },
   {
-    "objectID": "slides/slide-ja.html#インストール-1",
-    "href": "slides/slide-ja.html#インストール-1",
+    "objectID": "slides/slide-ja.html#インストールcursor",
+    "href": "slides/slide-ja.html#インストールcursor",
     "title": "Introduction to Coding Agents",
-    "section": "インストール",
-    "text": "インストール\n下記リンクに移動し\n\nhttps://cursor.com/download\nVS Code ユーザは extension をマイグレートできる．"
+    "section": "インストール(Cursor)",
+    "text": "インストール(Cursor)\n下記リンクに移動し\n\nhttps://cursor.com/download\nVS Code ユーザは extension をマイグレートできる．"
+  },
+  {
+    "objectID": "slides/slide-ja.html#cursor-ui",
+    "href": "slides/slide-ja.html#cursor-ui",
+    "title": "Introduction to Coding Agents",
+    "section": "Cursor UI",
+    "text": "Cursor UI"
   },
   {
     "objectID": "slides/slide-ja.html#math-quiz",
@@ -214,7 +228,7 @@
     "href": "slides/slide-ja.html#application-js-implementation-1",
     "title": "Introduction to Coding Agents",
     "section": "Application (JS implementation)",
-    "text": "Application (JS implementation)\nLet’s calculate the \\(\\pi \\approx 3.14...\\) from GCD function:\n// approx_pi_gcd.js\n\n// Function to compute the greatest common divisor (GCD) using the Euclidean algorithm\nfunction mygcd(a, b) {\n    // Loop until the remainder is zero\n    while (b !== 0) {\n        let tmp = b;    // Store the value of b temporarily\n        b = a % b;      // Update b to the remainder of a divided by b\n        a = tmp;        // Set a to the previous value of b\n    }\n    return a;           // When b is zero, a is the GCD\n}\n\n// Function to approximate pi using probability that two numbers are coprime\nfunction calcPi(N) {\n    let cnt = 0;    // Counter for coprime pairs\n    // Loop through all pairs (a, b) where 1 &lt;= a, b &lt;= N\n    for (let a = 1; a &lt;= N; a++) {\n        for (let b = 1; b &lt;= N; b++) {\n            // Check if a and b are coprime\n            if (mygcd(a, b) === 1) {\n                cnt += 1;  // Increment counter if coprime\n            }\n        }\n    }\n    // Probability that two numbers are coprime\n    let prob = cnt / (N * N);\n    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)\n    return Math.sqrt(6 / prob);\n}\n\n// Main function to run the pi approximation\nfunction main() {\n    let N = 10000;            // Number limit for coprimality checking\n    let pi = calcPi(N);       // Approximate pi\n    console.log(`N: ${N}`);   // Output N\n    console.log(`pi: ${pi}`); // Output approximation of pi\n}\n\nmain(); // Call the main function\nResult\n$ node approx_pi_gcd.js\ncalcPi: 2.175s\nN: 10000\npi: 3.141534239016629"
+    "text": "Application (JS implementation)\n最大公約数を利用して \\(\\pi \\approx 3.14...\\) を計算しよう:\n// approx_pi_gcd.js\n\n// Function to compute the greatest common divisor (GCD) using the Euclidean algorithm\nfunction mygcd(a, b) {\n    // Loop until the remainder is zero\n    while (b !== 0) {\n        let tmp = b;    // Store the value of b temporarily\n        b = a % b;      // Update b to the remainder of a divided by b\n        a = tmp;        // Set a to the previous value of b\n    }\n    return a;           // When b is zero, a is the GCD\n}\n\n// Function to approximate pi using probability that two numbers are coprime\nfunction calcPi(N) {\n    let cnt = 0;    // Counter for coprime pairs\n    // Loop through all pairs (a, b) where 1 &lt;= a, b &lt;= N\n    for (let a = 1; a &lt;= N; a++) {\n        for (let b = 1; b &lt;= N; b++) {\n            // Check if a and b are coprime\n            if (mygcd(a, b) === 1) {\n                cnt += 1;  // Increment counter if coprime\n            }\n        }\n    }\n    // Probability that two numbers are coprime\n    let prob = cnt / (N * N);\n    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)\n    return Math.sqrt(6 / prob);\n}\n\n// Main function to run the pi approximation\nfunction main() {\n    let N = 10000;            // Number limit for coprimality checking\n    let pi = calcPi(N);       // Approximate pi\n    console.log(`N: ${N}`);   // Output N\n    console.log(`pi: ${pi}`); // Output approximation of pi\n}\n\nmain(); // Call the main function\nResult\n$ node approx_pi_gcd.js\ncalcPi: 2.175s\nN: 10000\npi: 3.141534239016629"
   },
   {
     "objectID": "slides/slide-ja.html#exercise",
@@ -354,7 +368,7 @@
     "href": "handouts/preparation/preparation.html",
     "title": "Software installation for Agentic coding",
     "section": "",
-    "text": "This document was created for CompPhysHack 2026.\nHumans give instructions in natural language for what they want to build, and AI agents generate source code and execute commands. This approach to development using AI is called AI-driven development. Similar terms include Vibe coding, Agentic engineering, and Agentic coding.\nGetting started is very easy. Install an AI agent from your preferred platform and try the prompts below.\nFor Julia users:\nI want to create a Julia package for simulating and visualizing elastic collisions of multiple balls in 2D space.\nFor Rust users:\nI want to create a Rust crate for simulating and visualizing elastic collisions of multiple balls in 2D space.\nWe used English prompts here, but you can give instructions in any natural language such as Japanese. You can expect output similar to this example. The source code was generated using the Composer 1.5 model from Cursor.\n\n\n\n\nThere is no single answer since AI agents are constantly evolving. A good starting point depends on which accounts you have. You can also ask colleagues or friends nearby.\n\nIf you have a ChatGPT subscription, try Codex or GPT-5.3-Codex\nIf you have a Claude subscription, try Claude Code: Opus-4.6\n\nIf you want to use something for free:\n\nGitHub Copilot\n\nGemini CLI\nGoogle Antigravity\n\n\nAll services have usage limits. It all comes down to budget. Participants of CompPhysHack 2026 will likely need some paid plan to fully enjoy the event.\n\nThe author of this document uses the following setup:\n\nClaude Code MAX $200/$100: Opus-4.6\n\nDelegates coding to AI\n\nChatGPT Plus plan $20: Codex: GPT-5.3\n\nWants a different perspective from Claude Code\n\nCursor Pro plan $20: Daily editor with Composer 1.5\n\nExcels at code completion. Seamlessly passing integrated terminal error output to the AI agent provides a good user experience\n\n\n\n\n\nParticipants of CompPhysHack 2026 are assumed to have some software development experience. Here we install various AI agents via CLI tools.\n\n\nnpm is the package manager for Node.js. Node.js is a JavaScript runtime. This step is required to install Codex CLI and Gemini CLI.\n\nFollow the instructions at Download Node.js.\n\nThe following describes installation of various CLI tools; you do not need to install all of them.\n\n\n\n\nhttps://developers.openai.com/codex/cli/\n\n$ npm i -g @openai/codex\n$ codex\nA ChatGPT subscription is required to use it.\n\n\n\n$ npm install -g @google/gemini-cli\n$ gemini\nSee https://github.com/google-gemini/gemini-cli to learn more.\nA Google account is required to use it.\n\n\n\nmacOS, Linux, WSL:\n$ curl -fsSL https://claude.ai/install.sh | bash\n$ claude\nWindows PowerShell:\nPS&gt; irm https://claude.ai/install.ps1 | iex\n\n\n\n$ npm install -g @github/copilot\n$ copilot\nSee https://github.com/github/copilot-cli to learn more.\n\n\n\n\nInstall VS Code or its derivatives: Cursor or Google Antigravity. You do not need to install all of them.\n\n\nFollow the instructions at the links below:\n\nhttps://code.visualstudio.com/download\nhttps://github.com/features/copilot\n\n\n\n\nFollow the instructions at the link below:\nhttps://cursor.com/download\nYou can also use Cursor as a CLI tool with cursor-agent.\n\n\n\nFollow the instructions at the link below:\nhttps://antigravity.google/download\n\n\n\n\nHere we install CLI tools useful for modern general software development (including numerical computing).\n\n\nMany AI agents use the gh command to create GitHub issues and pull requests. This automates many tedious tasks.\nRead the instructions at https://cli.github.com/ to install.\nmacOS:\n% brew install gh\nLinux users should refer to Installing gh on Linux and BSD.\nWindows users should refer to Installing gh on Windows.\n\n\n\nJulia is a general-purpose programming language well-suited for scientific and technical computing.\nFollow the instructions at Installing Julia.\nmacOS or Linux:\n$ curl -fsSL https://install.julialang.org | sh\nWindows:\nPS&gt; winget install --name Julia --id 9NJNWW8PVKMN -e -s msstore\n\n\n\nRust was developed for systems programming but is also gaining attention in scientific computing. Follow the instructions at Install Rust.\nmacOS or Linux:\n$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh\nSee this instructions if you are using Windows.\nThe commands above will make cargo, rustc, and similar commands available. Verify the installation as follows:\n$ cargo new hello-world\n$ cd hello-world\n$ cargo run --release\ncargo run --release\n   Compiling hello-world v0.1.0 (path/to/your-workspace/hello-world)\n    Finished `release` profile [optimized] target(s) in 1.38s\n     Running `target/release/hello-world`\nHello, world!\n\n\n\nPython excels as a scripting language, but the proliferation of package managers has caused much confusion in the community. uv may put an end to that—at least, we hope so. uv is a fast Python package manager implemented in Rust.\nFollow the instructions at Installing uv.\nmacOS or Linux:\n$ curl -LsSf https://astral.sh/uv/install.sh | sh\nVerify the installation:\n$ mkdir path/to/your-workspace\n$ cd path/to/your-workspace\n$ uv init\n$ uv run python main.py\n\n\n\nClaude Code and Codex offer options to bypass user permission prompts, such as --allow-dangerously-skip-permissions and --yolo. While convenient, these options can also allow execution of dangerous commands like rm -rf /. To prevent such situations, it is advisable to use a sandboxed environment. For example, Docker containers can restrict the scope of AI agent actions by limiting which files are mounted.\nInstall according to your OS:\n\nInstall Docker Desktop on Windows\nInstall Docker Desktop on Mac\nInstall Docker Desktop on Linux\n\nVerify the installation with the following command:\n$ docker run --rm hello-world\n\n\n\nBuilding an environment with Docker requires creating a Dockerfile. Building from scratch is tedious. Devcontainer’s Development Container Features let you assemble self-contained configurations called “Features” as building blocks for your environment. This allows you to use Julia, Python, Rust, and more freely inside Docker containers.\nInstall as follows according to Dev Container CLI:\n$ npm install -g @devcontainers/cli\nYou can verify with the following commands:\n$ git clone https://github.com/microsoft/vscode-remote-try-rust\n$ cd vscode-remote-try-rust\n$ devcontainer build\n$ devcontainer up --workspace-folder ./\n$ devcontainer exec --workspace-folder ./ bash\nvscode ➜ /workspaces/vscode-remote-try-rust (main) $ cargo run\n   Compiling hello_remote_world v0.1.0 (/workspaces/vscode-remote-try-rust)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.45s\n     Running `target/debug/hello_remote_world`\nHello, VS Code Remote - Containers!\n\n\n\n\nThe following are installation steps for commands used by the author of this document. You may skip this section.\n\n\nText-mode interface for git\n% brew install tig\n\n\n\nA richer alternative to the top command. Used for visually monitoring CPU usage.\n% brew install htop\n\n\n\nCodex users may find this useful.\n% brew install ripgrep\n\n\n\nRequired if you want to view this document locally.\nSee Welcome to Quarto to learn more."
+    "text": "This document was created for CompPhysHack 2026.\nHumans give instructions in natural language for what they want to build, and AI agents generate source code and execute commands. This approach to development using AI is called AI-driven development. Similar terms include Vibe coding, Agentic engineering, and Agentic coding.\nGetting started is very easy. Install an AI agent from your preferred platform and try the prompts below.\nFor Julia users:\nI want to create a Julia package for simulating and visualizing elastic collisions of multiple balls in 2D space.\nFor Rust users:\nI want to create a Rust crate for simulating and visualizing elastic collisions of multiple balls in 2D space.\nWe used English prompts here, but you can give instructions in any natural language such as Japanese. You can expect output similar to this example. The source code was generated using the Composer 1.5 model from Cursor.\n\n\n\n\nThere is no single answer since AI agents are constantly evolving. A good starting point depends on which accounts you have. You can also ask colleagues or friends nearby.\n\nIf you have a ChatGPT subscription, try Codex or GPT-5.3-Codex\nIf you have a Claude subscription, try Claude Code: Opus-4.6\n\nIf you want to use something for free:\n\nGitHub Copilot\n\nGemini CLI\nGoogle Antigravity\n\n\nAll services have usage limits. It all comes down to budget. Participants of CompPhysHack 2026 will likely need some paid plan to fully enjoy the event.\n\nThe author of this document uses the following setup:\n\nClaude Code MAX $200/$100: Opus-4.6\n\nDelegates coding to AI\n\nChatGPT Plus plan $20: Codex: GPT-5.3\n\nWants a different perspective from Claude Code\n\nCursor Pro plan $20: Daily editor with Composer 1.5\n\nExcels at code completion. Seamlessly passing integrated terminal error output to the AI agent provides a good user experience\n\n\n\n\n\nParticipants of CompPhysHack 2026 are assumed to have some software development experience. Here we install various AI agents via CLI tools.\n\n\nnpm is the package manager for Node.js. Node.js is a JavaScript runtime. This step is required to install Codex CLI and Gemini CLI.\n\nFollow the instructions at Download Node.js.\n\nThe following describes installation of various CLI tools; you do not need to install all of them.\n\n\n\n\nhttps://developers.openai.com/codex/cli/\n\n$ npm i -g @openai/codex\n$ codex\nA ChatGPT subscription is required to use it.\n\n\n\n$ npm install -g @google/gemini-cli\n$ gemini\nSee https://github.com/google-gemini/gemini-cli to learn more.\nA Google account is required to use it.\n\n\n\nmacOS, Linux, WSL:\n$ curl -fsSL https://claude.ai/install.sh | bash\n$ claude\nWindows PowerShell:\nPS&gt; irm https://claude.ai/install.ps1 | iex\n\n\n\n$ npm install -g @github/copilot\n$ copilot\nSee https://github.com/github/copilot-cli to learn more.\n\n\n\n\nInstall VS Code or its derivatives: Cursor or Google Antigravity. You do not need to install all of them.\n\n\nFollow the instructions at the links below:\n\nhttps://code.visualstudio.com/download\nhttps://github.com/features/copilot\n\n\n\n\nFollow the instructions at the link below:\nhttps://cursor.com/download\nYou can also use Cursor as a CLI tool with cursor-agent.\n\n\n\nFollow the instructions at the link below:\nhttps://antigravity.google/download\n\n\n\n\nHere we install CLI tools useful for modern general software development (including numerical computing).\n\n\nMany AI agents use the gh command to create GitHub issues and pull requests. This automates many tedious tasks.\nRead the instructions at https://cli.github.com/ to install.\nmacOS:\n% brew install gh\nLinux users should refer to Installing gh on Linux and BSD.\nWindows users should refer to Installing gh on Windows.\n\n\n\nJulia is a general-purpose programming language well-suited for scientific and technical computing.\nFollow the instructions at Installing Julia.\nmacOS or Linux:\n$ curl -fsSL https://install.julialang.org | sh\nWindows:\nPS&gt; winget install --name Julia --id 9NJNWW8PVKMN -e -s msstore\n\n\n\nRust was developed for systems programming but is also gaining attention in scientific computing. Follow the instructions at Install Rust.\nmacOS or Linux:\n$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh\nSee this instructions if you are using Windows.\nThe commands above will make cargo, rustc, and similar commands available. Verify the installation as follows:\n$ cargo new hello-world\n$ cd hello-world\n$ cargo run --release\ncargo run --release\n   Compiling hello-world v0.1.0 (path/to/your-workspace/hello-world)\n    Finished `release` profile [optimized] target(s) in 1.38s\n     Running `target/release/hello-world`\nHello, world!\n\n\n\nPython excels as a scripting language, but the proliferation of package managers has caused much confusion in the community. uv may put an end to that—at least, we hope so. uv is a fast Python package manager implemented in Rust.\nFollow the instructions at Installing uv.\nmacOS or Linux:\n$ curl -LsSf https://astral.sh/uv/install.sh | sh\nVerify the installation:\n$ mkdir path/to/your-workspace\n$ cd path/to/your-workspace\n$ uv init\n$ uv run python main.py\n\n\n\nClaude Code and Codex offer options to bypass user permission prompts, such as --allow-dangerously-skip-permissions and --yolo. While convenient, these options can also allow execution of dangerous commands like rm -rf /. To prevent such situations, it is advisable to use a sandboxed environment. For example, Docker containers can restrict the scope of AI agent actions by limiting which files are mounted.\nInstall according to your OS:\n\nInstall Docker Desktop on Windows\nInstall Docker Desktop on Mac\nInstall Docker Desktop on Linux\n\nVerify the installation with the following command:\n$ docker run --rm hello-world\n\n\n\nBuilding an environment with Docker requires creating a Dockerfile. Building from scratch is tedious. Devcontainer’s Development Container Features let you assemble self-contained configurations called “Features” as building blocks for your environment. This allows you to use Julia, Python, Rust, and more freely inside Docker containers.\nInstall as follows according to Dev Container CLI:\n$ npm install -g @devcontainers/cli\nYou can verify with the following commands:\n$ git clone https://github.com/microsoft/vscode-remote-try-rust\n$ cd vscode-remote-try-rust\n$ devcontainer build\n$ devcontainer up --workspace-folder ./\n$ devcontainer exec --workspace-folder ./ bash\nvscode ➜ /workspaces/vscode-remote-try-rust (main) $ cargo run\n   Compiling hello_remote_world v0.1.0 (/workspaces/vscode-remote-try-rust)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.45s\n     Running `target/debug/hello_remote_world`\nHello, VS Code Remote - Containers!\n\n\n\n\nThe following are installation steps for commands used by the author of this document. You may skip this section.\n\n\nText-mode interface for git\n% brew install tig\n\n\n\nA richer alternative to the top command. Used for visually monitoring CPU usage.\n% brew install htop\n\n\n\nCodex users may find this useful.\n% brew install ripgrep\n\n\n\ntmux is a tool for splitting terminal windows.\n% brew install tmux\n\n\n\nRequired if you want to view this document locally.\nSee Welcome to Quarto to learn more."
   },
   {
     "objectID": "handouts/preparation/preparation.html#which-tool-should-you-use",
@@ -389,7 +403,7 @@
     "href": "handouts/preparation/preparation.html#software-installation-optional",
     "title": "Software installation for Agentic coding",
     "section": "",
-    "text": "The following are installation steps for commands used by the author of this document. You may skip this section.\n\n\nText-mode interface for git\n% brew install tig\n\n\n\nA richer alternative to the top command. Used for visually monitoring CPU usage.\n% brew install htop\n\n\n\nCodex users may find this useful.\n% brew install ripgrep\n\n\n\nRequired if you want to view this document locally.\nSee Welcome to Quarto to learn more."
+    "text": "The following are installation steps for commands used by the author of this document. You may skip this section.\n\n\nText-mode interface for git\n% brew install tig\n\n\n\nA richer alternative to the top command. Used for visually monitoring CPU usage.\n% brew install htop\n\n\n\nCodex users may find this useful.\n% brew install ripgrep\n\n\n\ntmux is a tool for splitting terminal windows.\n% brew install tmux\n\n\n\nRequired if you want to view this document locally.\nSee Welcome to Quarto to learn more."
   },
   {
     "objectID": "handouts/elastic-collisions/julia/elastic-balls-codex-gpt-5.3/docs/plans/2026-02-09-elastic-balls-2d.html",
@@ -536,7 +550,7 @@
     "href": "handouts/preparation/preparation-ja.html",
     "title": "Software installation for Agentic coding",
     "section": "",
-    "text": "この資料は CompPhysHack 2026 のために作成された．\n人間は自然言語で作りたいものを指示し AI Agent はソースコードを生成・コマンドの実行を行う．このような AI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ. Vibe coding, Agentic engineering, Agentic coding などのような言い方も存在する．\n試すのは非常に簡単である．好きなプラットフォーマが提供している AI Agent をインストールし下記のプロンプトを試すとよい．\nFor Julia users:\nI want to create a Julia package for simulating and visualizing elastic collisions of multiple balls in 2D space.\nFor Rust users:\nI want to create a Rust crate for simulating and visualizing elastic collisions of multiple balls in 2D space.\nここでは英語によるプロンプトを用いたが，日本語など，好きな自然言語で指示ができる．例えばこのような出力が期待できる．ソースコード生成には Cursor が提供している Composer 1.5 モデルを用いた．\n\n\n\n\nAI Agent は常に進化しているので答えはない．良いスタート地点はどのアカウントを持っているかによる．または近くの同僚・友達に聞いてみるとよい．\n\nChatGPT を契約していれば Codex, GPT-5.3-Codex を使ってみる\nClaude を契約していれば Claude Code: Opus-4.6 を使ってみる\n\nとにかく無料で使いたい\n\nGitHub Copilot\n\nGemini CLI\nGoogle Antigravity を使う\n\n\nどのサービスも使用上限が存在する. すべてはお金次第. CompPhysHack 2026 参加者が全日程を楽しむには何かしらの有料プランに加入する必要があるだろう．\n\nこの資料を作成している筆者の場合，下記のような構成である．\n\nClaude Code MAX $200/$100: Opus-4.6\n\nCoding を AI に任せている\n\nChatGPT Plus plan $20: Codex: GPT-5.3\n\nClaude Code とは別の視点が欲しい\n\nCursor Pro plan $20: 日常のエディタとして Composer 1.5\n\nソースコードの補完が得意. 統合ターミナルでのエラー出力を AI エージェントにシームレスに渡せるのがユーザ体験が良い\n\n\n\n\n\nCompPhysHack 2026 の参加者はある程度ソフトウェア開発経験があることを想定している．ここでは CLI ツールを経由して各種 AI エージェントをインストールしよう．\n\n\nnpm は Node.js のためのパッケージマネージャである. Node.js は JavaScript ランタイムである. Codex CLI, Gemini CLI をインストールするにはこの手順が必要である．\n\nDownload Node.js の指示に従うこと．\n\n以下は各種 CLI ツールの導入について書いているが，全てを導入する必要はない．\n\n\n\n\nhttps://developers.openai.com/codex/cli/\n\n$ npm i -g @openai/codex\n$ codex\n利用するには ChatGPT を契約しているアカウントが必要である．\n\n\n\n$ npm install -g @google/gemini-cli\n$ gemini\nSee https://github.com/google-gemini/gemini-cli to learn more.\n利用するには Google アカウントが必要である．\n\n\n\nmacOS, Linux, WSL:\n$ curl -fsSL https://claude.ai/install.sh | bash\n$ claude\nWindows PowerShell:\nPS&gt; irm https://claude.ai/install.ps1 | iex\n\n\n\n$ npm install -g @github/copilot\n$ copilot\nSee https://github.com/github/copilot-cli to learn more.\n\n\n\n\nVS Code または派生の Cursor, Google Antigravity を導入する．全て入れる必要はない．\n\n\n下記のリンク先の指示に従う\n\nhttps://code.visualstudio.com/download\nhttps://github.com/features/copilot\n\n\n\n\n下記のリンク先の指示に従う\nhttps://cursor.com/download\nまた cursor-agent で Cursor を CLI ツールとして利用できる．\n\n\n\n下記リンク先の指示に従う\nhttps://antigravity.google/download\n\n\n\n\nここでは現代的な一般的なソフトウェア開発(数値計算もこのカテゴリの中に入る)で有用な CLI ツールを導入する．\n\n\n多くの AI エージェントは gh コマンドを経由して GitHub にある Issue の作成，プルリクエストの作成を行う．これにより多くの面倒な作業を自動化することができる．\nインストールするには https://cli.github.com/ にある説明を読むこと\nmacOS\n% brew install gh\nLinux ユーザは Installing gh on Linux and BSD を参考に導入すること．\nWindows ユーザは Installing gh on Windows を参考に導入すること．\n\n\n\nJulia は科学技術計算が得意な汎用プログラミング言語である．\nInstalling Julia の指示に従う.\nmacOS or Linux:\n$ curl -fsSL https://install.julialang.org | sh\nWindows:\nPS&gt; winget install --name Julia --id 9NJNWW8PVKMN -e -s msstore\n\n\n\nRust はシステムプログラミング向けに開発されているが，科学技術計算でも注目されている．Install Rust の指示に従う．\nmacOS or Linux:\n$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh\nSee this instructions if you are using Windows.\n上記のコマンドで cargo, rustc のようなコマンドが使えるようになる．動作確認は次のとおり．\n$ cargo new hello-world\n$ cd hello-world\n$ cargo run --release\ncargo run --release\n   Compiling hello-world v0.1.0 (path/to/your-workspace/hello-world)\n    Finished `release` profile [optimized] target(s) in 1.38s\n     Running `target/release/hello-world`\nHello, world!\n\n\n\nPython はスクリプト言語として優秀であるが，パッケージマネージャが乱立しており多くの混乱をコミュニティに招いている．uv はそれに終止符を打つであろう．私はそのように願っている．uv は Python の高速なパッケージマネージャである．uv は Rust で実装されている．\nInstalling uv の指示に従う．\nmacOS or Linux:\n$ curl -LsSf https://astral.sh/uv/install.sh | sh\n動作確認\n$ mkdir path/to/your-workspace\n$ cd path/to/your-workspace\n$ uv init\n$ uv run python main.py\n\n\n\nClaude Code や Codex はユーザからの許可をバイパスするオプションを備えている．たとえば --allow-dangerously-skip-permissions, --yolo といったオプションだ．このようなオプションは便利だが rm -rf / のような危険なコマンドの実行も許すことになる．このような状況を防ぐためにサンドボックス環境を使うのが望ましい．たとえば Docker が提供するコンテナはマウントするファイルを制限することで制限された範囲で AI Agent を行動させることが可能である．\nOS に応じてインストールすること:\n\nInstall Docker Desktop on Windows\nInstall Docker Desktop on Mac\nInstall Docker Desktop on Linux\n\n動作確認は下記のコマンドでできる:\n$ docker run --rm hello-world\n\n\n\nDocker を使って環境構築するには Dockerfile を作る必要がある．何もないところから構築するのは大変である．そこで Devcontainer が提供する Development Container Features を利用することで，Feature と呼ばれる自己完結した設定をブロックとして組み立てて環境構築することにする．これにより Docker コンテナ内部で Julia, Python, Rust などを自由に使うことができる．\nDev Container CLI に従って下記のようにインストールする．\n$ npm install -g @devcontainers/cli\n下記のコマンドで確かめることができる.\n$ git clone https://github.com/microsoft/vscode-remote-try-rust\n$ cd vscode-remote-try-rust\n$ devcontainer build\n$ devcontainer up --workspace-folder ./\n$ devcontainer exec --workspace-folder ./ bash\nvscode ➜ /workspaces/vscode-remote-try-rust (main) $ cargo run\n   Compiling hello_remote_world v0.1.0 (/workspaces/vscode-remote-try-rust)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.45s\n     Running `target/debug/hello_remote_world`\nHello, VS Code Remote - Containers!\n\n\n\n\n下記はこの資料の作成者が使っているコマンドをインストールするための手順である．読まなくてよい．\n\n\nText-mode interface for git\n% brew install tig\n\n\n\nリッチな top コマンド．CPU 利用率を目視で計測するために用いている．\n% brew install htop\n\n\n\nCodex ユーザは入れてもよいかもしれない．\n% brew install ripgrep\n\n\n\nこの資料をローカルで見たい場合には必要\nSee Welcome to Quarto to learn more."
+    "text": "この資料は CompPhysHack 2026 のために作成された．\n人間は自然言語で作りたいものを指示し AI Agent はソースコードを生成・コマンドの実行を行う．このような AI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ. Vibe coding, Agentic engineering, Agentic coding などのような言い方も存在する．\n試すのは非常に簡単である．好きなプラットフォーマが提供している AI Agent をインストールし下記のプロンプトを試すとよい．\nFor Julia users:\nI want to create a Julia package for simulating and visualizing elastic collisions of multiple balls in 2D space.\nFor Rust users:\nI want to create a Rust crate for simulating and visualizing elastic collisions of multiple balls in 2D space.\nここでは英語によるプロンプトを用いたが，日本語など，好きな自然言語で指示ができる．例えばこのような出力が期待できる．ソースコード生成には Cursor が提供している Composer 1.5 モデルを用いた．\n\n\n\n\nAI Agent は常に進化しているので答えはない．良いスタート地点はどのアカウントを持っているかによる．または近くの同僚・友達に聞いてみるとよい．\n\nChatGPT を契約していれば Codex, GPT-5.3-Codex を使ってみる\nClaude を契約していれば Claude Code: Opus-4.6 を使ってみる\n\nとにかく無料で使いたい\n\nGitHub Copilot\n\nGemini CLI\nGoogle Antigravity を使う\n\n\nどのサービスも使用上限が存在する. すべてはお金次第. CompPhysHack 2026 参加者が全日程を楽しむには何かしらの有料プランに加入する必要があるだろう．\n\nこの資料を作成している筆者の場合，下記のような構成である．\n\nClaude Code MAX $200/$100: Opus-4.6\n\nCoding を AI に任せている\n\nChatGPT Plus plan $20: Codex: GPT-5.3\n\nClaude Code とは別の視点が欲しい\n\nCursor Pro plan $20: 日常のエディタとして Composer 1.5\n\nソースコードの補完が得意. 統合ターミナルでのエラー出力を AI エージェントにシームレスに渡せるのがユーザ体験が良い\n\n\n\n\n\nCompPhysHack 2026 の参加者はある程度ソフトウェア開発経験があることを想定している．ここでは CLI ツールを経由して各種 AI エージェントをインストールしよう．\n\n\nnpm は Node.js のためのパッケージマネージャである. Node.js は JavaScript ランタイムである. Codex CLI, Gemini CLI をインストールするにはこの手順が必要である．\n\nDownload Node.js の指示に従うこと．\n\n以下は各種 CLI ツールの導入について書いているが，全てを導入する必要はない．\n\n\n\n\nhttps://developers.openai.com/codex/cli/\n\n$ npm i -g @openai/codex\n$ codex\n利用するには ChatGPT を契約しているアカウントが必要である．\n\n\n\n$ npm install -g @google/gemini-cli\n$ gemini\nSee https://github.com/google-gemini/gemini-cli to learn more.\n利用するには Google アカウントが必要である．\n\n\n\nmacOS, Linux, WSL:\n$ curl -fsSL https://claude.ai/install.sh | bash\n$ claude\nWindows PowerShell:\nPS&gt; irm https://claude.ai/install.ps1 | iex\n\n\n\n$ npm install -g @github/copilot\n$ copilot\nSee https://github.com/github/copilot-cli to learn more.\n\n\n\n\nVS Code または派生の Cursor, Google Antigravity を導入する．全て入れる必要はない．\n\n\n下記のリンク先の指示に従う\n\nhttps://code.visualstudio.com/download\nhttps://github.com/features/copilot\n\n\n\n\n下記のリンク先の指示に従う\nhttps://cursor.com/download\nまた cursor-agent で Cursor を CLI ツールとして利用できる．\n\n\n\n下記リンク先の指示に従う\nhttps://antigravity.google/download\n\n\n\n\nここでは現代的な一般的なソフトウェア開発(数値計算もこのカテゴリの中に入る)で有用な CLI ツールを導入する．\n\n\n多くの AI エージェントは gh コマンドを経由して GitHub にある Issue の作成，プルリクエストの作成を行う．これにより多くの面倒な作業を自動化することができる．\nインストールするには https://cli.github.com/ にある説明を読むこと\nmacOS\n% brew install gh\nLinux ユーザは Installing gh on Linux and BSD を参考に導入すること．\nWindows ユーザは Installing gh on Windows を参考に導入すること．\n\n\n\nJulia は科学技術計算が得意な汎用プログラミング言語である．\nInstalling Julia の指示に従う.\nmacOS or Linux:\n$ curl -fsSL https://install.julialang.org | sh\nWindows:\nPS&gt; winget install --name Julia --id 9NJNWW8PVKMN -e -s msstore\n\n\n\nRust はシステムプログラミング向けに開発されているが，科学技術計算でも注目されている．Install Rust の指示に従う．\nmacOS or Linux:\n$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh\nSee this instructions if you are using Windows.\n上記のコマンドで cargo, rustc のようなコマンドが使えるようになる．動作確認は次のとおり．\n$ cargo new hello-world\n$ cd hello-world\n$ cargo run --release\ncargo run --release\n   Compiling hello-world v0.1.0 (path/to/your-workspace/hello-world)\n    Finished `release` profile [optimized] target(s) in 1.38s\n     Running `target/release/hello-world`\nHello, world!\n\n\n\nPython はスクリプト言語として優秀であるが，パッケージマネージャが乱立しており多くの混乱をコミュニティに招いている．uv はそれに終止符を打つであろう．私はそのように願っている．uv は Python の高速なパッケージマネージャである．uv は Rust で実装されている．\nInstalling uv の指示に従う．\nmacOS or Linux:\n$ curl -LsSf https://astral.sh/uv/install.sh | sh\n動作確認\n$ mkdir path/to/your-workspace\n$ cd path/to/your-workspace\n$ uv init\n$ uv run python main.py\n\n\n\nClaude Code や Codex はユーザからの許可をバイパスするオプションを備えている．たとえば --allow-dangerously-skip-permissions, --yolo といったオプションだ．このようなオプションは便利だが rm -rf / のような危険なコマンドの実行も許すことになる．このような状況を防ぐためにサンドボックス環境を使うのが望ましい．たとえば Docker が提供するコンテナはマウントするファイルを制限することで制限された範囲で AI Agent を行動させることが可能である．\nOS に応じてインストールすること:\n\nInstall Docker Desktop on Windows\nInstall Docker Desktop on Mac\nInstall Docker Desktop on Linux\n\n動作確認は下記のコマンドでできる:\n$ docker run --rm hello-world\n\n\n\nDocker を使って環境構築するには Dockerfile を作る必要がある．何もないところから構築するのは大変である．そこで Devcontainer が提供する Development Container Features を利用することで，Feature と呼ばれる自己完結した設定をブロックとして組み立てて環境構築することにする．これにより Docker コンテナ内部で Julia, Python, Rust などを自由に使うことができる．\nDev Container CLI に従って下記のようにインストールする．\n$ npm install -g @devcontainers/cli\n下記のコマンドで確かめることができる.\n$ git clone https://github.com/microsoft/vscode-remote-try-rust\n$ cd vscode-remote-try-rust\n$ devcontainer build\n$ devcontainer up --workspace-folder ./\n$ devcontainer exec --workspace-folder ./ bash\nvscode ➜ /workspaces/vscode-remote-try-rust (main) $ cargo run\n   Compiling hello_remote_world v0.1.0 (/workspaces/vscode-remote-try-rust)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.45s\n     Running `target/debug/hello_remote_world`\nHello, VS Code Remote - Containers!\n\n\n\n\n下記はこの資料の作成者が使っているコマンドをインストールするための手順である．読まなくてよい．\n\n\nText-mode interface for git\n% brew install tig\n\n\n\nリッチな top コマンド．CPU 利用率を目視で計測するために用いている．\n% brew install htop\n\n\n\nCodex ユーザは入れてもよいかもしれない．\n% brew install ripgrep\n\n\n\ntmux はターミナルの分割を行うツールである．\n% brew install tmux\n\n\n\nこの資料をローカルで見たい場合には必要\nSee Welcome to Quarto to learn more."
   },
   {
     "objectID": "handouts/preparation/preparation-ja.html#どのツールを使うべきか",
@@ -571,7 +585,7 @@
     "href": "handouts/preparation/preparation-ja.html#software-installation-optional",
     "title": "Software installation for Agentic coding",
     "section": "",
-    "text": "下記はこの資料の作成者が使っているコマンドをインストールするための手順である．読まなくてよい．\n\n\nText-mode interface for git\n% brew install tig\n\n\n\nリッチな top コマンド．CPU 利用率を目視で計測するために用いている．\n% brew install htop\n\n\n\nCodex ユーザは入れてもよいかもしれない．\n% brew install ripgrep\n\n\n\nこの資料をローカルで見たい場合には必要\nSee Welcome to Quarto to learn more."
+    "text": "下記はこの資料の作成者が使っているコマンドをインストールするための手順である．読まなくてよい．\n\n\nText-mode interface for git\n% brew install tig\n\n\n\nリッチな top コマンド．CPU 利用率を目視で計測するために用いている．\n% brew install htop\n\n\n\nCodex ユーザは入れてもよいかもしれない．\n% brew install ripgrep\n\n\n\ntmux はターミナルの分割を行うツールである．\n% brew install tmux\n\n\n\nこの資料をローカルで見たい場合には必要\nSee Welcome to Quarto to learn more."
   },
   {
     "objectID": "slides/slide.html#overview",
@@ -585,21 +599,28 @@
     "href": "slides/slide.html#self-introduction",
     "title": "Introduction to Coding Agents",
     "section": "Self-introduction",
-    "text": "Self-introduction\n\nFreelance software engineer.\n\nCollaborative development of scientific computing with university faculty\n\nGitHub: terasakisatoshi\nOrganization: AtelierArith"
+    "text": "Self-introduction\n\nFreelance software engineer.\n\nCollaborative development of scientific computing with university faculty.\n\nGitHub: terasakisatoshi\nOrganization: AtelierArith\n\nPublishes Julia packages I have created."
+  },
+  {
+    "objectID": "slides/slide.html#actually",
+    "href": "slides/slide.html#actually",
+    "title": "Introduction to Coding Agents",
+    "section": "Actually",
+    "text": "Actually\nThe software I will introduce leverages AI. Over 90% of the implementation I was responsible for was generated by AI. This is a fact. I like dynamic languages like Julia and was not good at compiled languages. Thanks to AI, I can now use programming languages other than Julia and develop many software products rapidly."
   },
   {
     "objectID": "slides/slide.html#recent-work-organizing-sparseir-ecosystem",
     "href": "slides/slide.html#recent-work-organizing-sparseir-ecosystem",
     "title": "Introduction to Coding Agents",
     "section": "Recent work: Organizing SparseIR ecosystem",
-    "text": "Recent work: Organizing SparseIR ecosystem\n\nCollaborative development with Hiroshi Shinaoka and Hitoshi Mori\n\nPorting SparseIR.jl v1.0 to C++: libsparseir (C++)\nPorting libsparseir to Rust: sparse-ir-rs\nSparseIR.jl v2.0 (Julia interface for sparse-ir-rs)\nsparse-ir v2.0 (Python interface for sparse-ir-rs)"
+    "text": "Recent work: Organizing SparseIR ecosystem\n\nCollaborative development with Hiroshi Shinaoka, Hitoshi Mori, Markus Wallerberger\n\nPorting SparseIR.jl v1.0 to C++: libsparseir (C++)\nPorting libsparseir to Rust: sparse-ir-rs\nSparseIR.jl v2.0 (Julia interface for sparse-ir-rs)\nsparse-ir v2.0 (Python interface for sparse-ir-rs)"
   },
   {
-    "objectID": "slides/slide.html#recent-work-tensor4all",
-    "href": "slides/slide.html#recent-work-tensor4all",
+    "objectID": "slides/slide.html#recent-work-development-with-tensor4all-members",
+    "href": "slides/slide.html#recent-work-development-with-tensor4all-members",
     "title": "Introduction to Coding Agents",
-    "section": "Recent work: tensor4all",
-    "text": "Recent work: tensor4all\n\ntensor4all: A Rust implementation of tensor networks\n\nPorting Strided.jl to Rust strided-rs\nstrided-rs-benchmark-suite"
+    "section": "Recent work: Development with tensor4all members",
+    "text": "Recent work: Development with tensor4all members\n\ntensor4all-rs: A Rust implementation of tensor networks\n\nPorting Jutho/Strided.jl to Rust strided-rs\nstrided-rs-benchmark-suite\n\ntenferro-rs\n\nA general-purpose tensor computation library in Rust with CPU/GPU support."
   },
   {
     "objectID": "slides/slide.html#recent-work-mvmc",
@@ -616,32 +637,32 @@
     "text": "Recent work: SubsetJuliaVM\nLet’s run Julia on iPad and iPhone"
   },
   {
-    "objectID": "slides/slide.html#recent-work-better-pluto-client",
-    "href": "slides/slide.html#recent-work-better-pluto-client",
-    "title": "Introduction to Coding Agents",
-    "section": "Recent work: better-pluto-client",
-    "text": "Recent work: better-pluto-client\nWe can view pluto notebook on VS Code."
-  },
-  {
     "objectID": "slides/slide.html#recent-work-rustcall.jl",
     "href": "slides/slide.html#recent-work-rustcall.jl",
     "title": "Introduction to Coding Agents",
     "section": "Recent work: RustCall.jl",
-    "text": "Recent work: RustCall.jl\nA package that allows calling Rust from Julia.\nusing RustCall\n\nrust\"\"\"\n#[julia]\nfn add(a: i32, b: i32) -&gt; i32 {\n    a + b\n}\n\"\"\"\n\n# Call directly - wrapper is auto-generated\nadd(10, 20)  # =&gt; 30"
+    "text": "Recent work: RustCall.jl\nA package that allows calling Rust from Julia. Its design was inspired by Cxx.jl.\nusing RustCall\n\nrust\"\"\"\n#[julia]\nfn add(a: i32, b: i32) -&gt; i32 {\n    a + b\n}\n\"\"\"\n\n# Call directly - wrapper is auto-generated\nadd(10, 20)  # =&gt; 30"
   },
   {
-    "objectID": "slides/slide.html#actually",
-    "href": "slides/slide.html#actually",
+    "objectID": "slides/slide.html#recent-work-better-pluto-client",
+    "href": "slides/slide.html#recent-work-better-pluto-client",
     "title": "Introduction to Coding Agents",
-    "section": "Actually",
-    "text": "Actually\nOver 90% of the software introduced so far was generated using AI. This is a fact.\nHumans give instructions in natural language for what they want to build, and AI agents generate source code and execute commands.\nThis approach to development using AI is called AI-driven development."
+    "section": "Recent work: better-pluto-client",
+    "text": "Recent work: better-pluto-client\nWe can view Pluto notebook on VS Code."
+  },
+  {
+    "objectID": "slides/slide.html#ai-driven-development",
+    "href": "slides/slide.html#ai-driven-development",
+    "title": "Introduction to Coding Agents",
+    "section": "AI Driven Development",
+    "text": "AI Driven Development\nThanks to AI, I can now use programming languages other than Julia and develop many software products rapidly.\nHumans give instructions in natural language for what they want to build, and AI agents generate source code and execute commands.\nThis approach to development using AI is called AI-driven development."
   },
   {
     "objectID": "slides/slide.html#in-reality",
     "href": "slides/slide.html#in-reality",
     "title": "Introduction to Coding Agents",
     "section": "In reality",
-    "text": "In reality\n\n\nGit is not used. No version control\nNo documentation, or it’s outdated\nNo unit tests\nCode doesn’t compile\nRuntime errors occur (segmentation faults, etc.)\nDataset URLs point to a researcher’s personal C: drive (hardcoded variables)"
+    "text": "In reality\n\n\nWhere is the source code? (Git is not used. No version control)\n\n\nNo documentation, or it’s outdated\n\n\nCode doesn’t compile\n\n\nNo unit tests\n\n\nRuntime errors occur (segmentation faults, etc.)\n\n\nDataset URLs point to a researcher’s personal C: drive (hardcoded variables)"
   },
   {
     "objectID": "slides/slide.html#humans-and-machines",
@@ -655,7 +676,14 @@
     "href": "slides/slide.html#humans-and-machines-1",
     "title": "Introduction to Coding Agents",
     "section": "Humans and machines",
-    "text": "Humans and machines\n\nHumans can “create” but they “get tired,” “get bored,” and “get stuck”\n\n\nDear scientists, when writing new numerical computing software, use Julia or Rust for scientific computing. They have modern package management systems that enable collaborative development.\n\n\nJulia provides fast execution while remaining a high-level language. You should use it if you typically write Fortran. However, type-unstable code, frequent GC (garbage collection), and memory allocation can prevent optimal performance. Tensor network packages that handle multidimensional arrays often encounter this issue.\n\n\nRust is a fast static language. Those who write C/C++ should consider switching. Rust has a learning curve when written manually, but AI code generation dramatically improves the development experience.\n\n\nThe tensor4all-rs ecosystem for tensor networks aims to be an excellent example of adopting Rust for scientific computing."
+    "text": "Humans and machines\n\nHumans can “create” but they “get tired,” “get bored,” and “get stuck”\n\n\nDear scientists, when writing new numerical computing software, use Julia or Rust for scientific computing. They have modern package management systems that enable collaborative development with others.\n\n\nJulia provides fast execution while remaining a high-level language. You should use it if you typically write Fortran. However, type-unstable code, frequent GC (garbage collection), and memory allocation can prevent optimal performance. Tensor network packages that handle multidimensional arrays often encounter this issue.\n\n\nRust is a fast static language. Those who write C/C++ should consider switching. Rust has a learning curve when written manually, but AI code generation dramatically improves the development experience.\n\n\nThe tensor4all-rs ecosystem for tensor networks aims to be an excellent example of adopting Rust for scientific computing."
+  },
+  {
+    "objectID": "slides/slide.html#the-rise-of-coding-agents",
+    "href": "slides/slide.html#the-rise-of-coding-agents",
+    "title": "Introduction to Coding Agents",
+    "section": "The rise of coding agents",
+    "text": "The rise of coding agents\nWith advances in artificial intelligence and generative AI, coding agents and AI agents can now take the following actions to achieve goals when given human instructions:"
   },
   {
     "objectID": "slides/slide.html#humans-and-machines-2",
@@ -670,13 +698,6 @@
     "title": "Introduction to Coding Agents",
     "section": "Humans and machines",
     "text": "Humans and machines\n\nMachines “don’t get bored,” “don’t get tired,” and “models improve”\nWork anytime\n\nCan use various languages. Good at porting:\nJulia -&gt; C++, C++ -&gt; Rust, C -&gt; Julia\nTypeScript, Swift, Flutter/Dart\n\nCan adapt to requests. Migration to modern languages is possible\nRequires appropriate instructions from humans"
-  },
-  {
-    "objectID": "slides/slide.html#the-rise-of-coding-agents",
-    "href": "slides/slide.html#the-rise-of-coding-agents",
-    "title": "Introduction to Coding Agents",
-    "section": "The rise of coding agents",
-    "text": "The rise of coding agents\nWith advances in AI and generative AI, coding agents and AI agents can now take the following actions to achieve goals when given human instructions:"
   },
   {
     "objectID": "slides/slide.html#are-humans-unnecessary-no",
@@ -746,21 +767,28 @@
     "href": "slides/slide.html#required-cli-tools",
     "title": "Introduction to Coding Agents",
     "section": "Required CLI tools",
-    "text": "Required CLI tools\n\ngit, gh: Operate Git/GitHub\nuv: Python package manager\nnpm, node: Installing coding agents\njuliaup, julia: Required to run Julia code\nrustup, rustc, cargo: Required to build and run Rust code\n\nOptional:\n\ndocker\ndevcontainer\nrg\ntree\nhtop\nquarto"
+    "text": "Required CLI tools\n\ngit, gh: Operate Git/GitHub\nuv: Python package manager\nnpm, node: Installing coding agents\njuliaup, julia: Required to run Julia code\nrustup, rustc, cargo: Required to build and run Rust code\n\nOptional:\n\ntmux\ndocker\ndevcontainer\nrg\ntree\nhtop\nquarto"
   },
   {
     "objectID": "slides/slide.html#installation",
     "href": "slides/slide.html#installation",
     "title": "Introduction to Coding Agents",
     "section": "Installation",
-    "text": "Installation\nTODO: See 01-preparation.qmd"
+    "text": "Installation\nTODO: See preparation.qmd"
   },
   {
-    "objectID": "slides/slide.html#installation-1",
-    "href": "slides/slide.html#installation-1",
+    "objectID": "slides/slide.html#installation-cursor",
+    "href": "slides/slide.html#installation-cursor",
     "title": "Introduction to Coding Agents",
-    "section": "Installation",
-    "text": "Installation\nGo to the link below:\n\nhttps://cursor.com/download\nVS Code users can migrate extensions"
+    "section": "Installation (Cursor)",
+    "text": "Installation (Cursor)\nGo to the link below:\n\nhttps://cursor.com/download\nVS Code users can migrate extensions"
+  },
+  {
+    "objectID": "slides/slide.html#cursor-ui",
+    "href": "slides/slide.html#cursor-ui",
+    "title": "Introduction to Coding Agents",
+    "section": "Cursor UI",
+    "text": "Cursor UI"
   },
   {
     "objectID": "slides/slide.html#math-quiz",
@@ -788,14 +816,14 @@
     "href": "slides/slide.html#application-js-implementation-1",
     "title": "Introduction to Coding Agents",
     "section": "Application (JS implementation)",
-    "text": "Application (JS implementation)\nLet’s calculate the \\(\\pi \\approx 3.14...\\) from GCD function:\n// approx_pi_gcd.js\n\n// Function to compute the greatest common divisor (GCD) using the Euclidean algorithm\nfunction mygcd(a, b) {\n    // Loop until the remainder is zero\n    while (b !== 0) {\n        let tmp = b;    // Store the value of b temporarily\n        b = a % b;      // Update b to the remainder of a divided by b\n        a = tmp;        // Set a to the previous value of b\n    }\n    return a;           // When b is zero, a is the GCD\n}\n\n// Function to approximate pi using probability that two numbers are coprime\nfunction calcPi(N) {\n    let cnt = 0;    // Counter for coprime pairs\n    // Loop through all pairs (a, b) where 1 &lt;= a, b &lt;= N\n    for (let a = 1; a &lt;= N; a++) {\n        for (let b = 1; b &lt;= N; b++) {\n            // Check if a and b are coprime\n            if (mygcd(a, b) === 1) {\n                cnt += 1;  // Increment counter if coprime\n            }\n        }\n    }\n    // Probability that two numbers are coprime\n    let prob = cnt / (N * N);\n    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)\n    return Math.sqrt(6 / prob);\n}\n\n// Main function to run the pi approximation\nfunction main() {\n    let N = 10000;            // Number limit for coprimality checking\n    let pi = calcPi(N);       // Approximate pi\n    console.log(`N: ${N}`);   // Output N\n    console.log(`pi: ${pi}`); // Output approximation of pi\n}\n\nmain(); // Call the main function\nResult\n$ node approx_pi_gcd.js\ncalcPi: 2.175s\nN: 10000\npi: 3.141534239016629"
+    "text": "Application (JS implementation)\nLet’s calculate \\(\\pi \\approx 3.14...\\) using the greatest common divisor:\n// approx_pi_gcd.js\n\n// Function to compute the greatest common divisor (GCD) using the Euclidean algorithm\nfunction mygcd(a, b) {\n    // Loop until the remainder is zero\n    while (b !== 0) {\n        let tmp = b;    // Store the value of b temporarily\n        b = a % b;      // Update b to the remainder of a divided by b\n        a = tmp;        // Set a to the previous value of b\n    }\n    return a;           // When b is zero, a is the GCD\n}\n\n// Function to approximate pi using probability that two numbers are coprime\nfunction calcPi(N) {\n    let cnt = 0;    // Counter for coprime pairs\n    // Loop through all pairs (a, b) where 1 &lt;= a, b &lt;= N\n    for (let a = 1; a &lt;= N; a++) {\n        for (let b = 1; b &lt;= N; b++) {\n            // Check if a and b are coprime\n            if (mygcd(a, b) === 1) {\n                cnt += 1;  // Increment counter if coprime\n            }\n        }\n    }\n    // Probability that two numbers are coprime\n    let prob = cnt / (N * N);\n    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)\n    return Math.sqrt(6 / prob);\n}\n\n// Main function to run the pi approximation\nfunction main() {\n    let N = 10000;            // Number limit for coprimality checking\n    let pi = calcPi(N);       // Approximate pi\n    console.log(`N: ${N}`);   // Output N\n    console.log(`pi: ${pi}`); // Output approximation of pi\n}\n\nmain(); // Call the main function\nResult\n$ node approx_pi_gcd.js\ncalcPi: 2.175s\nN: 10000\npi: 3.141534239016629"
   },
   {
     "objectID": "slides/slide.html#exercise",
     "href": "slides/slide.html#exercise",
     "title": "Introduction to Coding Agents",
     "section": "Exercise",
-    "text": "Exercise\nPort the JavaScript code above to Julia and Rust. Measure the execution time when N=10000.\nHint\nUse the following prompts:\n\nPort approx_pi_gcd.js to Julia and save the result as approx_pi_gcd.jl\n\n\nPort approx_pi_gcd.rs to Rust and save the result as approx_pi_gcd.rs"
+    "text": "Exercise\nPort the JavaScript code above to Julia and Rust. Measure the execution time when N=10000.\nHint\nUse the following prompts:\n\nPort approx_pi_gcd.js to Julia and save the result as approx_pi_gcd.jl\n\n\nPort approx_pi_gcd.js to Rust and save the result as approx_pi_gcd.rs"
   },
   {
     "objectID": "slides/slide.html#answer",
@@ -805,11 +833,11 @@
     "text": "Answer"
   },
   {
-    "objectID": "slides/slide.html#answerjulia",
-    "href": "slides/slide.html#answerjulia",
+    "objectID": "slides/slide.html#answer-julia",
+    "href": "slides/slide.html#answer-julia",
     "title": "Introduction to Coding Agents",
-    "section": "Answer(Julia)",
-    "text": "Answer(Julia)\n# Function to compute the greatest common divisor (GCD) using the Euclidean algorithm\nfunction mygcd(a, b)\n    # Loop until the remainder is zero\n    while b != 0\n        tmp = b    # Store the value of b temporarily\n        b = a % b  # Update b to the remainder of a divided by b\n        a = tmp    # Set a to the previous value of b\n    end\n    return a       # When b is zero, a is the GCD\nend\n\n# Function to approximate pi using probability that two numbers are coprime\nfunction calcPi(N)\n    cnt = 0    # Counter for coprime pairs\n    # Loop through all pairs (a, b) where 1 &lt;= a, b &lt;= N\n    for a in 1:N\n        for b in 1:N\n            # Check if a and b are coprime\n            if mygcd(a, b) == 1\n                cnt += 1  # Increment counter if coprime\n            end\n        end\n    end\n    # Probability that two numbers are coprime\n    prob = cnt / (N * N)\n    # Approximate pi using the formula: pi ≈ sqrt(6 / prob)\n    return sqrt(6 / prob)\nend\n\n# Main function to run the pi approximation\nfunction main()\n    N = 10000            # Number limit for coprimality checking\n    approx_pi = @time calcPi(N) # Approximate pi and time it\n    println(\"N: $(N)\")   # Output N\n    println(\"pi: $(approx_pi)\") # Output approximation of pi\nend\n\nmain() # Call the main function\nResult\n$ julia approx_pi_gcd.jl\n  1.865392 seconds\nN: 10000\npi: 3.141534239016629"
+    "section": "Answer (Julia)",
+    "text": "Answer (Julia)\n# Function to compute the greatest common divisor (GCD) using the Euclidean algorithm\nfunction mygcd(a, b)\n    # Loop until the remainder is zero\n    while b != 0\n        tmp = b    # Store the value of b temporarily\n        b = a % b  # Update b to the remainder of a divided by b\n        a = tmp    # Set a to the previous value of b\n    end\n    return a       # When b is zero, a is the GCD\nend\n\n# Function to approximate pi using probability that two numbers are coprime\nfunction calcPi(N)\n    cnt = 0    # Counter for coprime pairs\n    # Loop through all pairs (a, b) where 1 &lt;= a, b &lt;= N\n    for a in 1:N\n        for b in 1:N\n            # Check if a and b are coprime\n            if mygcd(a, b) == 1\n                cnt += 1  # Increment counter if coprime\n            end\n        end\n    end\n    # Probability that two numbers are coprime\n    prob = cnt / (N * N)\n    # Approximate pi using the formula: pi ≈ sqrt(6 / prob)\n    return sqrt(6 / prob)\nend\n\n# Main function to run the pi approximation\nfunction main()\n    N = 10000            # Number limit for coprimality checking\n    approx_pi = @time calcPi(N) # Approximate pi and time it\n    println(\"N: $(N)\")   # Output N\n    println(\"pi: $(approx_pi)\") # Output approximation of pi\nend\n\nmain() # Call the main function\nResult\n$ julia approx_pi_gcd.jl\n  1.865392 seconds\nN: 10000\npi: 3.141534239016629"
   },
   {
     "objectID": "slides/slide.html#answer-rust",
@@ -886,11 +914,11 @@
     "href": "slides/slide.html#another-example",
     "title": "Introduction to Coding Agents",
     "section": "Another example",
-    "text": "Another example\nWhat is the expected number of random numbers (generated uniformly) such that their sum of numbers exceeds one?\nRefer this discussion on MathOverflow.\nExercise\nWrite a numerical computing program. Try it in various programming languages"
+    "text": "Another example\nWhat is the expected number of random numbers (generated uniformly) such that their sum exceeds one?\nRefer this discussion on MathOverflow.\nExercise\nWrite a numerical computing program. Try it in various programming languages"
   },
   {
-    "objectID": "slides/slide.html#answer-julia",
-    "href": "slides/slide.html#answer-julia",
+    "objectID": "slides/slide.html#answer-julia-1",
+    "href": "slides/slide.html#answer-julia-1",
     "title": "Introduction to Coding Agents",
     "section": "Answer (Julia)",
     "text": "Answer (Julia)\nfunction count_upto_one()\n    counter = 0\n    accumulated = 0.0\n    while true\n        accumulated += rand()\n        counter += 1\n        if accumulated &gt;= 1.0\n            break\n        end\n    end\n    return counter\nend\n\nfunction main()\n    n_trial =1e8\n    total_count=0\n    for trial in 1:n_trial\n        total_count+=count_upto_one()\n    end\n    println(total_count/n_trial)\nend\n\nmain()"
