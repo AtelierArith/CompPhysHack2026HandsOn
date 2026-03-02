@@ -340,7 +340,7 @@
     "href": "index.html",
     "title": "CompPhysHack2026HandsOn by AtelierArith",
     "section": "",
-    "text": "This website provides lecture materials for participants of CompPhysHack 2026.\n\n\nWith advances in artificial intelligence and large language models, coding agents have emerged. These agents autonomously generate source code and execute commands based on human instructions, providing support for coding and software development. This lecture introduces coding agents such as Claude Code and Cursor, and teaches how to leverage them through several hands-on exercises.\n\n\n\n\nPreparation\nSlide\n\n\n\n\nThis website is built with Quarto. This website may be used freely for educational and research purposes.\n\n\nDownload Quarto from here to use the quarto command. Then, just run:\n$ git clone https://github.com/AtelierArith/CompPhysHack2026HandsOn.git\n$ cd CompPhysHack2026HandsOn\n$ quarto preview\nLast modified: 2026-02-26"
+    "text": "This website provides lecture materials for participants of CompPhysHack 2026.\n\n\nWith advances in artificial intelligence and large language models, coding agents have emerged. These agents autonomously generate source code and execute commands based on human instructions, providing support for coding and software development. This lecture introduces coding agents such as Claude Code and Cursor, and teaches how to leverage them through several hands-on exercises.\n\n\n\n\nPreparation\nSlide\n\n\n\n\nThis website is built with Quarto. This website may be used freely for educational and research purposes.\n\n\nDownload Quarto from here to use the quarto command. Then, just run:\n$ git clone https://github.com/AtelierArith/CompPhysHack2026HandsOn.git\n$ cd CompPhysHack2026HandsOn\n$ quarto preview\n\n\n\nThe audio overview summarized by Google NotebookLM is available below.\nAudio en Audio ja\nLast modified: 2026-03-02"
   },
   {
     "objectID": "index.html#introduction",
@@ -361,7 +361,7 @@
     "href": "index.html#appendix",
     "title": "CompPhysHack2026HandsOn by AtelierArith",
     "section": "",
-    "text": "This website is built with Quarto. This website may be used freely for educational and research purposes.\n\n\nDownload Quarto from here to use the quarto command. Then, just run:\n$ git clone https://github.com/AtelierArith/CompPhysHack2026HandsOn.git\n$ cd CompPhysHack2026HandsOn\n$ quarto preview\nLast modified: 2026-02-26"
+    "text": "This website is built with Quarto. This website may be used freely for educational and research purposes.\n\n\nDownload Quarto from here to use the quarto command. Then, just run:\n$ git clone https://github.com/AtelierArith/CompPhysHack2026HandsOn.git\n$ cd CompPhysHack2026HandsOn\n$ quarto preview\n\n\n\nThe audio overview summarized by Google NotebookLM is available below.\nAudio en Audio ja\nLast modified: 2026-03-02"
   },
   {
     "objectID": "handouts/preparation/preparation.html",
