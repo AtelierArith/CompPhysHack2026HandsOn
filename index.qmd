@@ -30,5 +30,12 @@ $ cd CompPhysHack2026HandsOn
 $ quarto preview
 ```
 
+### Audio summary
+
+The audio overview summarized by Google NotebookLM is available below.
+
+[Audio en](./audio/notebook_lm_summary_en.m4a)
+[Audio ja](./audio/notebook_lm_summary_ja.m4a)
+
 Last modified: __LAST_MODIFIED__
 
