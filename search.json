@@ -77,6 +77,13 @@
     "text": "現実では\n\n\nソースコードはどこですか？ (Git が使われていない．バージョン管理されてない)\n\n\nドキュメントがない，または古い\n\n\nコンパイルができない\n\n\n単体テストがない\n\n\n実行時エラーが起きる(セグメンテーションフォルトなど)\n\n\nデータセットの URL が 研究者個人の C ドライブ(変数のハードコーディング)"
   },
   {
+    "objectID": "slides/slide-ja.html#再現性のあるソフトウェアを作ってくれ",
+    "href": "slides/slide-ja.html#再現性のあるソフトウェアを作ってくれ",
+    "title": "Introduction to Coding Agents",
+    "section": "再現性のあるソフトウェアを作ってくれ！",
+    "text": "再現性のあるソフトウェアを作ってくれ！\n\n\n研究者がソフトウェアを開発する場合には再現性のあるソフトウェアを作ることが重要です．\nAI を活用したソフトウェア開発は再現性のあるソフトウェアを作るための一つの解決策です．"
+  },
+  {
     "objectID": "slides/slide-ja.html#人間と機械",
     "href": "slides/slide-ja.html#人間と機械",
     "title": "Introduction to Coding Agents",
@@ -116,35 +123,35 @@
     "href": "slides/slide-ja.html#人間は不要かno",
     "title": "Introduction to Coding Agents",
     "section": "人間は不要か？(No)",
-    "text": "人間は不要か？(No)\n\nLLM は多くの知識を持っているが，研究者のように最先端の知識を持っているとは限らない．何を実装するか，しないかは人間の能力に左右される．\nソフトウェアエンジニアはコーディングする時間から解放されるが，どのような技術をどの場面で使うか，高品質なソフトウェアを作成・維持するためのアーキテクチャを考える・意思決定をする上位の能力が求められるようになる．コーディング以外に研究者と議論するための最低限のドメイン知識も求められるようになる．"
+    "text": "人間は不要か？(No)\n\nLLM は多くの知識を持っているが，研究者のように最先端の知識を持っているとは限らない．\n\n何を実装するか，しないかは人間の能力に左右される．\n\nソフトウェアエンジニアはコーディングする時間から解放されるが，次のような能力は必要になる：\n\nどのような技術をどの場面で使うか\n高品質なソフトウェアを作成・維持するためのアーキテクチャを考える\n意思決定をする上位の能力\n\nコーディング以外に研究者と議論するための最低限のドメイン知識も求められるようになる．"
   },
   {
     "objectID": "slides/slide-ja.html#人間は不要かno-1",
     "href": "slides/slide-ja.html#人間は不要かno-1",
     "title": "Introduction to Coding Agents",
     "section": "人間は不要か？(No)",
-    "text": "人間は不要か？(No)\n\nAI がコードを書いてもサボるケースがある\n\nプレースホルダーだけ書いて満足する\n汎用な実装が求められるケースで特殊なケースだけを想定したケースでのみ実装してしまう．\n\nベストプラクティスな実装とは限らない．\n\nJulia だと多重ディスパッチを使わない，export を多用する\nRust だと .clone() の多用をする．パフォーマンスの劣化\n\n最低限のコードの実行方法，コーディングの知識，プログラミング言語の知識は必要．"
+    "text": "人間は不要か？(No)\n\nAI がコードを書いてもサボるケースがある\n\nプレースホルダーだけ書いて満足する\n汎用な実装が求められるケースで特殊なケースだけを想定したケースでのみ実装してしまう．\n\nベストプラクティスな実装とは限らない．\n\nJulia だと多重ディスパッチを使わない，export を多用する\nRust だと .clone() の多用をする．パフォーマンスの劣化\n\n最低限のコードのビルド，実行方法，コーディングの知識，プログラミング言語の知識は必要．"
   },
   {
     "objectID": "slides/slide-ja.html#ソフトウェアエンジニアは不要か",
     "href": "slides/slide-ja.html#ソフトウェアエンジニアは不要か",
     "title": "Introduction to Coding Agents",
     "section": "ソフトウェアエンジニアは不要か？",
-    "text": "ソフトウェアエンジニアは不要か？\n\nAI が発達することで研究者は不要になるというぐらい過激な主張\nAI の導入によって言語の学習コスト・細かい文法・コーディングスタイルのような局所的な議論から解放される．\n「ユーザにとって体験が良いソフトウェアをどのように設計するか」，「状況・目的に応じてどのような技術，プログラミング言語を選択すべきか」「高品質なソフトウェアをどのように維持するべきか」といったアーキテクチャレベルの設計・大域的な議論に集中することができる． 何を実装するか実装すべきでないかは人間の判断に大きく判断される．\nVisual profiler を用いたボトルネックの調査は AI による完全自動化は難しい．そのようはワークフローはまだ存在する．\n\nミリ秒, マイクロ秒, ナノ秒レベルの最適化をする仕事は人間の直感が大事．需要はまだあると思う"
+    "text": "ソフトウェアエンジニアは不要か？\n\nAI が発達することで研究者は不要になるというぐらい過激な主張\nAI の導入によって下記のような局所的な議論から解放される:\n\n言語の学習コスト\n細かい文法\nコーディングスタイル\n\n下記のような大域的な議論に集中するべき\n\n「ユーザにとって体験が良いソフトウェアをどのように設計するか」\n状況・目的に応じてどのような技術，プログラミング言語を選択すべきか」 -「高品質なソフトウェアをどのように維持するべきか」\n何を実装するか実装すべきでないか」\n\nVisual profiler を用いたボトルネックの調査は AI による完全自動化は難しい．そのようはワークフローはまだ存在する．\n\nミリ秒, マイクロ秒, ナノ秒レベルの最適化をする仕事は人間の直感が大事．需要はまだあると思う"
   },
   {
     "objectID": "slides/slide-ja.html#ソフトウェアエンジニアは不要か-1",
     "href": "slides/slide-ja.html#ソフトウェアエンジニアは不要か-1",
     "title": "Introduction to Coding Agents",
     "section": "ソフトウェアエンジニアは不要か？",
-    "text": "ソフトウェアエンジニアは不要か？\n\nドメイン知識を身についけることが大事，物理学者とコミュニケーションする程度の物理学の知識\nRust で書かれたコードは Web Assembly の技術で Web で実行することができる．数値計算のデモを Web で公開・メンテナンスをする仕事は出てくる．"
+    "text": "ソフトウェアエンジニアは不要か？\n\nドメイン知識を身についけることが大事\n\n物理学者とコミュニケーションする程度の物理学の知識\n\nRust で書かれたコードは Web Assembly の技術で Web で実行することができる．\n\n数値計算のデモを Web で公開・メンテナンスをする仕事は出てくるかも？"
   },
   {
     "objectID": "slides/slide-ja.html#ソフトウェアエンジニアは不要か-2",
     "href": "slides/slide-ja.html#ソフトウェアエンジニアは不要か-2",
     "title": "Introduction to Coding Agents",
     "section": "ソフトウェアエンジニアは不要か？",
-    "text": "ソフトウェアエンジニアは不要か？\n\n研究者は忙しくなる．今までできなかったけれど，やりたかったことができるようになる．それに応じて仕事も増えてくるはず．\n研究者は暇にならない．ある研究者は Claude Code MAX $200 を契約し，AI をフル活用したせいで目眩を引き起こした．\n\n私は $100 プランまでダウングレードすることを推奨した．ジョークのようで本当の話"
+    "text": "ソフトウェアエンジニアは不要か？\n\n研究者は忙しくなる．\n\n今までできなかったけれど，やりたかったことができるようになる．\nそれに応じて仕事も増えてくるはず\n\n研究者は暇にならない．\n\nある研究者は Claude Code MAX $200 を契約し，AI をフル活用したせいで目眩を引き起こした．\n私は $100 プランまでダウングレードすることを推奨した．ジョークのようで本当の話"
   },
   {
     "objectID": "slides/slide-ja.html#ソフトウェアエンジニアは不要か-3",
@@ -665,6 +672,13 @@
     "text": "In reality\n\n\nWhere is the source code? (Git is not used. No version control)\n\n\nNo documentation, or it’s outdated\n\n\nCode doesn’t compile (C/C++/Fortran90/FORTRAN77)\n\n\nNo unit tests\n\n\nRuntime errors occur (segmentation faults, etc. C++!!!)\n\n\n\nDataset URLs point to a researcher’s personal C: drive\n\n(hardcoded variables in the SOTA machine learning source code)"
   },
   {
+    "objectID": "slides/slide.html#build-reproducible-software-for-us",
+    "href": "slides/slide.html#build-reproducible-software-for-us",
+    "title": "Introduction to Coding Agents",
+    "section": "Build reproducible software for us!",
+    "text": "Build reproducible software for us!\n\n\nWhen researchers develop software, it is important to build reproducible software.\nAI-powered software development is one solution for building reproducible software."
+  },
+  {
     "objectID": "slides/slide.html#humans-and-machines",
     "href": "slides/slide.html#humans-and-machines",
     "title": "Introduction to Coding Agents",
@@ -704,35 +718,35 @@
     "href": "slides/slide.html#are-humans-unnecessary-no",
     "title": "Introduction to Coding Agents",
     "section": "Are humans unnecessary? (No)",
-    "text": "Are humans unnecessary? (No)\n\nLLMs have much knowledge but may not have cutting-edge knowledge like researchers. What to implement or not depends on human judgment.\nSoftware engineers are freed from coding time but need higher-level skills: choosing which technologies to use when, designing architecture for high-quality software, and making decisions. Minimal domain knowledge to discuss with researchers is also required."
+    "text": "Are humans unnecessary? (No)\n\nLLMs have much knowledge but may not have cutting-edge knowledge like researchers.\n\nWhat to implement or not depends on human judgment.\n\nSoftware engineers are freed from coding time but need the following capabilities:\n\nWhich technologies to use when\nDesigning architecture for high-quality software\nHigher-level decision-making ability\n\nMinimal domain knowledge to discuss with researchers is also required."
   },
   {
     "objectID": "slides/slide.html#are-humans-unnecessary-no-1",
     "href": "slides/slide.html#are-humans-unnecessary-no-1",
     "title": "Introduction to Coding Agents",
     "section": "Are humans unnecessary? (No)",
-    "text": "Are humans unnecessary? (No)\n\nAI can slack off when writing code\n\nSatisfied with writing only placeholders\nImplements only special cases when a general implementation is needed\n\nNot always best-practice implementation\n\nIn Julia: doesn’t use multiple dispatch, overuses export\nIn Rust: overuses .clone(), degrading performance\n\nMinimal knowledge of how to run code, coding, and programming languages is necessary."
+    "text": "Are humans unnecessary? (No)\n\nAI can slack off when writing code\n\nSatisfied with writing only placeholders\nImplements only special cases when a general implementation is needed\n\nNot always best-practice implementation\n\nIn Julia: doesn’t use multiple dispatch, overuses export\nIn Rust: overuses .clone(), degrading performance\n\nMinimal knowledge of how to build and run code, coding, and programming languages is necessary."
   },
   {
     "objectID": "slides/slide.html#are-software-engineers-unnecessary",
     "href": "slides/slide.html#are-software-engineers-unnecessary",
     "title": "Introduction to Coding Agents",
     "section": "Are software engineers unnecessary?",
-    "text": "Are software engineers unnecessary?\n\nAn extreme claim: AI development could make researchers unnecessary\nAI adoption frees us from local concerns like language learning cost, fine grammar, and coding style\nWe can focus on architecture-level design and global discussions: “How to design software with good user experience,” “Which technologies and languages to choose for each situation,” “How to maintain high-quality software”\nWhat to implement or not is largely determined by human judgment\nBottleneck investigation with visual profilers is difficult to fully automate with AI. Such workflows still exist\n\nOptimization at millisecond, microsecond, nanosecond levels relies on human intuition. Demand remains"
+    "text": "Are software engineers unnecessary?\n\nAn extreme claim: AI development could make researchers unnecessary\nAI adoption frees us from the following local concerns:\n\nLanguage learning cost\nFine grammar\nCoding style\n\nWe should focus on the following global discussions:\n\nHow to design software with good user experience\nWhich technologies and languages to choose for each situation\nHow to maintain high-quality software\nWhat to implement or not\n\nBottleneck investigation with visual profilers is difficult to fully automate with AI. Such workflows still exist\n\nOptimization at millisecond, microsecond, nanosecond levels relies on human intuition. Demand remains"
   },
   {
     "objectID": "slides/slide.html#are-software-engineers-unnecessary-1",
     "href": "slides/slide.html#are-software-engineers-unnecessary-1",
     "title": "Introduction to Coding Agents",
     "section": "Are software engineers unnecessary?",
-    "text": "Are software engineers unnecessary?\n\nGaining domain knowledge is important—physics knowledge sufficient to communicate with physicists\nRust code can run on the web via WebAssembly. Work will emerge for publishing and maintaining numerical computing demos on the web"
+    "text": "Are software engineers unnecessary?\n\nGaining domain knowledge is important\n\nPhysics knowledge sufficient to communicate with physicists\n\nRust code can run on the web via WebAssembly.\n\nWork may emerge for publishing and maintaining numerical computing demos on the web"
   },
   {
     "objectID": "slides/slide.html#are-software-engineers-unnecessary-2",
     "href": "slides/slide.html#are-software-engineers-unnecessary-2",
     "title": "Introduction to Coding Agents",
     "section": "Are software engineers unnecessary?",
-    "text": "Are software engineers unnecessary?\n\nResearchers will get busier. They can do what they couldn’t before but wanted to. Work will increase accordingly\nResearchers won’t be idle. One researcher subscribed to Claude Code MAX $200 and got dizzy from full AI usage\n\nI recommended downgrading to the $100 plan. Sounds like a joke but it’s true"
+    "text": "Are software engineers unnecessary?\n\nResearchers will get busier.\n\nThey can do what they couldn’t before but wanted to.\nWork will increase accordingly\n\nResearchers won’t be idle.\n\nOne researcher subscribed to Claude Code MAX $200 and got dizzy from full AI usage\nI recommended downgrading to the $100 plan. Sounds like a joke but it’s true"
   },
   {
     "objectID": "slides/slide.html#are-software-engineers-unnecessary-3",
