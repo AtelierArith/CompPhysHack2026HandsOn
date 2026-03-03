@@ -886,7 +886,7 @@
     "href": "slides/slide.html#exercise-1",
     "title": "Introduction to Coding Agents",
     "section": "Exercise",
-    "text": "Exercise\n\nClone the Julia repository and have the coding agent explain how the gcd function works\nHave it answer what algorithm is used\nHave it port Julia’s gcd implementation to replace mygcd in the code we ported from JavaScript to Rust\n\nHint\n\ngit clone --depth 1 &lt;url&gt; enables fast cloning (shallow clone). Use the following prompt:\n\n\nRead the Julia code and answer how the gcd function is defined. Read @julia\n\n\nPort these gcd functions to Rust"
+    "text": "Exercise\n\nClone the Julia repository and have the coding agent explain how the gcd function works\nHave it answer what algorithm is used\nHave it port Julia’s gcd implementation to replace mygcd in the code we ported from JavaScript to Rust\n\nHint\n\ngit clone --depth 1 https://github.com/JuliaLang/julia.git enables fast cloning (shallow clone). Use the following prompt:\n\n\nRead the Julia code and answer how the gcd function is defined. Read @julia\n\n\nPort these gcd functions to Rust"
   },
   {
     "objectID": "slides/slide.html#answer",
