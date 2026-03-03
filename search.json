@@ -130,14 +130,14 @@
     "href": "slides/slide-ja.html#人間は不要かno-1",
     "title": "Introduction to Coding Agents",
     "section": "人間は不要か？(No)",
-    "text": "人間は不要か？(No)\n\nAI がコードを書いてもサボるケースがある\n\nプレースホルダーだけ書いて満足する\n汎用な実装が求められるケースで特殊なケースだけを想定したケースでのみ実装してしまう．\n\nベストプラクティスな実装とは限らない．\n\nJulia だと多重ディスパッチを使わない，export を多用する\nRust だと .clone() の多用をする．パフォーマンスの劣化\n\n最低限のコードのビルド，実行方法，コーディングの知識，プログラミング言語の知識は必要．"
+    "text": "人間は不要か？(No)\n\nAI がコードを書いてもサボるケースがある\n\nプレースホルダーだけ書いて満足する\n汎用な実装が求められるケースで特殊なケースだけを想定したケースでのみ実装してしまう．\n\n\n\n\nベストプラクティスな実装とは限らない．\n\nJulia だと多重ディスパッチを使わない，export を多用する\nRust だと .clone() の多用をする．パフォーマンスの劣化\n\n最低限のコードのビルド，実行方法，コーディングの知識，プログラミング言語の知識は必要．"
   },
   {
     "objectID": "slides/slide-ja.html#ソフトウェアエンジニアは不要か",
     "href": "slides/slide-ja.html#ソフトウェアエンジニアは不要か",
     "title": "Introduction to Coding Agents",
     "section": "ソフトウェアエンジニアは不要か？",
-    "text": "ソフトウェアエンジニアは不要か？\n\nAI が発達することで研究者は不要になるというぐらい過激な主張\nAI の導入によって下記のような局所的な議論から解放される:\n\n言語の学習コスト\n細かい文法\nコーディングスタイル\n\n下記のような大域的な議論に集中するべき\n\n「ユーザにとって体験が良いソフトウェアをどのように設計するか」\n状況・目的に応じてどのような技術，プログラミング言語を選択すべきか」 -「高品質なソフトウェアをどのように維持するべきか」\n何を実装するか実装すべきでないか」\n\nVisual profiler を用いたボトルネックの調査は AI による完全自動化は難しい．そのようはワークフローはまだ存在する．\n\nミリ秒, マイクロ秒, ナノ秒レベルの最適化をする仕事は人間の直感が大事．需要はまだあると思う"
+    "text": "ソフトウェアエンジニアは不要か？\n\nAI が発達することで研究者は不要になるというぐらい過激な主張\nAI の導入によって下記のような局所的な議論から解放される:\n\n言語の学習コスト\nとても細かい言語の機能・シンタックス\nコーディングスタイル\n\n下記のような大域的な議論に集中するべき\n\n「ユーザにとって体験が良いソフトウェアをどのように設計するか」\n状況・目的に応じてどのような技術，プログラミング言語を選択すべきか」 -「高品質なソフトウェアをどのように維持するべきか」\n何を実装するか実装すべきでないか」\n\nVisual profiler を用いたボトルネックの調査は AI による完全自動化は難しい．そのようはワークフローはまだ存在する．\n\nミリ秒, マイクロ秒, ナノ秒レベルの最適化をする仕事は人間の直感が大事．需要はまだあると思う"
   },
   {
     "objectID": "slides/slide-ja.html#ソフトウェアエンジニアは不要か-1",
@@ -214,7 +214,7 @@
     "href": "slides/slide-ja.html#math-quiz",
     "title": "Introduction to Coding Agents",
     "section": "Math Quiz",
-    "text": "Math Quiz\n二つのの正の整数 \\(a\\), \\(b\\) が与えられた時，最大公約数 \\(\\gcd(a,b)\\) が 1 になる確率はどれくらい？\n\n正解は\n\\[\n\\frac{1}{\\zeta(2)} = \\frac{6}{\\pi^2} \\approx 0.6079271018540267\n\\]\nここで，\\(\\zeta\\) はリーマン・ゼータ関数である．\n\\[\n\\zeta(s) = \\sum_{n=1}^{\\infty} \\frac{1}{n^s}= \\prod_{p: \\mathrm{primes} } \\left(\\frac{1}{1 - p^{-s}}  \\right) \\mathrm{}\n\\]\nここで，2番目の等式は Euler product によるものである．"
+    "text": "Math Quiz\n二つのの正の整数 \\(a\\), \\(b\\) が与えられた時，最大公約数 \\(\\gcd(a,b)\\) が 1 になる確率はどれくらい？\n\n正解は\n\\[\n\\begin{aligned}\n\\mathrm{Prob}(\\gcd(a, b) = 1)\n&= \\frac{1}{\\zeta(2)} \\\\\n&= \\frac{6}{\\pi^2} \\\\\n&\\approx 0.6079271018540267 &gt; 0.5\n\\end{aligned}\n\\]\nここで，\\(\\zeta\\) はリーマン・ゼータ関数である．\n\\[\n\\zeta(s) = \\sum_{n=1}^{\\infty} \\frac{1}{n^s}= \\prod_{p: \\mathrm{primes} } \\left(\\frac{1}{1 - p^{-s}}  \\right) \\mathrm{}\n\\]\nここで，2番目の等式は Euler product として知られている等式である．"
   },
   {
     "objectID": "slides/slide-ja.html#証明",
@@ -725,14 +725,14 @@
     "href": "slides/slide.html#are-humans-unnecessary-no-1",
     "title": "Introduction to Coding Agents",
     "section": "Are humans unnecessary? (No)",
-    "text": "Are humans unnecessary? (No)\n\nAI can slack off when writing code\n\nSatisfied with writing only placeholders\nImplements only special cases when a general implementation is needed\n\nNot always best-practice implementation\n\nIn Julia: doesn’t use multiple dispatch, overuses export\nIn Rust: overuses .clone(), degrading performance\n\nMinimal knowledge of how to build and run code, coding, and programming languages is necessary."
+    "text": "Are humans unnecessary? (No)\n\nAI can slack off when writing code\n\nSatisfied with writing only placeholders\nImplements only special cases when a general implementation is needed\n\n\n\n\nNot always best-practice implementation\n\nIn Julia: doesn’t use multiple dispatch, overuses export\nIn Rust: overuses .clone(), degrading performance\n\nMinimal knowledge of how to build and run code, coding, and programming languages is necessary."
   },
   {
     "objectID": "slides/slide.html#are-software-engineers-unnecessary",
     "href": "slides/slide.html#are-software-engineers-unnecessary",
     "title": "Introduction to Coding Agents",
     "section": "Are software engineers unnecessary?",
-    "text": "Are software engineers unnecessary?\n\nAn extreme claim: AI development could make researchers unnecessary\nAI adoption frees us from the following local concerns:\n\nLanguage learning cost\nFine grammar\nCoding style\n\nWe should focus on the following global discussions:\n\nHow to design software with good user experience\nWhich technologies and languages to choose for each situation\nHow to maintain high-quality software\nWhat to implement or not\n\nBottleneck investigation with visual profilers is difficult to fully automate with AI. Such workflows still exist\n\nOptimization at millisecond, microsecond, nanosecond levels relies on human intuition. Demand remains"
+    "text": "Are software engineers unnecessary?\n\nAn extreme claim: AI development could make researchers unnecessary\nAI adoption frees us from the following local concerns:\n\nLanguage learning cost\nVery fine-grained language features and syntax\nCoding style\n\nWe should focus on the following global discussions:\n\nHow to design software with good user experience\nWhich technologies and languages to choose for each situation\nHow to maintain high-quality software\nWhat to implement or not\n\nBottleneck investigation with visual profilers is difficult to fully automate with AI. Such workflows still exist\n\nOptimization at millisecond, microsecond, nanosecond levels relies on human intuition. Demand remains"
   },
   {
     "objectID": "slides/slide.html#are-software-engineers-unnecessary-1",
@@ -809,7 +809,7 @@
     "href": "slides/slide.html#math-quiz",
     "title": "Introduction to Coding Agents",
     "section": "Math Quiz",
-    "text": "Math Quiz\nGiven two positive integers \\(a\\) and \\(b\\), what is the probability that their greatest common divisor \\(\\gcd(a,b)\\) equals 1?\n\nThe answer is\n\\[\n\\frac{1}{\\zeta(2)} = \\frac{6}{\\pi^2} \\approx 0.6079271018540267\n\\]\nwhere \\(\\zeta\\) is the Riemann zeta function.\n\\[\n\\zeta(s) = \\sum_{n=1}^{\\infty} \\frac{1}{n^s}= \\prod_{p: \\mathrm{primes} } \\left(\\frac{1}{1 - p^{-s}}  \\right) \\mathrm{}\n\\]\nThe second equality is due to the Euler product."
+    "text": "Math Quiz\nGiven two positive integers \\(a\\) and \\(b\\), what is the probability that their greatest common divisor \\(\\gcd(a,b)\\) equals 1?\n\nThe answer is\n\\[\n\\begin{aligned}\n\\mathrm{Prob}(\\gcd(a, b) = 1)\n&= \\frac{1}{\\zeta(2)} \\\\\n&= \\frac{6}{\\pi^2} \\\\\n&\\approx 0.6079271018540267 &gt; 0.5\n\\end{aligned}\n\\]\nwhere \\(\\zeta\\) is the Riemann zeta function.\n\\[\n\\zeta(s) = \\sum_{n=1}^{\\infty} \\frac{1}{n^s}= \\prod_{p: \\mathrm{primes} } \\left(\\frac{1}{1 - p^{-s}}  \\right) \\mathrm{}\n\\]\nThe second equality is the equation known as the Euler product."
   },
   {
     "objectID": "slides/slide.html#proof",
