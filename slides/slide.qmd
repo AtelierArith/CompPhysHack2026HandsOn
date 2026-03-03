@@ -316,8 +316,13 @@ gitGraph
 
 ## Are humans unnecessary? (No)
 
-- LLMs have much knowledge but may not have cutting-edge knowledge like researchers. What to implement or not depends on human judgment.
-- Software engineers are freed from coding time but need higher-level skills: choosing which technologies to use when, designing architecture for high-quality software, and making decisions. Minimal domain knowledge to discuss with researchers is also required.
+- LLMs have much knowledge but may not have cutting-edge knowledge like researchers.
+  - What to implement or not depends on human judgment.
+- Software engineers are freed from coding time but need the following capabilities:
+  - Which technologies to use when
+  - Designing architecture for high-quality software
+  - Higher-level decision-making ability
+- Minimal domain knowledge to discuss with researchers is also required.
 
 ---
 
@@ -327,18 +332,24 @@ gitGraph
   - Satisfied with writing only placeholders
   - Implements only special cases when a general implementation is needed
 - Not always best-practice implementation
-  - In Julia: doesn't use multiple dispatch, overuses export
+  - In Julia: doesn't use multiple dispatch, overuses `export`
   - In Rust: overuses `.clone()`, degrading performance
-- Minimal knowledge of how to run code, coding, and programming languages is necessary.
+- Minimal knowledge of how to build and run code, coding, and programming languages is necessary.
 
 ---
 
 ## Are software engineers unnecessary?
 
 - An extreme claim: AI development could make researchers unnecessary
-- AI adoption frees us from local concerns like language learning cost, fine grammar, and coding style
-- We can focus on architecture-level design and global discussions: "How to design software with good user experience," "Which technologies and languages to choose for each situation," "How to maintain high-quality software"
-- What to implement or not is largely determined by human judgment
+- AI adoption frees us from the following local concerns:
+  - Language learning cost
+  - Fine grammar
+  - Coding style
+- We should focus on the following global discussions:
+  - How to design software with good user experience
+  - Which technologies and languages to choose for each situation
+  - How to maintain high-quality software
+  - What to implement or not
 - Bottleneck investigation with visual profilers is difficult to fully automate with AI. Such workflows still exist
   - Optimization at millisecond, microsecond, nanosecond levels relies on human intuition. Demand remains
 
@@ -346,15 +357,20 @@ gitGraph
 
 ## Are software engineers unnecessary?
 
-- Gaining domain knowledge is important—physics knowledge sufficient to communicate with physicists
-- Rust code can run on the web via WebAssembly. Work will emerge for publishing and maintaining numerical computing demos on the web
+- Gaining domain knowledge is important
+  - Physics knowledge sufficient to communicate with physicists
+- Rust code can run on the web via WebAssembly.
+  - Work may emerge for publishing and maintaining numerical computing demos on the web
 
 ---
 
 ## Are software engineers unnecessary?
 
-- Researchers will get busier. They can do what they couldn't before but wanted to. Work will increase accordingly
-- Researchers won't be idle. One researcher subscribed to `Claude Code MAX $200` and got dizzy from full AI usage
+- Researchers will get busier.
+  - They can do what they couldn't before but wanted to.
+  - Work will increase accordingly
+- Researchers won't be idle.
+  - One researcher subscribed to `Claude Code MAX $200` and got dizzy from full AI usage
   - I recommended downgrading to the `$100` plan. Sounds like a joke but it's true
 
 ---
