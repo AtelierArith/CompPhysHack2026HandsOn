@@ -333,6 +333,8 @@ gitGraph
   - Higher-level decision-making ability
 - Minimal domain knowledge to discuss with researchers is also required.
 
+![](assets/scientist_and_engineer.png)
+
 ---
 
 ## Are humans unnecessary? (No)
@@ -340,10 +342,14 @@ gitGraph
 - AI can slack off when writing code
   - Satisfied with writing only placeholders
   - Implements only special cases when a general implementation is needed
+
+![](assets/ai_slack_off.png)
+
 - Not always best-practice implementation
   - In Julia: doesn't use multiple dispatch, overuses `export`
   - In Rust: overuses `.clone()`, degrading performance
 - Minimal knowledge of how to build and run code, coding, and programming languages is necessary.
+
 
 ---
 
@@ -352,7 +358,7 @@ gitGraph
 - An extreme claim: AI development could make researchers unnecessary
 - AI adoption frees us from the following local concerns:
   - Language learning cost
-  - Fine grammar
+  - Very fine-grained language features and syntax
   - Coding style
 - We should focus on the following global discussions:
   - How to design software with good user experience
@@ -371,6 +377,8 @@ gitGraph
 - Rust code can run on the web via WebAssembly.
   - Work may emerge for publishing and maintaining numerical computing demos on the web
 
+![](assets/scientist_and_engineer.png)
+
 ---
 
 ## Are software engineers unnecessary?
@@ -381,6 +389,8 @@ gitGraph
 - Researchers won't be idle.
   - One researcher subscribed to `Claude Code MAX $200` and got dizzy from full AI usage
   - I recommended downgrading to the `$100` plan. Sounds like a joke but it's true
+
+![](assets/scientist_dizzy.png)
 
 ---
 
@@ -471,7 +481,12 @@ Given two positive integers $a$ and $b$, what is the probability that their grea
 The answer is
 
 $$
-\frac{1}{\zeta(2)} = \frac{6}{\pi^2} \approx 0.6079271018540267
+\begin{aligned}
+\mathrm{Prob}(\gcd(a, b) = 1)
+&= \frac{1}{\zeta(2)} \\
+&= \frac{6}{\pi^2} \\
+&\approx 0.6079271018540267 > 0.5
+\end{aligned}
 $$
 
 where $\zeta$ is the Riemann zeta function.
@@ -480,7 +495,7 @@ $$
 \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}= \prod_{p: \mathrm{primes} } \left(\frac{1}{1 - p^{-s}}  \right) \mathrm{}
 $$
 
-The second equality is due to the Euler product.
+The second equality is the equation known as the Euler product.
 :::
 
 ---
