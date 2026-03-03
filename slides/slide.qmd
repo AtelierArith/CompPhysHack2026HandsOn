@@ -213,7 +213,7 @@ Runtime errors occur (segmentation faults, etc. C++!!!)
 
 ---
 
-## Humans and machines
+## Humans and machines (1)
 
 - Humans can "create" but they "get tired," "get bored," and "get stuck"
   - Coming up with new ideas like in research activities
@@ -245,7 +245,7 @@ gitGraph
 
 ---
 
-## Humans and machines
+## Humans and machines (2)
 
 - Humans can "create" but they "get tired," "get bored," and "get stuck"
 
@@ -282,10 +282,27 @@ coding agents and AI agents can now take the following actions to achieve goals 
 
 ---
 
-## Humans and machines
+## Humans and machines (3)
 
 - Machines "don't get bored," "don't get tired," and "models improve"
   - Generate appropriate commit and pull request summaries from code diffs
+
+```{mermaid}
+gitGraph
+  commit id: "init"
+  commit id: "wip"
+  commit id: "tmp"
+  commit id: "fix"
+  commit id: "fix fix"
+  commit id: "ok"
+  branch hotfix
+  checkout hotfix
+  commit id: "pls"
+  commit id: "final"
+  checkout main
+  merge hotfix id: "merge??"
+  commit id: "real final (actually)"
+```
 
 ```{mermaid}
 gitGraph
@@ -310,7 +327,7 @@ gitGraph
 
 ---
 
-## Humans and machines
+## Humans and machines (4)
 
 - Machines "don't get bored," "don't get tired," and "models improve"
 - Work anytime
@@ -323,7 +340,7 @@ gitGraph
 
 ---
 
-## Are humans unnecessary? (No)
+## Are humans unnecessary? (1)
 
 - LLMs have much knowledge but may not have cutting-edge knowledge like researchers.
   - What to implement or not depends on human judgment.
@@ -337,7 +354,7 @@ gitGraph
 
 ---
 
-## Are humans unnecessary? (No)
+## Are humans unnecessary? (2)
 
 - AI can slack off when writing code
   - Satisfied with writing only placeholders
@@ -353,7 +370,7 @@ gitGraph
 
 ---
 
-## Are software engineers unnecessary?
+## Are software engineers unnecessary? (1)
 
 - An extreme claim: AI development could make researchers unnecessary
 - AI adoption frees us from the following local concerns:
@@ -370,7 +387,7 @@ gitGraph
 
 ---
 
-## Are software engineers unnecessary?
+## Are software engineers unnecessary? (2)
 
 - Gaining domain knowledge is important
   - Physics knowledge sufficient to communicate with physicists
@@ -381,7 +398,7 @@ gitGraph
 
 ---
 
-## Are software engineers unnecessary?
+## Are software engineers unnecessary? (3)
 
 - Researchers will get busier.
   - They can do what they couldn't before but wanted to.
@@ -394,7 +411,7 @@ gitGraph
 
 ---
 
-## Are software engineers unnecessary?
+## Are software engineers unnecessary? (4)
 
 - Jobs disappear when a certain passion disappears.
 
@@ -408,7 +425,7 @@ Alternatives: Antigravity, Claude Code, Codex.
 
 ---
 
-## Which tool should you use?
+## Which tool should you use? (1)
 
 - There is no single answer since AI agents are constantly evolving
 - Depends on which accounts you have
@@ -420,7 +437,9 @@ Alternatives: Antigravity, Claude Code, Codex.
 
 ---
 
-## Which tool should you use? (as for me)
+## Which tool should you use? (2)
+
+### As for me
 
 - Claude Code MAX `$200/$100`: Opus-4.6
 - ChatGPT Plus plan: Codex: GPT-5.3
@@ -452,9 +471,9 @@ Optional:
 
 ---
 
-## Installation
+## Software Installation
 
-TODO: See [preparation.qmd](../handouts/preparation/preparation.qmd)
+See [preparation.qmd](../handouts/preparation/preparation.qmd)
 
 ---
 
@@ -462,7 +481,7 @@ TODO: See [preparation.qmd](../handouts/preparation/preparation.qmd)
 
 Go to the link below:
 
-- https://cursor.com/download
+- [https://cursor.com/download](https://cursor.com/download)
 - VS Code users can migrate extensions
 
 ---
@@ -517,7 +536,7 @@ $$
 
 ---
 
-## Application (JS implementation)
+## JS Implementation (1)
 
 From the proof above we obtain:
 
@@ -550,7 +569,7 @@ function calcPi(N) {
 
 ---
 
-## Application (JS implementation)
+## JS Implementation (2)
 
 Let's calculate $\pi \approx 3.14...$ using the greatest common divisor:
 
@@ -623,7 +642,7 @@ Use the following prompts:
 
 ---
 
-## Answer
+## Answer (Cursor)
 
 ![](assets/prompt_port2julia.png)
 
