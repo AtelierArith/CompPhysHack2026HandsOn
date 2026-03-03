@@ -25,7 +25,7 @@ format:
 
 ## 自己紹介
 
-- フリーランスソフトウェアエンジニア． 
+- フリーランスソフトウェアエンジニア．
   - 大学教員と科学計算の共同開発を行っている．
 - GitHub: [terasakisatoshi](https://github.com/terasakisatoshi)
 - Organization: [AtelierArith](https://github.com/AtelierArith)
@@ -195,6 +195,15 @@ AI を用いて開発を効率よく進める手法を AI-driven 開発と呼ぶ
 :::{.fragment}
 データセットの URL が 研究者個人の C ドライブ(変数のハードコーディング)
 :::
+
+---
+
+## 再現性のあるソフトウェアを作ってくれ！
+
+![](assets/human-suffering.png)
+
+- 研究者がソフトウェアを開発する場合には再現性のあるソフトウェアを作ることが重要です．
+- AI を活用したソフトウェア開発は再現性のあるソフトウェアを作るための一つの解決策です．
 
 ---
 

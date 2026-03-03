@@ -204,6 +204,15 @@ Runtime errors occur (segmentation faults, etc. C++!!!)
 
 ---
 
+## Build reproducible software for us!
+
+![](assets/human-suffering.png)
+
+- When researchers develop software, it is important to build reproducible software.
+- AI-powered software development is one solution for building reproducible software.
+
+---
+
 ## Humans and machines
 
 - Humans can "create" but they "get tired," "get bored," and "get stuck"
