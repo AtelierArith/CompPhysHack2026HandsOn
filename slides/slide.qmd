@@ -118,7 +118,7 @@ Let's run Julia on iPad and iPhone
 
 ## Recent work: [RustCall.jl](https://github.com/AtelierArith/RustCall.jl)
 
-A package that allows calling Rust from Julia. Its design was inspired by Cxx.jl.
+A package that allows calling Rust from Julia. Its design was inspired by [Cxx.jl](https://github.com/JuliaInterop/Cxx.jl).
 
 ```julia
 using RustCall
