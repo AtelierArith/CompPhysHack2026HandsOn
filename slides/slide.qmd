@@ -370,7 +370,7 @@ gitGraph
 
 ---
 
-## Are software engineers unnecessary? (1)
+### Are software engineers unnecessary? (1)
 
 - An extreme claim: AI development could make researchers unnecessary
 - AI adoption frees us from the following local concerns:
@@ -387,7 +387,7 @@ gitGraph
 
 ---
 
-## Are software engineers unnecessary? (2)
+### Are software engineers unnecessary? (2)
 
 - Gaining domain knowledge is important
   - Physics knowledge sufficient to communicate with physicists
@@ -398,7 +398,7 @@ gitGraph
 
 ---
 
-## Are software engineers unnecessary? (3)
+### Are software engineers unnecessary? (3)
 
 - Researchers will get busier.
   - They can do what they couldn't before but wanted to.
@@ -411,7 +411,7 @@ gitGraph
 
 ---
 
-## Are software engineers unnecessary? (4)
+### Are software engineers unnecessary? (4)
 
 - Jobs disappear when a certain passion disappears.
 
