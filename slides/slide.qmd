@@ -880,7 +880,7 @@ Because Julia's `gcd` function uses a different algorithm than the Euclidean alg
 
 #### Hint
 
-- `git clone --depth 1 <url>` enables fast cloning (shallow clone). Use the following prompt:
+- `git clone --depth 1 https://github.com/JuliaLang/julia.git` enables fast cloning (shallow clone). Use the following prompt:
 
 > `Read the Julia code and answer how the gcd function is defined. Read @julia`
 
