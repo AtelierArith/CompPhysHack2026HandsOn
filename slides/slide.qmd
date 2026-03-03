@@ -406,6 +406,7 @@ gitGraph
 - Researchers won't be idle.
   - One researcher subscribed to `Claude Code MAX $200` and got dizzy from full AI usage
   - I recommended downgrading to the `$100` plan. Sounds like a joke but it's true
+- `{SWE task}` $\subset$ `{Researcher's demand}` $\setminus$ `{Things researchers actually can do}`
 
 ![](assets/scientist_dizzy.png)
 
@@ -432,7 +433,7 @@ Alternatives: Antigravity, Claude Code, Codex.
     - If you have ChatGPT: try Codex, GPT-5.3
     - If you have Claude: try Claude Code: Opus-4.6
 - Want to use for free
-    - Use Google's Antigravity
+    - Use GitHub Copilot, Google Antigravity
 - All services have usage limits. It all comes down to budget
 
 ---
@@ -454,8 +455,8 @@ I like to use a ultrawide monitor
 ## Required CLI tools
 
 - `git`, `gh`: Operate Git/GitHub
-- `uv`: Python package manager
 - `npm`, `node`: Installing coding agents
+- `uv`: Python package manager
 - `juliaup`, `julia`: Required to run Julia code
 - `rustup`, `rustc`, `cargo`: Required to build and run Rust code
 
