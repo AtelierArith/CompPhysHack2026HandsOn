@@ -679,18 +679,18 @@
     "text": "Build reproducible software for us!\n\n\nWhen researchers develop software, it is important to build reproducible software.\nAI-powered software development is one solution for building reproducible software."
   },
   {
-    "objectID": "slides/slide.html#humans-and-machines",
-    "href": "slides/slide.html#humans-and-machines",
-    "title": "Introduction to Coding Agents",
-    "section": "Humans and machines",
-    "text": "Humans and machines\n\nHumans can “create” but they “get tired,” “get bored,” and “get stuck”\n\nComing up with new ideas like in research activities\nOverusing git commit -m \"update\" and git commit -m \"fix\"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSticking to a specific programming language\n\nCreates environments where adopting modern practices like package managers is difficult"
-  },
-  {
     "objectID": "slides/slide.html#humans-and-machines-1",
     "href": "slides/slide.html#humans-and-machines-1",
     "title": "Introduction to Coding Agents",
-    "section": "Humans and machines",
-    "text": "Humans and machines\n\nHumans can “create” but they “get tired,” “get bored,” and “get stuck”\n\n\nDear scientists, when writing new numerical computing software, use Julia or Rust for scientific computing. They have modern package management systems that enable collaborative development with others.\n\n\nJulia provides fast execution while remaining a high-level language. You should use it if you typically write Fortran. However, type-unstable code, frequent GC (garbage collection), and memory allocation can prevent optimal performance. Tensor network packages that handle multidimensional arrays often encounter this issue.\n\n\nRust is a fast static language. Those who write C/C++ should consider switching. Rust has a learning curve when written manually, but AI code generation dramatically improves the development experience.\n\n\nThe tensor4all-rs ecosystem for tensor networks aims to be an excellent example of adopting Rust for scientific computing."
+    "section": "Humans and machines (1)",
+    "text": "Humans and machines (1)\n\nHumans can “create” but they “get tired,” “get bored,” and “get stuck”\n\nComing up with new ideas like in research activities\nOverusing git commit -m \"update\" and git commit -m \"fix\"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSticking to a specific programming language\n\nCreates environments where adopting modern practices like package managers is difficult"
+  },
+  {
+    "objectID": "slides/slide.html#humans-and-machines-2",
+    "href": "slides/slide.html#humans-and-machines-2",
+    "title": "Introduction to Coding Agents",
+    "section": "Humans and machines (2)",
+    "text": "Humans and machines (2)\n\nHumans can “create” but they “get tired,” “get bored,” and “get stuck”\n\n\nDear scientists, when writing new numerical computing software, use Julia or Rust for scientific computing. They have modern package management systems that enable collaborative development with others.\n\n\nJulia provides fast execution while remaining a high-level language. You should use it if you typically write Fortran. However, type-unstable code, frequent GC (garbage collection), and memory allocation can prevent optimal performance. Tensor network packages that handle multidimensional arrays often encounter this issue.\n\n\nRust is a fast static language. Those who write C/C++ should consider switching. Rust has a learning curve when written manually, but AI code generation dramatically improves the development experience.\n\n\nThe tensor4all-rs ecosystem for tensor networks aims to be an excellent example of adopting Rust for scientific computing."
   },
   {
     "objectID": "slides/slide.html#the-rise-of-coding-agents",
@@ -700,60 +700,60 @@
     "text": "The rise of coding agents\nWith advances in artificial intelligence and generative AI, coding agents and AI agents can now take the following actions to achieve goals when given human instructions:"
   },
   {
-    "objectID": "slides/slide.html#humans-and-machines-2",
-    "href": "slides/slide.html#humans-and-machines-2",
-    "title": "Introduction to Coding Agents",
-    "section": "Humans and machines",
-    "text": "Humans and machines\n\nMachines “don’t get bored,” “don’t get tired,” and “models improve”\n\nGenerate appropriate commit and pull request summaries from code diffs"
-  },
-  {
     "objectID": "slides/slide.html#humans-and-machines-3",
     "href": "slides/slide.html#humans-and-machines-3",
     "title": "Introduction to Coding Agents",
-    "section": "Humans and machines",
-    "text": "Humans and machines\n\nMachines “don’t get bored,” “don’t get tired,” and “models improve”\nWork anytime\n\nCan use various languages. Good at porting:\nJulia -&gt; C++, C++ -&gt; Rust, C -&gt; Julia\nTypeScript, Swift, Flutter/Dart\n\nCan adapt to requests. Migration to modern languages is possible\nRequires appropriate instructions from humans"
+    "section": "Humans and machines (3)",
+    "text": "Humans and machines (3)\n\nMachines “don’t get bored,” “don’t get tired,” and “models improve”\n\nGenerate appropriate commit and pull request summaries from code diffs"
   },
   {
-    "objectID": "slides/slide.html#are-humans-unnecessary-no",
-    "href": "slides/slide.html#are-humans-unnecessary-no",
+    "objectID": "slides/slide.html#humans-and-machines-4",
+    "href": "slides/slide.html#humans-and-machines-4",
     "title": "Introduction to Coding Agents",
-    "section": "Are humans unnecessary? (No)",
-    "text": "Are humans unnecessary? (No)\n\nLLMs have much knowledge but may not have cutting-edge knowledge like researchers.\n\nWhat to implement or not depends on human judgment.\n\nSoftware engineers are freed from coding time but need the following capabilities:\n\nWhich technologies to use when\nDesigning architecture for high-quality software\nHigher-level decision-making ability\n\nMinimal domain knowledge to discuss with researchers is also required."
+    "section": "Humans and machines (4)",
+    "text": "Humans and machines (4)\n\nMachines “don’t get bored,” “don’t get tired,” and “models improve”\nWork anytime\n\nCan use various languages. Good at porting:\nJulia -&gt; C++, C++ -&gt; Rust, C -&gt; Julia\nTypeScript, Swift, Flutter/Dart\n\nCan adapt to requests. Migration to modern languages is possible\nRequires appropriate instructions from humans"
   },
   {
-    "objectID": "slides/slide.html#are-humans-unnecessary-no-1",
-    "href": "slides/slide.html#are-humans-unnecessary-no-1",
+    "objectID": "slides/slide.html#are-humans-unnecessary-1",
+    "href": "slides/slide.html#are-humans-unnecessary-1",
     "title": "Introduction to Coding Agents",
-    "section": "Are humans unnecessary? (No)",
-    "text": "Are humans unnecessary? (No)\n\nAI can slack off when writing code\n\nSatisfied with writing only placeholders\nImplements only special cases when a general implementation is needed\n\n\n\n\nNot always best-practice implementation\n\nIn Julia: doesn’t use multiple dispatch, overuses export\nIn Rust: overuses .clone(), degrading performance\n\nMinimal knowledge of how to build and run code, coding, and programming languages is necessary."
+    "section": "Are humans unnecessary? (1)",
+    "text": "Are humans unnecessary? (1)\n\nLLMs have much knowledge but may not have cutting-edge knowledge like researchers.\n\nWhat to implement or not depends on human judgment.\n\nSoftware engineers are freed from coding time but need the following capabilities:\n\nWhich technologies to use when\nDesigning architecture for high-quality software\nHigher-level decision-making ability\n\nMinimal domain knowledge to discuss with researchers is also required."
   },
   {
-    "objectID": "slides/slide.html#are-software-engineers-unnecessary",
-    "href": "slides/slide.html#are-software-engineers-unnecessary",
+    "objectID": "slides/slide.html#are-humans-unnecessary-2",
+    "href": "slides/slide.html#are-humans-unnecessary-2",
     "title": "Introduction to Coding Agents",
-    "section": "Are software engineers unnecessary?",
-    "text": "Are software engineers unnecessary?\n\nAn extreme claim: AI development could make researchers unnecessary\nAI adoption frees us from the following local concerns:\n\nLanguage learning cost\nVery fine-grained language features and syntax\nCoding style\n\nWe should focus on the following global discussions:\n\nHow to design software with good user experience\nWhich technologies and languages to choose for each situation\nHow to maintain high-quality software\nWhat to implement or not\n\nBottleneck investigation with visual profilers is difficult to fully automate with AI. Such workflows still exist\n\nOptimization at millisecond, microsecond, nanosecond levels relies on human intuition. Demand remains"
+    "section": "Are humans unnecessary? (2)",
+    "text": "Are humans unnecessary? (2)\n\nAI can slack off when writing code\n\nSatisfied with writing only placeholders\nImplements only special cases when a general implementation is needed\n\n\n\n\nNot always best-practice implementation\n\nIn Julia: doesn’t use multiple dispatch, overuses export\nIn Rust: overuses .clone(), degrading performance\n\nMinimal knowledge of how to build and run code, coding, and programming languages is necessary."
   },
   {
     "objectID": "slides/slide.html#are-software-engineers-unnecessary-1",
     "href": "slides/slide.html#are-software-engineers-unnecessary-1",
     "title": "Introduction to Coding Agents",
-    "section": "Are software engineers unnecessary?",
-    "text": "Are software engineers unnecessary?\n\nGaining domain knowledge is important\n\nPhysics knowledge sufficient to communicate with physicists\n\nRust code can run on the web via WebAssembly.\n\nWork may emerge for publishing and maintaining numerical computing demos on the web"
+    "section": "Are software engineers unnecessary? (1)",
+    "text": "Are software engineers unnecessary? (1)\n\nAn extreme claim: AI development could make researchers unnecessary\nAI adoption frees us from the following local concerns:\n\nLanguage learning cost\nVery fine-grained language features and syntax\nCoding style\n\nWe should focus on the following global discussions:\n\nHow to design software with good user experience\nWhich technologies and languages to choose for each situation\nHow to maintain high-quality software\nWhat to implement or not\n\nBottleneck investigation with visual profilers is difficult to fully automate with AI. Such workflows still exist\n\nOptimization at millisecond, microsecond, nanosecond levels relies on human intuition. Demand remains"
   },
   {
     "objectID": "slides/slide.html#are-software-engineers-unnecessary-2",
     "href": "slides/slide.html#are-software-engineers-unnecessary-2",
     "title": "Introduction to Coding Agents",
-    "section": "Are software engineers unnecessary?",
-    "text": "Are software engineers unnecessary?\n\nResearchers will get busier.\n\nThey can do what they couldn’t before but wanted to.\nWork will increase accordingly\n\nResearchers won’t be idle.\n\nOne researcher subscribed to Claude Code MAX $200 and got dizzy from full AI usage\nI recommended downgrading to the $100 plan. Sounds like a joke but it’s true"
+    "section": "Are software engineers unnecessary? (2)",
+    "text": "Are software engineers unnecessary? (2)\n\nGaining domain knowledge is important\n\nPhysics knowledge sufficient to communicate with physicists\n\nRust code can run on the web via WebAssembly.\n\nWork may emerge for publishing and maintaining numerical computing demos on the web"
   },
   {
     "objectID": "slides/slide.html#are-software-engineers-unnecessary-3",
     "href": "slides/slide.html#are-software-engineers-unnecessary-3",
     "title": "Introduction to Coding Agents",
-    "section": "Are software engineers unnecessary?",
-    "text": "Are software engineers unnecessary?\n\nJobs disappear when a certain passion disappears."
+    "section": "Are software engineers unnecessary? (3)",
+    "text": "Are software engineers unnecessary? (3)\n\nResearchers will get busier.\n\nThey can do what they couldn’t before but wanted to.\nWork will increase accordingly\n\nResearchers won’t be idle.\n\nOne researcher subscribed to Claude Code MAX $200 and got dizzy from full AI usage\nI recommended downgrading to the $100 plan. Sounds like a joke but it’s true"
+  },
+  {
+    "objectID": "slides/slide.html#are-software-engineers-unnecessary-4",
+    "href": "slides/slide.html#are-software-engineers-unnecessary-4",
+    "title": "Introduction to Coding Agents",
+    "section": "Are software engineers unnecessary? (4)",
+    "text": "Are software engineers unnecessary? (4)\n\nJobs disappear when a certain passion disappears."
   },
   {
     "objectID": "slides/slide.html#demo",
@@ -763,18 +763,18 @@
     "text": "Demo\nIntroducing coding with Cursor.\nAlternatives: Antigravity, Claude Code, Codex."
   },
   {
-    "objectID": "slides/slide.html#which-tool-should-you-use",
-    "href": "slides/slide.html#which-tool-should-you-use",
+    "objectID": "slides/slide.html#which-tool-should-you-use-1",
+    "href": "slides/slide.html#which-tool-should-you-use-1",
     "title": "Introduction to Coding Agents",
-    "section": "Which tool should you use?",
-    "text": "Which tool should you use?\n\nThere is no single answer since AI agents are constantly evolving\nDepends on which accounts you have\n\nIf you have ChatGPT: try Codex, GPT-5.3\nIf you have Claude: try Claude Code: Opus-4.6\n\nWant to use for free\n\nUse Google’s Antigravity\n\nAll services have usage limits. It all comes down to budget"
+    "section": "Which tool should you use? (1)",
+    "text": "Which tool should you use? (1)\n\nThere is no single answer since AI agents are constantly evolving\nDepends on which accounts you have\n\nIf you have ChatGPT: try Codex, GPT-5.3\nIf you have Claude: try Claude Code: Opus-4.6\n\nWant to use for free\n\nUse Google’s Antigravity\n\nAll services have usage limits. It all comes down to budget"
   },
   {
-    "objectID": "slides/slide.html#which-tool-should-you-use-as-for-me",
-    "href": "slides/slide.html#which-tool-should-you-use-as-for-me",
+    "objectID": "slides/slide.html#which-tool-should-you-use-2",
+    "href": "slides/slide.html#which-tool-should-you-use-2",
     "title": "Introduction to Coding Agents",
-    "section": "Which tool should you use? (as for me)",
-    "text": "Which tool should you use? (as for me)\n\nClaude Code MAX $200/$100: Opus-4.6\nChatGPT Plus plan: Codex: GPT-5.3\nCursor Pro: Daily editor with Composer 1.5\n\nHardware\nI like to use a ultrawide monitor"
+    "section": "Which tool should you use? (2)",
+    "text": "Which tool should you use? (2)\nAs for me\n\nClaude Code MAX $200/$100: Opus-4.6\nChatGPT Plus plan: Codex: GPT-5.3\nCursor Pro: Daily editor with Composer 1.5\n\nHardware\nI like to use a ultrawide monitor"
   },
   {
     "objectID": "slides/slide.html#required-cli-tools",
@@ -784,11 +784,11 @@
     "text": "Required CLI tools\n\ngit, gh: Operate Git/GitHub\nuv: Python package manager\nnpm, node: Installing coding agents\njuliaup, julia: Required to run Julia code\nrustup, rustc, cargo: Required to build and run Rust code\n\nOptional:\n\ntmux\ndocker\ndevcontainer\nrg\ntree\nhtop\nquarto"
   },
   {
-    "objectID": "slides/slide.html#installation",
-    "href": "slides/slide.html#installation",
+    "objectID": "slides/slide.html#software-installation",
+    "href": "slides/slide.html#software-installation",
     "title": "Introduction to Coding Agents",
-    "section": "Installation",
-    "text": "Installation\nTODO: See preparation.qmd"
+    "section": "Software Installation",
+    "text": "Software Installation\nSee preparation.qmd"
   },
   {
     "objectID": "slides/slide.html#installation-cursor",
@@ -819,18 +819,18 @@
     "text": "Proof\n\\[\n\\begin{aligned}\n\\mathrm{Prob}(\\gcd(a, b) = 1)\n&= \\prod_{p: \\mathrm{primes} } \\left( 1 - \\mathrm{Prob}(p | a \\textrm{ and } p | b)\\right) \\\\\n&= \\prod_{p: \\mathrm{primes} } \\left( 1 - \\mathrm{Prob}(p | a)\\mathrm{Prob}(p | b)\\right) \\\\\n&= \\prod_{p: \\mathrm{primes} } \\left( 1 - \\frac{1}{p}\\cdot\\frac{1}{p}\\right) \\\\\n&= \\prod_{p: \\mathrm{primes} } \\left( 1 - p^{-2}\\right) \\\\\n&= \\left(\\prod_{p: \\mathrm{primes} } \\left(\\frac{1}{1 - p^{-2}}  \\right)\\right)^{-1} \\\\\n&=\\left(\\zeta(2)\\right)^{-1} \\\\\n&= \\frac{1}{\\zeta(2)} = \\frac{6}{\\pi^2}\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "slides/slide.html#application-js-implementation",
-    "href": "slides/slide.html#application-js-implementation",
+    "objectID": "slides/slide.html#js-implementation-1",
+    "href": "slides/slide.html#js-implementation-1",
     "title": "Introduction to Coding Agents",
-    "section": "Application (JS implementation)",
-    "text": "Application (JS implementation)\nFrom the proof above we obtain:\n\\[\n\\pi = \\sqrt{\\frac{6}{\\mathrm{Prob}(\\gcd(a, b)=1)}}\n\\]\nLet’s verify with numerical computation\n// Function to approximate pi\n// using probability that two numbers are coprime\nfunction calcPi(N) {\n    let cnt = 0;    // Counter for coprime pairs\n    // Loop through all pairs (a, b) where 1 &lt;= a, b &lt;= N\n    for (let a = 1; a &lt;= N; a++) {\n        for (let b = 1; b &lt;= N; b++) {\n            // Check if a and b are coprime\n            if (mygcd(a, b) === 1) {\n                cnt += 1;  // Increment counter if coprime\n            }\n        }\n    }\n    // Probability that two numbers are coprime\n    let prob = cnt / (N * N);\n    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)\n    return Math.sqrt(6 / prob);\n}"
+    "section": "JS Implementation (1)",
+    "text": "JS Implementation (1)\nFrom the proof above we obtain:\n\\[\n\\pi = \\sqrt{\\frac{6}{\\mathrm{Prob}(\\gcd(a, b)=1)}}\n\\]\nLet’s verify with numerical computation\n// Function to approximate pi\n// using probability that two numbers are coprime\nfunction calcPi(N) {\n    let cnt = 0;    // Counter for coprime pairs\n    // Loop through all pairs (a, b) where 1 &lt;= a, b &lt;= N\n    for (let a = 1; a &lt;= N; a++) {\n        for (let b = 1; b &lt;= N; b++) {\n            // Check if a and b are coprime\n            if (mygcd(a, b) === 1) {\n                cnt += 1;  // Increment counter if coprime\n            }\n        }\n    }\n    // Probability that two numbers are coprime\n    let prob = cnt / (N * N);\n    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)\n    return Math.sqrt(6 / prob);\n}"
   },
   {
-    "objectID": "slides/slide.html#application-js-implementation-1",
-    "href": "slides/slide.html#application-js-implementation-1",
+    "objectID": "slides/slide.html#js-implementation-2",
+    "href": "slides/slide.html#js-implementation-2",
     "title": "Introduction to Coding Agents",
-    "section": "Application (JS implementation)",
-    "text": "Application (JS implementation)\nLet’s calculate \\(\\pi \\approx 3.14...\\) using the greatest common divisor:\n// approx_pi_gcd.js\n\n// Function to compute the greatest common divisor (GCD) using the Euclidean algorithm\nfunction mygcd(a, b) {\n    // Loop until the remainder is zero\n    while (b !== 0) {\n        let tmp = b;    // Store the value of b temporarily\n        b = a % b;      // Update b to the remainder of a divided by b\n        a = tmp;        // Set a to the previous value of b\n    }\n    return a;           // When b is zero, a is the GCD\n}\n\n// Function to approximate pi using probability that two numbers are coprime\nfunction calcPi(N) {\n    let cnt = 0;    // Counter for coprime pairs\n    // Loop through all pairs (a, b) where 1 &lt;= a, b &lt;= N\n    for (let a = 1; a &lt;= N; a++) {\n        for (let b = 1; b &lt;= N; b++) {\n            // Check if a and b are coprime\n            if (mygcd(a, b) === 1) {\n                cnt += 1;  // Increment counter if coprime\n            }\n        }\n    }\n    // Probability that two numbers are coprime\n    let prob = cnt / (N * N);\n    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)\n    return Math.sqrt(6 / prob);\n}\n\n// Main function to run the pi approximation\nfunction main() {\n    let N = 10000;            // Number limit for coprimality checking\n    let pi = calcPi(N);       // Approximate pi\n    console.log(`N: ${N}`);   // Output N\n    console.log(`pi: ${pi}`); // Output approximation of pi\n}\n\nmain(); // Call the main function\nResult\n$ node approx_pi_gcd.js\ncalcPi: 2.175s\nN: 10000\npi: 3.141534239016629"
+    "section": "JS Implementation (2)",
+    "text": "JS Implementation (2)\nLet’s calculate \\(\\pi \\approx 3.14...\\) using the greatest common divisor:\n// approx_pi_gcd.js\n\n// Function to compute the greatest common divisor (GCD) using the Euclidean algorithm\nfunction mygcd(a, b) {\n    // Loop until the remainder is zero\n    while (b !== 0) {\n        let tmp = b;    // Store the value of b temporarily\n        b = a % b;      // Update b to the remainder of a divided by b\n        a = tmp;        // Set a to the previous value of b\n    }\n    return a;           // When b is zero, a is the GCD\n}\n\n// Function to approximate pi using probability that two numbers are coprime\nfunction calcPi(N) {\n    let cnt = 0;    // Counter for coprime pairs\n    // Loop through all pairs (a, b) where 1 &lt;= a, b &lt;= N\n    for (let a = 1; a &lt;= N; a++) {\n        for (let b = 1; b &lt;= N; b++) {\n            // Check if a and b are coprime\n            if (mygcd(a, b) === 1) {\n                cnt += 1;  // Increment counter if coprime\n            }\n        }\n    }\n    // Probability that two numbers are coprime\n    let prob = cnt / (N * N);\n    // Approximate pi using the formula: pi ≈ sqrt(6 / prob)\n    return Math.sqrt(6 / prob);\n}\n\n// Main function to run the pi approximation\nfunction main() {\n    let N = 10000;            // Number limit for coprimality checking\n    let pi = calcPi(N);       // Approximate pi\n    console.log(`N: ${N}`);   // Output N\n    console.log(`pi: ${pi}`); // Output approximation of pi\n}\n\nmain(); // Call the main function\nResult\n$ node approx_pi_gcd.js\ncalcPi: 2.175s\nN: 10000\npi: 3.141534239016629"
   },
   {
     "objectID": "slides/slide.html#exercise",
@@ -840,11 +840,11 @@
     "text": "Exercise\nPort the JavaScript code above to Julia and Rust. Measure the execution time when N=10000.\nHint\nUse the following prompts:\n\nPort approx_pi_gcd.js to Julia and save the result as approx_pi_gcd.jl\n\n\nPort approx_pi_gcd.js to Rust and save the result as approx_pi_gcd.rs"
   },
   {
-    "objectID": "slides/slide.html#answer",
-    "href": "slides/slide.html#answer",
+    "objectID": "slides/slide.html#answer-cursor",
+    "href": "slides/slide.html#answer-cursor",
     "title": "Introduction to Coding Agents",
-    "section": "Answer",
-    "text": "Answer"
+    "section": "Answer (Cursor)",
+    "text": "Answer (Cursor)"
   },
   {
     "objectID": "slides/slide.html#answer-julia",
@@ -889,8 +889,8 @@
     "text": "Exercise\n\nClone the Julia repository and have the coding agent explain how the gcd function works\nHave it answer what algorithm is used\nHave it port Julia’s gcd implementation to replace mygcd in the code we ported from JavaScript to Rust\n\nHint\n\ngit clone --depth 1 &lt;url&gt; enables fast cloning (shallow clone). Use the following prompt:\n\n\nRead the Julia code and answer how the gcd function is defined. Read @julia\n\n\nPort these gcd functions to Rust"
   },
   {
-    "objectID": "slides/slide.html#answer-1",
-    "href": "slides/slide.html#answer-1",
+    "objectID": "slides/slide.html#answer",
+    "href": "slides/slide.html#answer",
     "title": "Introduction to Coding Agents",
     "section": "Answer",
     "text": "Answer\n\n\n\n\nIndeed, the code is as follows:\n# binary GCD (aka Stein's) algorithm\n# about 1.7x (2.1x) faster for random Int64s (Int128s)\n# Unfortunately, we need to manually annotate this as `@assume_effects :terminates_locally` to work around #41694.\n# Since this is used in the Rational constructor, constant folding is something we do care about here.\n@assume_effects :terminates_locally function _gcd(ain::T, bin::T) where T&lt;:BitInteger\n    zb = trailing_zeros(bin)\n    za = trailing_zeros(ain)\n    a = abs(ain)\n    b = abs(bin &gt;&gt; zb)\n    k = min(za, zb)\n    while a != 0\n        a &gt;&gt;= za\n        absd, diff = absdiff(a, b)\n        za = trailing_zeros(diff)\n        b = min(a, b)\n        a = absd\n    end\n    r = b &lt;&lt; k\n    return r % T\nend"
@@ -917,8 +917,8 @@
     "text": "The Binary GCD Algorithm can be made even faster\nExercise\n\nFurther optimize the Binary GCD Algorithm (1.45 -&gt; 1.07 seconds on Julia)\n\nHint\n\nImplement the Binary GCD Algorithm in Rust and measure execution time\nIf the Rust implementation is faster than Julia, compare the Rust binary with the assembly output from Julia’s @code_native macro\nFewer instructions improve execution speed; feed the comparison results back into the Julia code"
   },
   {
-    "objectID": "slides/slide.html#answer-2",
-    "href": "slides/slide.html#answer-2",
+    "objectID": "slides/slide.html#answer-1",
+    "href": "slides/slide.html#answer-1",
     "title": "Introduction to Coding Agents",
     "section": "Answer",
     "text": "Answer\n\nOpus 4.5 generated this!\n\nRust\nBenchmark:\nRun 1: 1.05132725s  pi=3.141534239016629\nRun 2: 1.0358485s  pi=3.141534239016629\nRun 3: 1.034275125s  pi=3.141534239016629\nJulia\n$ julia src/main.jl\nRunning tests...\nAll tests passed!\n\nBenchmark:\nRun 1: 1.072994208s  pi=3.141534239016629\nRun 2: 1.07328325s  pi=3.141534239016629\nRun 3: 1.072947583s  pi=3.141534239016629"
