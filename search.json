@@ -739,7 +739,7 @@
     "href": "slides/slide.html#which-tool-should-you-use-1",
     "title": "Introduction to Coding Agents",
     "section": "Which tool should you use? (1)",
-    "text": "Which tool should you use? (1)\n\nThere is no single answer since AI agents are constantly evolving\nDepends on which accounts you have\n\nIf you have ChatGPT: try Codex, GPT-5.3\nIf you have Claude: try Claude Code: Opus-4.6\n\nWant to use for free\n\nUse Google’s Antigravity\n\nAll services have usage limits. It all comes down to budget"
+    "text": "Which tool should you use? (1)\n\nThere is no single answer since AI agents are constantly evolving\nDepends on which accounts you have\n\nIf you have ChatGPT: try Codex, GPT-5.3\nIf you have Claude: try Claude Code: Opus-4.6\n\nWant to use for free\n\nUse GitHub Copilot, Google Antigravity\n\nAll services have usage limits. It all comes down to budget"
   },
   {
     "objectID": "slides/slide.html#which-tool-should-you-use-2",
@@ -753,7 +753,7 @@
     "href": "slides/slide.html#required-cli-tools",
     "title": "Introduction to Coding Agents",
     "section": "Required CLI tools",
-    "text": "Required CLI tools\n\ngit, gh: Operate Git/GitHub\nuv: Python package manager\nnpm, node: Installing coding agents\njuliaup, julia: Required to run Julia code\nrustup, rustc, cargo: Required to build and run Rust code\n\nOptional:\n\ntmux\ndocker\ndevcontainer\nrg\ntree\nhtop\nquarto"
+    "text": "Required CLI tools\n\ngit, gh: Operate Git/GitHub\nnpm, node: Installing coding agents\nuv: Python package manager\njuliaup, julia: Required to run Julia code\nrustup, rustc, cargo: Required to build and run Rust code\n\nOptional:\n\ntmux\ndocker\ndevcontainer\nrg\ntree\nhtop\nquarto"
   },
   {
     "objectID": "slides/slide.html#software-installation",
