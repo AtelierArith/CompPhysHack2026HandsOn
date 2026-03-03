@@ -728,34 +728,6 @@
     "text": "Are humans unnecessary? (2)\n\nAI can slack off when writing code\n\nSatisfied with writing only placeholders\nImplements only special cases when a general implementation is needed\n\n\n\n\nNot always best-practice implementation\n\nIn Julia: doesn’t use multiple dispatch, overuses export\nIn Rust: overuses .clone(), degrading performance\n\nMinimal knowledge of how to build and run code, coding, and programming languages is necessary."
   },
   {
-    "objectID": "slides/slide.html#are-software-engineers-unnecessary-1",
-    "href": "slides/slide.html#are-software-engineers-unnecessary-1",
-    "title": "Introduction to Coding Agents",
-    "section": "Are software engineers unnecessary? (1)",
-    "text": "Are software engineers unnecessary? (1)\n\nAn extreme claim: AI development could make researchers unnecessary\nAI adoption frees us from the following local concerns:\n\nLanguage learning cost\nVery fine-grained language features and syntax\nCoding style\n\nWe should focus on the following global discussions:\n\nHow to design software with good user experience\nWhich technologies and languages to choose for each situation\nHow to maintain high-quality software\nWhat to implement or not\n\nBottleneck investigation with visual profilers is difficult to fully automate with AI. Such workflows still exist\n\nOptimization at millisecond, microsecond, nanosecond levels relies on human intuition. Demand remains"
-  },
-  {
-    "objectID": "slides/slide.html#are-software-engineers-unnecessary-2",
-    "href": "slides/slide.html#are-software-engineers-unnecessary-2",
-    "title": "Introduction to Coding Agents",
-    "section": "Are software engineers unnecessary? (2)",
-    "text": "Are software engineers unnecessary? (2)\n\nGaining domain knowledge is important\n\nPhysics knowledge sufficient to communicate with physicists\n\nRust code can run on the web via WebAssembly.\n\nWork may emerge for publishing and maintaining numerical computing demos on the web"
-  },
-  {
-    "objectID": "slides/slide.html#are-software-engineers-unnecessary-3",
-    "href": "slides/slide.html#are-software-engineers-unnecessary-3",
-    "title": "Introduction to Coding Agents",
-    "section": "Are software engineers unnecessary? (3)",
-    "text": "Are software engineers unnecessary? (3)\n\nResearchers will get busier.\n\nThey can do what they couldn’t before but wanted to.\nWork will increase accordingly\n\nResearchers won’t be idle.\n\nOne researcher subscribed to Claude Code MAX $200 and got dizzy from full AI usage\nI recommended downgrading to the $100 plan. Sounds like a joke but it’s true"
-  },
-  {
-    "objectID": "slides/slide.html#are-software-engineers-unnecessary-4",
-    "href": "slides/slide.html#are-software-engineers-unnecessary-4",
-    "title": "Introduction to Coding Agents",
-    "section": "Are software engineers unnecessary? (4)",
-    "text": "Are software engineers unnecessary? (4)\n\nJobs disappear when a certain passion disappears."
-  },
-  {
     "objectID": "slides/slide.html#demo",
     "href": "slides/slide.html#demo",
     "title": "Introduction to Coding Agents",
