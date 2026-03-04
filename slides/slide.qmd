@@ -147,11 +147,9 @@ We can view Pluto notebook on VS Code.
 
 ## AI Driven Development
 
-Thanks to AI, I can now use programming languages other than Julia and develop many software products rapidly.
-
-Humans give instructions in natural language for what they want to build, and AI agents generate source code and execute commands.
-
-This approach to development using AI is called AI-driven development.
+- Thanks to AI, I can now use programming languages other than Julia and develop many software products rapidly.
+- We can give instructions in natural language for what we want to build, and AI agents generate source code and execute commands.
+- We call this development style as `AI Driven Development`.
 
 ![](assets/human-orders.png)
 
@@ -187,7 +185,7 @@ No documentation, or it's outdated
 :::
 
 ::: {.fragment}
-Code doesn't compile (C/C++/Fortran90/FORTRAN77)
+Code cannot compile (C/C++/Fortran90/FORTRAN77)
 :::
 
 ::: {.fragment}
@@ -216,7 +214,8 @@ Runtime errors occur (segmentation faults, etc. C++!!!)
 
 ## Humans and machines (1)
 
-- Humans can "create" but they "get tired," "get bored," and "get stuck"
+- Why real-world software development is so far from ideal.
+- Humans can "create" but they "get tired," "get bored," and "get stubborn"
   - Coming up with new ideas like in research activities
   - Overusing `git commit -m "update"` and `git commit -m "fix"`
 
@@ -248,7 +247,7 @@ gitGraph
 
 ## Humans and machines (2)
 
-- Humans can "create" but they "get tired," "get bored," and "get stuck"
+- Humans can "create" but they "get tired," "get bored," and "get stubborn"
 
 ::: {.fragment}
 Dear scientists, when writing new numerical computing software, use Julia or Rust for scientific computing.
