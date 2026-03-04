@@ -599,7 +599,7 @@
     "href": "slides/slide.html#overview",
     "title": "Introduction to Coding Agents",
     "section": "Overview",
-    "text": "Overview\n\nSelf-introduction\nIntroduction to AI-powered software\nIntroduction to AI agents\nHands-on exercises with several topics"
+    "text": "Overview\n\nSelf-introduction\nIntroducing to AI-powered software\nIntroducing to AI agents (Cursor etc.)\n(Hands-on exercises with several topics)"
   },
   {
     "objectID": "slides/slide.html#self-introduction",
@@ -627,14 +627,14 @@
     "href": "slides/slide.html#recent-work-development-with-tensor4all-members",
     "title": "Introduction to Coding Agents",
     "section": "Recent work: Development with tensor4all members",
-    "text": "Recent work: Development with tensor4all members\n\ntensor4all-rs: A Rust implementation of tensor networks\n\nPorting Jutho/Strided.jl to Rust strided-rs\nstrided-rs-benchmark-suite\n\ntenferro-rs\n\nA general-purpose tensor computation library in Rust with CPU/GPU support."
+    "text": "Recent work: Development with tensor4all members\n\ntensor4all-rs: A Rust implementation of tensor networks\n\nPorting Jutho/Strided.jl to Rust strided-rs with Hiroshi Shinaoka\nstrided-rs-benchmark-suite\n\ntenferro-rs\n\nA general-purpose tensor computation library in Rust with CPU/GPU support."
   },
   {
     "objectID": "slides/slide.html#recent-work-mvmc",
     "href": "slides/slide.html#recent-work-mvmc",
     "title": "Introduction to Coding Agents",
     "section": "Recent work: mVMC",
-    "text": "Recent work: mVMC\n\nTakahiro Misawa et al.\n\nPorting C project mVMC to Julia (WIP)\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis project is still work in progress. It will be released in the future."
+    "text": "Recent work: mVMC\n\nTakahiro Misawa et al.\n\nPorting C project mVMC to Julia (WIP)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe could achieved better execution speed than the original C implementation.\nThis project is still work in progress. It will be released in the future."
   },
   {
     "objectID": "slides/slide.html#recent-work-subsetjuliavm",
@@ -662,14 +662,14 @@
     "href": "slides/slide.html#ai-driven-development",
     "title": "Introduction to Coding Agents",
     "section": "AI Driven Development",
-    "text": "AI Driven Development\nThanks to AI, I can now use programming languages other than Julia and develop many software products rapidly.\nHumans give instructions in natural language for what they want to build, and AI agents generate source code and execute commands.\nThis approach to development using AI is called AI-driven development."
+    "text": "AI Driven Development\n\nThanks to AI, I can now use programming languages other than Julia and develop many software products rapidly.\nWe can give instructions in natural language for what we want to build, and AI agents generate source code and execute commands.\nWe call this development style as AI Driven Development."
   },
   {
     "objectID": "slides/slide.html#in-reality",
     "href": "slides/slide.html#in-reality",
     "title": "Introduction to Coding Agents",
     "section": "In reality",
-    "text": "In reality\n\n\nWhere is the source code? (Git is not used. No version control)\n\n\nNo documentation, or it’s outdated\n\n\nCode doesn’t compile (C/C++/Fortran90/FORTRAN77)\n\n\nNo unit tests\n\n\nRuntime errors occur (segmentation faults, etc. C++!!!)\n\n\n\nDataset URLs point to a researcher’s personal C: drive\n\n(hardcoded variables in the SOTA machine learning source code)"
+    "text": "In reality\n\n\nWhere is the source code? (Git is not used. No version control)\n\n\nNo documentation, or it’s outdated\n\n\nCode cannot compile (C/C++/Fortran90/FORTRAN77)\n\n\nNo unit tests\n\n\nRuntime errors occur (segmentation faults, etc. C++!!!)\n\n\n\nDataset URLs point to a researcher’s personal C: drive\n\n(hardcoded variables in the SOTA machine learning source code)"
   },
   {
     "objectID": "slides/slide.html#build-reproducible-software-for-us",
@@ -683,42 +683,42 @@
     "href": "slides/slide.html#humans-and-machines-1",
     "title": "Introduction to Coding Agents",
     "section": "Humans and machines (1)",
-    "text": "Humans and machines (1)\n\nHumans can “create” but they “get tired,” “get bored,” and “get stuck”\n\nComing up with new ideas like in research activities\nOverusing git commit -m \"update\" and git commit -m \"fix\"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSticking to a specific programming language\n\nCreates environments where adopting modern practices like package managers is difficult"
+    "text": "Humans and machines (1)\n\nWhy real-world software development is so far from ideal.\nHumans are creative beings\n\nResearchers surely have wonderful ideas every day.\n\nHowever, they “get tired,” “get bored,” and “get stubborn”\n\nOverusing git commit -m \"update\" and git commit -m \"fix\"\n\nespecially during CI/CD pipeline debugging\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSticking to a specific programming language\n\nThis creates an environment where it is difficult to adopt modern development practices like using a package manager."
   },
   {
     "objectID": "slides/slide.html#humans-and-machines-2",
     "href": "slides/slide.html#humans-and-machines-2",
     "title": "Introduction to Coding Agents",
     "section": "Humans and machines (2)",
-    "text": "Humans and machines (2)\n\nHumans can “create” but they “get tired,” “get bored,” and “get stuck”\n\n\nDear scientists, when writing new numerical computing software, use Julia or Rust for scientific computing. They have modern package management systems that enable collaborative development with others.\n\n\nJulia provides fast execution while remaining a high-level language. You should use it if you typically write Fortran. However, type-unstable code, frequent GC (garbage collection), and memory allocation can prevent optimal performance. Tensor network packages that handle multidimensional arrays often encounter this issue.\n\n\nRust is a fast static language. Those who write C/C++ should consider switching. Rust has a learning curve when written manually, but AI code generation dramatically improves the development experience.\n\n\nThe tensor4all-rs ecosystem for tensor networks aims to be an excellent example of adopting Rust for scientific computing."
+    "text": "Humans and machines (2)\n\nThis is my personal opinion\n\n\n\nUse Julia or Rust for scientific computing.\n\nThey have modern package management systems that enable collaborative development with others.\n\n\n\n\n\nJulia provides fast execution while remaining a high-level language.\n\n\n\n\nRust is a fast static language. Those who write C/C++ should consider switching.\nRust has a learning curve when written manually, but AI code generation dramatically improves the development experience.\n\nI believe the tensor4all-rs ecosystem for tensor networks aims to be a very good example of using Rust for scientific computing."
   },
   {
     "objectID": "slides/slide.html#the-rise-of-coding-agents",
     "href": "slides/slide.html#the-rise-of-coding-agents",
     "title": "Introduction to Coding Agents",
     "section": "The rise of coding agents",
-    "text": "The rise of coding agents\nWith advances in artificial intelligence and generative AI, coding agents and AI agents can now take the following actions to achieve goals when given human instructions:"
+    "text": "The rise of coding agents\nSwitching and learning new technology requires paying a learning cost, but using AI agents solves this problem."
   },
   {
     "objectID": "slides/slide.html#humans-and-machines-3",
     "href": "slides/slide.html#humans-and-machines-3",
     "title": "Introduction to Coding Agents",
     "section": "Humans and machines (3)",
-    "text": "Humans and machines (3)\n\nMachines “don’t get bored,” “don’t get tired,” and “models improve”\n\nGenerate appropriate commit and pull request summaries from code diffs"
+    "text": "Humans and machines (3)\n\nMachines “don’t get bored,” “don’t get tired,” and “AI models evolves”\n\nGenerate appropriate commit and pull request summaries from code diffs"
   },
   {
     "objectID": "slides/slide.html#humans-and-machines-4",
     "href": "slides/slide.html#humans-and-machines-4",
     "title": "Introduction to Coding Agents",
     "section": "Humans and machines (4)",
-    "text": "Humans and machines (4)\n\nMachines “don’t get bored,” “don’t get tired,” and “models improve”\nWork anytime\n\nCan use various languages. Good at porting:\nJulia -&gt; C++, C++ -&gt; Rust, C -&gt; Julia\nTypeScript, Swift, Flutter/Dart\n\nCan adapt to requests. Migration to modern languages is possible\nRequires appropriate instructions from humans"
+    "text": "Humans and machines (4)\n\nMachines “don’t get bored,” “don’t get tired,” and “AI models evolves”\n\nCan use various languages. Good at porting:\nJulia -&gt; C++, C++ -&gt; Rust, C -&gt; Julia\nTypeScript, Swift, Flutter/Dart\n\nCan adapt to requests. Migration to modern languages is possible\nRequires appropriate instructions from humans"
   },
   {
     "objectID": "slides/slide.html#are-humans-unnecessary-1",
     "href": "slides/slide.html#are-humans-unnecessary-1",
     "title": "Introduction to Coding Agents",
     "section": "Are humans unnecessary? (1)",
-    "text": "Are humans unnecessary? (1)\n\nLLMs have much knowledge but may not have cutting-edge knowledge like researchers.\n\nWhat to implement or not depends on human judgment.\n\nSoftware engineers are freed from coding time but need the following capabilities:\n\nWhich technologies to use when\nDesigning architecture for high-quality software\nHigher-level decision-making ability\n\nMinimal domain knowledge to discuss with researchers is also required."
+    "text": "Are humans unnecessary? (1)\n\nLLMs have much knowledge but may not have cutting-edge knowledge like researchers.\n\nWhat to implement or not depends on human judgment.\n\nSoftware engineers are freed from coding time but need the following capabilities:\n\nWhich technologies to use when\nDesigning architecture for high-quality software\nHigher-level decision-making ability\nMinimal domain knowledge to discuss with researchers is also required."
   },
   {
     "objectID": "slides/slide.html#are-humans-unnecessary-2",
@@ -732,7 +732,7 @@
     "href": "slides/slide.html#demo",
     "title": "Introduction to Coding Agents",
     "section": "Demo",
-    "text": "Demo\nIntroducing coding with Cursor.\nAlternatives: Antigravity, Claude Code, Codex."
+    "text": "Demo\nIntroducing coding with Cursor.\nAlternatives: Antigravity, Claude Code, Codex, and Copilot."
   },
   {
     "objectID": "slides/slide.html#which-tool-should-you-use-1",
