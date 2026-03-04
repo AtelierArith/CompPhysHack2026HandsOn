@@ -17,9 +17,9 @@ format:
 ## Overview
 
 - Self-introduction
-- Introduction to AI-powered software
-- Introduction to AI agents
-- Hands-on exercises with several topics
+- Introducing to AI-powered software
+- Introducing to AI agents (Cursor etc.)
+- (Hands-on exercises with several topics)
 
 ---
 
@@ -104,7 +104,8 @@ flowchart TD
   MVMC --> Optimizers
 ```
 
-This project is still work in progress. It will be released in the future.
+- We could achieved better execution speed than the original C implementation.
+- This project is still work in progress. It will be released in the future.
 
 ---
 
