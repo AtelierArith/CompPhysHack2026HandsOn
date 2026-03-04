@@ -74,7 +74,7 @@ flowchart LR
 ## Recent work: Development with `tensor4all` members
 
 - [tensor4all-rs](https://github.com/tensor4all/tensor4all-rs): A Rust implementation of tensor networks
-  - Porting [Jutho/Strided.jl](https://github.com/Jutho/Strided.jl) to Rust [strided-rs](https://github.com/tensor4all/strided-rs)
+  - Porting [Jutho/Strided.jl](https://github.com/Jutho/Strided.jl) to Rust [strided-rs](https://github.com/tensor4all/strided-rs) with Hiroshi Shinaoka
   - [strided-rs-benchmark-suite](https://github.com/tensor4all/strided-rs-benchmark-suite)
 
 - [tenferro-rs](https://github.com/tensor4all/tenferro-rs)
@@ -343,7 +343,7 @@ gitGraph
   - Which technologies to use when
   - Designing architecture for high-quality software
   - Higher-level decision-making ability
-- Minimal domain knowledge to discuss with researchers is also required.
+  - Minimal domain knowledge to discuss with researchers is also required.
 
 ![](assets/scientist_and_engineer.png)
 
@@ -365,49 +365,9 @@ gitGraph
 
 ---
 
-### Are software engineers unnecessary? (1)
+### Are software engineers unnecessary?
 
 - An extreme claim: AI development could make researchers unnecessary
-- AI adoption frees us from the following local concerns:
-  - Language learning cost
-  - Very fine-grained language features and syntax
-  - Coding style
-- We should focus on the following global discussions:
-  - How to design software with good user experience
-  - Which technologies and languages to choose for each situation
-  - How to maintain high-quality software
-  - What to implement or not
-- Bottleneck investigation with visual profilers is difficult to fully automate with AI. Such workflows still exist
-  - Optimization at millisecond, microsecond, nanosecond levels relies on human intuition. Demand remains
-
----
-
-### Are software engineers unnecessary? (2)
-
-- Gaining domain knowledge is important
-  - Physics knowledge sufficient to communicate with physicists
-- Rust code can run on the web via WebAssembly.
-  - Work may emerge for publishing and maintaining numerical computing demos on the web
-
-![](assets/scientist_and_engineer.png)
-
----
-
-### Are software engineers unnecessary? (3)
-
-- Researchers will get busier.
-  - They can do what they couldn't before but wanted to.
-  - Work will increase accordingly
-- Researchers won't be idle.
-  - One researcher subscribed to `Claude Code MAX $200` and got dizzy from full AI usage
-  - I recommended downgrading to the `$100` plan. Sounds like a joke but it's true
-- `{SWE task}` $\subset$ `{Researcher's demand}` $\setminus$ `{Things researchers actually can do}`
-
-![](assets/scientist_dizzy.png)
-
----
-
-### Are software engineers unnecessary? (4)
 
 - Jobs disappear when a certain passion disappears.
 - It's important to never lose your `curiosity`.
@@ -1646,3 +1606,55 @@ end
 
 main()
 ```
+
+---
+
+# Appendix
+
+---
+
+### Are software engineers unnecessary? (1)
+
+- AI adoption frees us from the following local concerns:
+  - Language learning cost
+  - Very fine-grained language features and syntax
+  - Coding style
+- We should focus on the following global discussions:
+  - How to design software with good user experience
+  - Which technologies and languages to choose for each situation
+  - How to maintain high-quality software
+  - What to implement or not
+- Bottleneck investigation with visual profilers is difficult to fully automate with AI. Such workflows still exist
+  - Optimization at millisecond, microsecond, nanosecond levels relies on human intuition. Demand remains
+
+---
+
+### Are software engineers unnecessary? (2)
+
+- Gaining domain knowledge is important
+  - Physics knowledge sufficient to communicate with physicists
+- Rust code can run on the web via WebAssembly.
+  - Work may emerge for publishing and maintaining numerical computing demos on the web
+
+![](assets/scientist_and_engineer.png)
+
+---
+
+### Are software engineers unnecessary? (3)
+
+- Researchers will get busier.
+  - They can do what they couldn't before but wanted to.
+  - Work will increase accordingly
+- Researchers won't be idle.
+  - One researcher subscribed to `Claude Code MAX $200` and got dizzy from full AI usage
+  - I recommended downgrading to the `$100` plan. Sounds like a joke but it's true
+- `{SWE task}` $\subset$ `{Researcher's demand}` $\setminus$ `{Things researchers actually can do}`
+
+![](assets/scientist_dizzy.png)
+
+---
+
+### Are software engineers unnecessary? (4)
+
+- Jobs disappear when a certain passion disappears.
+- It's important to never lose your `curiosity`.
