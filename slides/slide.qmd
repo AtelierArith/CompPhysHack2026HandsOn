@@ -19,7 +19,7 @@ format:
 - Self-introduction
 - Introducing to AI-powered software
 - Introducing to AI agents (Cursor etc.)
-- (Hands-on exercises with several topics)
+- (~~Live Coding~~ Live Generating code exercises with several topics)
 
 ---
 
