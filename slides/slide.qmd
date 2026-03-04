@@ -215,9 +215,11 @@ Runtime errors occur (segmentation faults, etc. C++!!!)
 ## Humans and machines (1)
 
 - Why real-world software development is so far from ideal.
-- Humans can "create" but they "get tired," "get bored," and "get stubborn"
-  - Coming up with new ideas like in research activities
+- Humans are creative beings
+  - Researchers surely have wonderful ideas every day.
+- However, they "get tired," "get bored," and "get stubborn"
   - Overusing `git commit -m "update"` and `git commit -m "fix"`
+    - especially during CI/CD pipeline debugging
 
 ::: {.fragment}
 ```{mermaid}
@@ -240,43 +242,37 @@ gitGraph
 
 ::: {.fragment}
 - Sticking to a specific programming language
-  - Creates environments where adopting modern practices like package managers is difficult
+  - This creates an environment where it is difficult to adopt modern development practices like using a package manager.
 :::
 
 ---
 
 ## Humans and machines (2)
 
-- Humans can "create" but they "get tired," "get bored," and "get stubborn"
+- This is my personal opinion
 
 ::: {.fragment}
-Dear scientists, when writing new numerical computing software, use Julia or Rust for scientific computing.
-They have modern package management systems that enable collaborative development with others.
+- Use Julia or Rust for scientific computing.
+  - They have modern package management systems that enable collaborative development with others.
 :::
 
 ::: {.fragment}
-Julia provides fast execution while remaining a high-level language.
-You should use it if you typically write Fortran.
-However, type-unstable code, frequent GC (garbage collection), and memory allocation can prevent optimal performance.
-Tensor network packages that handle multidimensional arrays often encounter this issue.
+- Julia provides fast execution while remaining a high-level language.
 :::
 
 ::: {.fragment}
-Rust is a fast static language.
+- Rust is a fast static language.
 Those who write C/C++ should consider switching.
-Rust has a learning curve when written manually, but AI code generation dramatically improves the development experience.
-:::
-
-::: {.fragment}
-The tensor4all-rs ecosystem for tensor networks aims to be an excellent example of adopting Rust for scientific computing.
+- Rust has a learning curve when written manually, but AI code generation dramatically improves the development experience.
+  - I believe the `tensor4all-rs` ecosystem for tensor networks aims to be a very good example of using Rust for scientific computing.
 :::
 
 ---
 
 ## The rise of coding agents
 
-With advances in artificial intelligence and generative AI,
-coding agents and AI agents can now take the following actions to achieve goals when given human instructions:
+Switching and learning new technology requires paying a learning cost,
+but using AI agents solves this problem.
 
 ![](assets/human-and-ai.png)
 
@@ -284,7 +280,7 @@ coding agents and AI agents can now take the following actions to achieve goals 
 
 ## Humans and machines (3)
 
-- Machines "don't get bored," "don't get tired," and "models improve"
+- Machines "don't get bored," "don't get tired," and "AI models evolves"
   - Generate appropriate commit and pull request summaries from code diffs
 
 ```{mermaid}
@@ -329,11 +325,10 @@ gitGraph
 
 ## Humans and machines (4)
 
-- Machines "don't get bored," "don't get tired," and "models improve"
-- Work anytime
-    - Can use various languages. Good at porting:
-    - `Julia -> C++`, `C++ -> Rust`, `C -> Julia`
-    - `TypeScript, Swift, Flutter/Dart`
+- Machines "don't get bored," "don't get tired," and "AI models evolves"
+  - Can use various languages. Good at porting:
+  - `Julia -> C++`, `C++ -> Rust`, `C -> Julia`
+  - `TypeScript, Swift, Flutter/Dart`
 
 - Can adapt to requests. Migration to modern languages is possible
 - Requires appropriate instructions from humans
@@ -415,6 +410,7 @@ gitGraph
 ### Are software engineers unnecessary? (4)
 
 - Jobs disappear when a certain passion disappears.
+- It's important to never lose your `curiosity`.
 
 ---
 
@@ -422,7 +418,7 @@ gitGraph
 
 Introducing coding with Cursor.
 
-Alternatives: Antigravity, Claude Code, Codex.
+Alternatives: Antigravity, Claude Code, Codex, and Copilot.
 
 ---
 
