@@ -31,6 +31,8 @@ format:
 - Organization: [AtelierArith](https://github.com/AtelierArith)
   - Publishes Julia packages I have created.
 
+![](assets/my_family.png)
+
 ## Actually
 
 - The software I will introduce leverages AI.
@@ -370,6 +372,10 @@ gitGraph
 - This is an extreme claim such as: 
    - Can we fire researchers because AI can generate natural languages, which means it can write papers?
 - Jobs disappear when a certain passion disappears.
+- It's important to never lose your `curiosity`.
+  - Even from SOTA internet memes like `좋아요` (likes) or  you can have fun learning Korean.
+  - There is a chance to get a new job!!! (Maybe)
+  See the [3rd party video: 스피키 성우님을 실제로 만났다](https://www.youtube.com/watch?v=NmzQ9aibS-g&t=549s) to learn more.
 
 ---
 
