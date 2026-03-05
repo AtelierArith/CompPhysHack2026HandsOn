@@ -620,7 +620,7 @@
     "href": "slides/slide.html#recent-work-organizing-sparseir-ecosystem",
     "title": "Introduction to Coding Agents",
     "section": "Recent work: Organizing SparseIR ecosystem",
-    "text": "Recent work: Organizing SparseIR ecosystem\n\nCollaborative development with Hiroshi Shinaoka, Hitoshi Mori, Markus Wallerberger\n\nPorting SparseIR.jl v1.0 to C++: libsparseir (C++)\nPorting libsparseir to Rust: sparse-ir-rs\nSparseIR.jl v2.0 (Julia interface for sparse-ir-rs)\nsparse-ir v2.0 (Python interface for sparse-ir-rs)"
+    "text": "Recent work: Organizing SparseIR ecosystem\n\nCollaborative development with Hiroshi Shinaoka, Hitoshi Mori, Markus Wallerberger\n\nPorting SparseIR.jl v1.0 to C++: libsparseir (C++)\nPorting libsparseir to Rust: sparse-ir-rs\nSparseIR.jl v2.0 (Julia interface for sparse-ir-rs)\nsparse-ir v2.0 (Python interface for sparse-ir-rs)\n\nSee also Why I Migrated from C++ to Rust (Development Experience in the Age of Generative AI) by Hiroshi Shinaoka"
   },
   {
     "objectID": "slides/slide.html#recent-work-development-with-tensor4all-members",
@@ -781,7 +781,7 @@
     "href": "slides/slide.html#math-quiz",
     "title": "Introduction to Coding Agents",
     "section": "Math Quiz",
-    "text": "Math Quiz\nGiven two positive integers \\(a\\) and \\(b\\), what is the probability that their greatest common divisor \\(\\gcd(a,b)\\) equals 1?\n\nThe answer is\n\\[\n\\begin{aligned}\n\\mathrm{Prob}(\\gcd(a, b) = 1)\n&= \\frac{1}{\\zeta(2)} \\\\\n&= \\frac{6}{\\pi^2} \\\\\n&\\approx 0.6079271018540267 &gt; 0.5\n\\end{aligned}\n\\]\nwhere \\(\\zeta\\) is the Riemann zeta function.\n\\[\n\\zeta(s) = \\sum_{n=1}^{\\infty} \\frac{1}{n^s}= \\prod_{p: \\mathrm{primes} } \\left(\\frac{1}{1 - p^{-s}}  \\right) \\mathrm{}\n\\]\nThe second equality is the equation known as the Euler product."
+    "text": "Math Quiz\nGiven two positive integers \\(a\\) and \\(b\\), what is the probability that their greatest common divisor \\(\\gcd(a,b)\\) equals 1?\nNamely Prob(gcd(a, b) = 1) = ???.\n\nThe answer is\n\\[\n\\begin{aligned}\n\\mathrm{Prob}(\\gcd(a, b) = 1)\n&= \\frac{1}{\\zeta(2)} \\\\\n&= \\frac{6}{\\pi^2} \\\\\n&\\approx 0.6079271018540267 &gt; 0.5\n\\end{aligned}\n\\]\nwhere \\(\\zeta\\) is the Riemann zeta function.\n\\[\n\\zeta(s) = \\sum_{n=1}^{\\infty} \\frac{1}{n^s}= \\prod_{p: \\mathrm{primes} } \\left(\\frac{1}{1 - p^{-s}}  \\right) \\mathrm{}\n\\]\nThe second equality is the equation known as the Euler product."
   },
   {
     "objectID": "slides/slide.html#proof",
