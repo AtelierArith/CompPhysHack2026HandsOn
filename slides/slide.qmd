@@ -25,8 +25,8 @@ format:
 
 ## Self-introduction
 
-- Freelance software engineer.
-  - Collaborative development of scientific computing with university faculty.
+- Name: Satoshi Terasaki
+  - Freelance software engineer.
 - GitHub: [terasakisatoshi](https://github.com/terasakisatoshi)
 - Organization: [AtelierArith](https://github.com/AtelierArith)
   - Publishes Julia packages I have created.
@@ -367,10 +367,9 @@ gitGraph
 
 ### Are software engineers unnecessary?
 
-- An extreme claim: AI development could make researchers unnecessary
-
+- This is an extreme claim such as: 
+   - Can we fire researchers because AI can generate natural languages, which means it can write papers?
 - Jobs disappear when a certain passion disappears.
-- It's important to never lose your `curiosity`.
 
 ---
 
