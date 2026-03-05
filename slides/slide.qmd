@@ -460,6 +460,8 @@ Go to the link below:
 
 Given two positive integers $a$ and $b$, what is the probability that their greatest common divisor $\gcd(a,b)$ equals 1?
 
+Namely `Prob(gcd(a, b) = 1) = ???`.
+
 ::: {.fragment}
 The answer is
 
