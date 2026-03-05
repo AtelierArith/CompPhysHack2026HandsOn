@@ -53,6 +53,8 @@ format:
     - Porting `libsparseir` to Rust: [sparse-ir-rs](https://github.com/SpM-lab/sparse-ir-rs)
     - [SparseIR.jl](https://github.com/SpM-lab/SparseIR.jl) v2.0 (Julia interface for sparse-ir-rs)
     - [sparse-ir](https://github.com/SpM-lab/sparse-ir) v2.0 (Python interface for sparse-ir-rs)
+- See also [Why I Migrated from C++ to Rust (Development Experience in the Age of Generative AI)](https://zenn.dev/h_shinaoka/articles/a099b814166ac7) by Hiroshi Shinaoka
+
 
 ```{mermaid}
 flowchart LR
